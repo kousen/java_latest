@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.kousenit'
+version '1.0'
+
+sourceCompatibility = JavaVersion.VERSION_13
+
+application {
+    mainClassName = 'com.kousenit.EnhancedSwitch'
+    applicationDefaultJvmArgs = ['--enable-preview']
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+tasks.withType(JavaCompile).each {
+    it.options.compilerArgs.add('--enable-preview')
+}
+
+//compileJava {
+//    options.compilerArgs.add('--enable-preview')
+//}
+
+test {
+    useJUnitPlatform()
+    jvmArgs(['--enable-preview'])
+}
