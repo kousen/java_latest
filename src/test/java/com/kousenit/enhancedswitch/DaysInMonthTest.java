@@ -1,6 +1,5 @@
 package com.kousenit.enhancedswitch;
 
-import com.kousenit.enhancedswitch.DaysInMonth;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 

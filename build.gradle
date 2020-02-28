@@ -9,7 +9,7 @@ version '1.0'
 sourceCompatibility = JavaVersion.VERSION_13
 
 application {
-    mainClassName = 'com.kousenit.EnhancedSwitch'
+    mainClassName = 'com.kousenit.fileio.ProcessDictionary'
     applicationDefaultJvmArgs = ['--enable-preview']
 }
 
@@ -26,10 +26,6 @@ dependencies {
 tasks.withType(JavaCompile).each {
     it.options.compilerArgs.add('--enable-preview')
 }
-
-//compileJava {
-//    options.compilerArgs.add('--enable-preview')
-//}
 
 test {
     useJUnitPlatform()

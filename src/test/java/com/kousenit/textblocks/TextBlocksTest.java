@@ -1,6 +1,5 @@
 package com.kousenit.textblocks;
 
-import com.kousenit.textblocks.TextBlocks;
 import org.junit.jupiter.api.Test;
 
 public class TextBlocksTest {
