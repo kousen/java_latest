@@ -32,17 +32,9 @@ class DaysInMonthTest {
     void daysIn2020Enhanced(Month month) {
         int days = DaysInMonth.getDays(month, 2020);
         switch (month) {
-            case FEBRUARY:
-                assertEquals(29, days);
-                break;
-            case APRIL:
-            case JUNE:
-            case SEPTEMBER:
-            case NOVEMBER:
-                assertEquals(30, days);
-                break;
-            default:
-                assertEquals(31, days);
+            case FEBRUARY -> assertEquals(29, days);
+            case APRIL, JUNE, SEPTEMBER, NOVEMBER -> assertEquals(30, days);
+            default -> assertEquals(31, days);
         }
     }
 }
