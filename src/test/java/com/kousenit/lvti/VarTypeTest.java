@@ -84,7 +84,7 @@ public class VarTypeTest {
 }
 
 class Var {
-    private String var;
+    private final String var;
 
     public Var(String var) {
         this.var = var;

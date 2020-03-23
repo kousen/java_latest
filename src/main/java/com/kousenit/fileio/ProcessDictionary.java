@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.counting;
@@ -16,6 +17,7 @@ import static java.util.stream.Collectors.groupingBy;
 @SuppressWarnings("GrazieInspection")
 public class ProcessDictionary {
     private Path dictionary = Paths.get("src/main/resources/dict/words");
+    private Logger logger = Logger.getLogger("default");
 
     public void printTenLongestWords() {
         System.out.println("\nTen Longest Words:");
@@ -25,8 +27,8 @@ public class ProcessDictionary {
                             //.thenComparing(Comparator.reverseOrder()))
                     )
                     .limit(10)
-                    .forEach(w ->
-                            System.out.printf("%s (%d)%n", w, w.length()));
+                    //.forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
+                .forEach(w -> logger.info(() -> "the word is " + w + " and its length is " + w.length()));
         } catch (IOException e) {
             e.printStackTrace();
         }
