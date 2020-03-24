@@ -6,5 +6,6 @@ public class UsePerson {
         Person p2 = new Person(1, "Jean-Luc", "Picard");
         System.out.println(p1);
         System.out.println(p1.equals(p2));
+        System.out.println(p1.first() + " " + p1.last());
     }
 }
