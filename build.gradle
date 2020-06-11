@@ -23,7 +23,7 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 
-tasks.withType(JavaCompile).each {
+tasks.withType(JavaCompile).configureEach {
     it.options.compilerArgs.add('--enable-preview')
 }
 
