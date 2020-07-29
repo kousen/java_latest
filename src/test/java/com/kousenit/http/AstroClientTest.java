@@ -3,7 +3,7 @@ package com.kousenit.http;
 import org.junit.jupiter.api.Test;
 
 class AstroClientTest {
-    private AstroClient client = new AstroClient();
+    private final AstroClient client = new AstroClient();
 
     @Test
     void checkJsonOutput() {

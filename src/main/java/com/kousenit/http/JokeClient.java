@@ -11,11 +11,11 @@ import java.time.Duration;
 import java.util.concurrent.ExecutionException;
 
 public class JokeClient {
-    private HttpClient client = HttpClient.newBuilder()
+    private final HttpClient client = HttpClient.newBuilder()
                                           .version(HttpClient.Version.HTTP_2)
                                           .connectTimeout(Duration.ofSeconds(2))
                                           .build();
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     private HttpRequest buildRequest(String first, String last) {
         String jokeUrl = "http://api.icndb.com/jokes/random?limitTo=[nerdy]";
