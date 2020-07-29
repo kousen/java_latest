@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SumNumbersTest {
-    private SumNumbers demo = new PrivateDemo();
+    private final SumNumbers demo = new PrivateDemo();
 
     @Test
     public void addEvens() {

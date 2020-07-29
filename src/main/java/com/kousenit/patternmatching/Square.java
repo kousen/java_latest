@@ -1,7 +1,7 @@
 package com.kousenit.patternmatching;
 
 public class Square {
-    private double side;
+    private final double side;
 
     public Square(double side) {
         this.side = side;

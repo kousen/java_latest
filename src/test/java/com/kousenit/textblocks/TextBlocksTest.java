@@ -7,7 +7,7 @@ public class TextBlocksTest {
 
     @Test
     void helloTextBlock() {
-        String hello = textBlocks.hello();
+        System.out.println(textBlocks.hello());
     }
 
     @Test
