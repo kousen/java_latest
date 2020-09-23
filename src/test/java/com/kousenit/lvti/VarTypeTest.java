@@ -51,8 +51,8 @@ public class VarTypeTest {
                 Map.entry("d", List.of(1, 2, 3)));
 
         // LVTI useful in for loops and try-with-resource blocks
-        for (var e : map.entrySet()) {
-            System.out.println(e.getKey() + ": " + e.getValue());
+        for (var entry : map.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
 
