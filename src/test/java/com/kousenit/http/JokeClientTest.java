@@ -1,8 +1,12 @@
 package com.kousenit.http;
 
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
@@ -14,6 +18,13 @@ class JokeClientTest {
     private final JokeClient client = new JokeClient();
     private final String heroFirstName = "Michael";
     private final String heroLastName = "Carducci";
+
+    @BeforeEach
+    void setUp() throws IOException {
+        Assumptions.assumeTrue(
+                InetAddress.getByName("icndb.com").isReachable(2000),
+                "ICNDB API site is down");
+    }
 
     @Test
     void getJokeSync() throws IOException, InterruptedException {
