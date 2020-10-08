@@ -11,7 +11,14 @@ public class UsePerson {
         System.out.println(p1.equals(p2));
         Set<Person> people = new HashSet<>();
         people.add(p1); people.add(p2);  // only adds unique elements
+
+        // Can't add both to Set.of because they are equivalent
+        // Set<Person> other = Set.of(p1, p2);
+        // System.out.println(other);
         System.out.println(people);
         System.out.println(p1.first() + " " + p1.last());
+
+        // Inner record
+        record Employee(int id, double salary) {};
     }
 }
