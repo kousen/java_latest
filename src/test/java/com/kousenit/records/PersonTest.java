@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
-    @Test @DisplayName("check equal objects are not necessarily the same")
+    @Test @DisplayName("check equal records are not necessarily the same")
     void checkEquivalenceAndReferenceEquality() {
         Person p1 = new Person(1, "Jean-Luc", "Picard");
         Person p2 = new Person(1, "Jean-Luc", "Picard");

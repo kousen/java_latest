@@ -22,9 +22,9 @@ public class ShapesTest {
                 () -> assertEquals(1, square.getArea(), 0.001),
                 () -> assertEquals(2, rectangle.getArea(), 0.001),
                 () -> assertEquals(2, transparentRectangle.getArea(), 0.001),
-                () -> assertTrue(transparentRectangle.isTransparent()),
+                () -> assertTrue(transparentRectangle.isTransparent()),  // not about area
                 () -> assertEquals(2, filledRectangle.getArea(), 0.001),
-                () -> assertFalse(filledRectangle.isTransparent())
+                () -> assertFalse(filledRectangle.isTransparent())       // not about area
         );
     }
 
