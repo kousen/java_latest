@@ -16,7 +16,7 @@ public class UsePerson {
         // Set<Person> other = Set.of(p1, p2);
         // System.out.println(other);
         System.out.println(people);
-        System.out.println(p1.first() + " " + p1.last());
+        System.out.println(p1.id() + ": " + p1.first() + " " + p1.last());
 
         // Inner record
         record Employee(int id, double salary) {};
