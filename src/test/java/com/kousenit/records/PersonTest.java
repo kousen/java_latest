@@ -16,4 +16,26 @@ class PersonTest {
                 () -> assertNotSame(p1, p2)
         );
     }
+
+    @Test @DisplayName("two-arg constructor delegates to three-arg ctor")
+    void checkTwoArgCtor() {
+        Person p = new Person("Will", "Riker");
+        assertAll(
+                () -> assertEquals("Will", p.first()),
+                () -> assertEquals("Riker", p.last()),
+                () -> assertEquals(999, p.id())
+        );
+    }
+
+    @Test
+    void canNotModifyFields() {
+        Person p = new Person(999, "Wesley", "Crusher");
+        // p.first() = "Wes";
+    }
+
+    @Test
+    void canUseInstanceMethods() {
+        Person p = new Person(999, "Wesley", "Crusher");
+        assertEquals("Wesley Crusher", p.getName());
+    }
 }

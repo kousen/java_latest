@@ -6,7 +6,8 @@ public class DivisibleBy3 {
             String result = switch (i % 3) {
                 case 0 -> i + " % 3 == 0";
                 case 1 -> i + " % 3 == 1";
-                default -> i + " % 3 == 2";
+                case 2 -> i + " % 3 == 2";
+                default -> throw new IllegalStateException("Unexpected value: " + i % 3);
             };
             System.out.println(result);
         }
