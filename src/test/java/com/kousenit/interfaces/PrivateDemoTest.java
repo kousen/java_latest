@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PrivateDemoTest {
-    private PrivateDemo demo = new PrivateDemo();
+    private final PrivateDemo demo = new PrivateDemo();
 
     @Test
     public void addEvens() {
