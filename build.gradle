@@ -3,14 +3,17 @@ plugins {
     id 'application'
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(15))
+    }
+}
+
 group 'com.kousenit'
 version '1.0'
 
-sourceCompatibility = JavaVersion.VERSION_15
-targetCompatibility = JavaVersion.VERSION_15
-
 application {
-    mainClassName = 'com.kousenit.fileio.ProcessDictionary'
+    mainClass.set('com.kousenit.fileio.ProcessDictionary')
     applicationDefaultJvmArgs = ['--enable-preview']
 }
 
@@ -26,6 +29,7 @@ dependencies {
 
 tasks.withType(JavaCompile).configureEach {
     it.options.compilerArgs.add('--enable-preview')
+    it.options.compilerArgs.addAll(['--release', '15'])
 }
 
 test {
