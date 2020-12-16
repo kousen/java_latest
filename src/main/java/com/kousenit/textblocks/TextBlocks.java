@@ -18,11 +18,11 @@ public class TextBlocks {
     public String json() {
         return """
                 {
-                    people: [{craft: "ISS", name: "Andrew Morgan"},
-                             {craft: "ISS", name: "Oleg Skripochka"},
-                             {craft: "ISS", name: "Jessica Meir"}],
-                    message: "success",
-                    number: 3
+                    "people": [{"craft": "ISS", "name": "Andrew Morgan"},
+                               {"craft": "ISS", "name": "Oleg Skripochka"},
+                               {"craft": "ISS", "name": "Jessica Meir"}],
+                    "message": "success",
+                    "number": 3
                 }
         """;
     }

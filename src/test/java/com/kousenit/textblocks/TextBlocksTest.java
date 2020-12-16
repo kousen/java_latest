@@ -1,5 +1,7 @@
 package com.kousenit.textblocks;
 
+import com.google.gson.Gson;
+import com.kousenit.http.AstroResponse;
 import org.junit.jupiter.api.Test;
 
 public class TextBlocksTest {
@@ -16,8 +18,23 @@ public class TextBlocksTest {
     }
 
     @Test
+    void colorsFromJEP_eachLineHasSixCharactersExactly() {
+        String colors = """
+                red  \s
+                green\s
+                blue \s
+                """;
+        System.out.println(colors);
+    }
+
+    @Test
     void getAstroData() {
         String data = textBlocks.getAstroData();
         System.out.println(data);
+        Gson gson = new Gson();
+        AstroResponse astroResponse = gson.fromJson(data, AstroResponse.class);
+        System.out.println(astroResponse);
+        System.out.println("There are " + astroResponse.getNumber() +
+                " people in space");
     }
 }

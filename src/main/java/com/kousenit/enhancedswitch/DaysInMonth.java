@@ -8,10 +8,10 @@ public class DaysInMonth {
         return switch (month) {
             case SEPTEMBER, APRIL, JUNE, NOVEMBER -> 30;
             case FEBRUARY -> {
-                System.out.println("Checking if " + year +
-                        " is a leap year");
+                System.out.println("Checking if " + year + " is a leap year");
                 yield Year.isLeap(year) ? 29 : 28;
             }
+//            case FEBRUARY -> Year.isLeap(year) ? 29 : 28;
             default -> 31;
         };
     }
