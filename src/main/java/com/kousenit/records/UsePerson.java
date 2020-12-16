@@ -20,5 +20,10 @@ public class UsePerson {
 
         // Inner record
         record Employee(int id, double salary) {};
+        Employee emp = new Employee(1, 100_000.0);
+        System.out.println(emp);
+
+        Person.Job job = new Person.Job("developer");
+        System.out.println(job);
     }
 }

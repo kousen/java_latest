@@ -17,7 +17,7 @@ public class PatternTest {
 
         List<Object> objects = List.of(square, circle, triangle, rectangle);
         objects.stream()
-                .mapToDouble(this::getArea)
+                .map(this::getArea)
                 .forEach(System.out::println);
     }
 

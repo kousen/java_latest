@@ -30,7 +30,7 @@ class PersonTest {
     @Test
     void canNotModifyFields() {
         Person p = new Person(999, "Wesley", "Crusher");
-        // p.first() = "Wes";
+        // p.first("Wes");
     }
 
     @Test
