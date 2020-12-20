@@ -17,4 +17,10 @@ class AstroClientTest {
 
         System.out.println(client.getJsonResponse());
     }
+
+//    @Test
+//    void testDeserializeToRecords() {
+//        AstroResponse response = client.getAstroResponse();
+//        System.out.println(response);
+//    }
 }

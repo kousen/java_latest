@@ -1,6 +1,11 @@
 package com.kousenit.http;
 
+import com.google.gson.*;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -30,4 +35,18 @@ public class AstroClient {
         }
         return "";
     }
+
+//    public AstroResponse getAstroResponse() {
+        // Gson does not work yet
+//        return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
+
+        // Neither does Moshi
+//        Moshi moshi = new Moshi.Builder().build();
+//        JsonAdapter<AstroResponse> adapter = moshi.adapter(AstroResponse.class);
+//        try {
+//            return adapter.fromJson(getJsonResponse());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e.getCause());
+//        }
+//    }
 }
