@@ -1,4 +1,3 @@
 package com.kousenit.http;
 
-public record Assignment(String name, String craft) {
-}
+public record Assignment(String name, String craft) {}

@@ -1,5 +1,6 @@
 package com.kousenit.textblocks;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.gson.Gson;
 import com.kousenit.http.AstroResponse;
@@ -35,7 +36,8 @@ public class TextBlocksTest {
         System.out.println(data);
 
         // Jackson 2 deserializes to record types
-        JsonMapper jsonMapper = new JsonMapper();
+        // JsonMapper jsonMapper = new JsonMapper();  // JsonMapper extends ObjectMapper
+        ObjectMapper jsonMapper = new ObjectMapper();
         AstroResponse astroResponse = jsonMapper.readValue(data, AstroResponse.class);
         System.out.println(astroResponse);
         System.out.println("There are " + astroResponse.number() + " people in space");
