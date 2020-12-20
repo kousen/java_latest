@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.InetAddress;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class AstroClientTest {
     private final AstroClient client = new AstroClient();
 
@@ -18,9 +20,13 @@ class AstroClientTest {
         System.out.println(client.getJsonResponse());
     }
 
-//    @Test
-//    void testDeserializeToRecords() {
-//        AstroResponse response = client.getAstroResponse();
-//        System.out.println(response);
-//    }
+    @Test
+    void testDeserializeToRecords() {
+        AstroResponse response = client.getAstroResponse();
+        System.out.println(response);
+        assertAll(
+                () -> assertTrue(response.number() >= 0),
+                () -> assertEquals(response.people().size(), response.number())
+        );
+    }
 }

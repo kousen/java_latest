@@ -1,5 +1,6 @@
 package com.kousenit.textblocks;
 
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.gson.Gson;
 import com.kousenit.http.AstroResponse;
 import org.junit.jupiter.api.Disabled;
@@ -28,12 +29,14 @@ public class TextBlocksTest {
         System.out.println(colors);
     }
 
-    @Test @Disabled("Can not deserialize to records yet")
-    void getAstroData() {
+    @Test
+    void getAstroData() throws Exception {
         String data = textBlocks.getAstroData();
         System.out.println(data);
-        Gson gson = new Gson();
-        AstroResponse astroResponse = gson.fromJson(data, AstroResponse.class);
+
+        // Jackson 2 deserializes to record types
+        JsonMapper jsonMapper = new JsonMapper();
+        AstroResponse astroResponse = jsonMapper.readValue(data, AstroResponse.class);
         System.out.println(astroResponse);
         System.out.println("There are " + astroResponse.number() + " people in space");
     }

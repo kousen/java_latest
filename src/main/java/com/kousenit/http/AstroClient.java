@@ -1,5 +1,7 @@
 package com.kousenit.http;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.gson.*;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -36,7 +38,7 @@ public class AstroClient {
         return "";
     }
 
-//    public AstroResponse getAstroResponse() {
+    public AstroResponse getAstroResponse() {
         // Gson does not work yet
 //        return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
 
@@ -48,5 +50,13 @@ public class AstroClient {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e.getCause());
 //        }
-//    }
+
+        // Jackson 2 works
+        JsonMapper jsonMapper = new JsonMapper();
+        try {
+            return jsonMapper.readValue(getJsonResponse(), AstroResponse.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
