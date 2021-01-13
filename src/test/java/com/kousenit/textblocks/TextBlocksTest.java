@@ -1,10 +1,7 @@
 package com.kousenit.textblocks;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.google.gson.Gson;
 import com.kousenit.http.AstroResponse;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TextBlocksTest {

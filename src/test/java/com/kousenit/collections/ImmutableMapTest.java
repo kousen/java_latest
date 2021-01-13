@@ -43,8 +43,8 @@ public class ImmutableMapTest {
     @Test
     void noNullArguments() {
         assertAll("No null keys or values",
-                () -> assertThrows(NullPointerException.class, () -> List.of(null)),
-                () -> assertThrows(NullPointerException.class, () -> Set.of(null)),
+//                () -> assertThrows(NullPointerException.class, () -> List.of(null)),
+//                () -> assertThrows(NullPointerException.class, () -> Set.of(null)),
                 () -> assertThrows(NullPointerException.class, () -> Map.of(null, "value")),
                 () -> assertThrows(NullPointerException.class, () -> Map.of("key", null)));
     }

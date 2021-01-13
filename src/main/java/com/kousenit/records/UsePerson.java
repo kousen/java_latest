@@ -9,6 +9,7 @@ public class UsePerson {
         Person p2 = new Person(1, "Jean-Luc", "Picard");
         System.out.println(p1);
         System.out.println(p1.equals(p2));
+        System.out.println(p1 == p2);
         Set<Person> people = new HashSet<>();
         people.add(p1); people.add(p2);  // only adds unique elements
 
