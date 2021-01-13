@@ -23,7 +23,7 @@ public class AstroClient {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://api.open-notify.org/astros.json"))
-                .GET()
+                .GET() // default (could leave that out)
                 .build();
 
         try {

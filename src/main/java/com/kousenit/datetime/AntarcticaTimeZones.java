@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
@@ -11,8 +12,11 @@ import static java.util.Comparator.comparingInt;
 public class AntarcticaTimeZones {
     public static void main(String[] args) {
         LocalDateTime now = LocalDateTime.now();
+        Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
+        System.out.println("There are " + availableZoneIds.size() + " zoneids around the world");
         List<ZonedDateTime> antarcticZones =
-                ZoneId.getAvailableZoneIds().stream()  // Stream<String>
+                availableZoneIds
+                        .stream()  // Stream<String>
                         .filter(regionId -> regionId.contains("Antarctica"))
                         .map(ZoneId::of)  // Stream<ZoneId>
                         .map(now::atZone) // Stream<ZonedDateTime>

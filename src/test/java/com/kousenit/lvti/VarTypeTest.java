@@ -54,6 +54,11 @@ public class VarTypeTest {
         for (var entry : map.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+
+        // Of course, Map now has a forEach(BiConsumer)
+        // As of Java 11, var is okay in lambda expressions
+        map.forEach((var s, var list) -> System.out.println(s + ": " + list));
+        map.forEach((s, list) -> System.out.println(s + ": " + list));
     }
 
     @Test
