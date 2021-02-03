@@ -28,7 +28,7 @@ public class Point {
                 && x == p.x && y == p.y;
     }
 
-//    Normal, generated
+    // Normal, generated
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
