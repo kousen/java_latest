@@ -19,7 +19,7 @@ public class ProcessDictionary {
     private final Logger logger = Logger.getLogger("default");
 
     int maxLength() {
-        try (Stream<String> words = Files.lines(dictionary)) {
+        try (Stream<String> words = Files.lines(dictionary).parallel()) {
             return words.max(Comparator.comparing(String::length)).orElse("").length();
         } catch (IOException e) {
             e.printStackTrace();

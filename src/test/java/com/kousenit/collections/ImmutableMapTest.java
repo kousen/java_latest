@@ -43,8 +43,8 @@ public class ImmutableMapTest {
     @Test
     void noNullArguments() {
         assertAll("No null keys or values",
-//                () -> assertThrows(NullPointerException.class, () -> List.of(null)),
-//                () -> assertThrows(NullPointerException.class, () -> Set.of(null)),
+                () -> assertThrows(NullPointerException.class, () -> List.of(null, null)),
+                () -> assertThrows(NullPointerException.class, () -> Set.of(null, null, null)),
                 () -> assertThrows(NullPointerException.class, () -> Map.of(null, "value")),
                 () -> assertThrows(NullPointerException.class, () -> Map.of("key", null)));
     }
@@ -60,20 +60,20 @@ public class ImmutableMapTest {
     @Test
     public void immutableMapFromEntries() {
         Map<String, String> jvmLanguages = ofEntries(
-                entry("Java", "http://www.oracle.com/technetwork/java/index.html"),
-                entry("Groovy", "http://groovy-lang.org/"),
-                entry("Scala", "http://www.scala-lang.org/"),
+                entry("Java", "https://www.oracle.com/technetwork/java/index.html"),
+                entry("Groovy", "https://groovy-lang.org/"),
+                entry("Scala", "https://www.scala-lang.org/"),
                 entry("Clojure", "https://clojure.org/"),
-                entry("Kotlin", "http://kotlinlang.org/"));
+                entry("Kotlin", "https://kotlinlang.org/"));
 
         Set<String> names = Set.of("Java", "Scala", "Groovy", "Clojure", "Kotlin");
 
         List<String> urls = List.of(
-                "http://www.oracle.com/technetwork/java/index.html",
-                "http://groovy-lang.org/",
-                "http://www.scala-lang.org/",
+                "https://www.oracle.com/technetwork/java/index.html",
+                "https://groovy-lang.org/",
+                "https://www.scala-lang.org/",
                 "https://clojure.org/",
-                "http://kotlinlang.org/");
+                "https://kotlinlang.org/");
 
         Set<String> keys = jvmLanguages.keySet();
         Collection<String> values = jvmLanguages.values();
@@ -82,15 +82,15 @@ public class ImmutableMapTest {
 
         Map<String, String> javaMap = Map.of(
                 "Java",
-                "http://www.oracle.com/technetwork/java/index.html",
+                "https://www.oracle.com/technetwork/java/index.html",
                 "Groovy",
-                "http://groovy-lang.org/",
+                "https://groovy-lang.org/",
                 "Scala",
-                "http://www.scala-lang.org/",
+                "https://www.scala-lang.org/",
                 "Clojure",
                 "https://clojure.org/",
                 "Kotlin",
-                "http://kotlinlang.org/");
+                "https://kotlinlang.org/");
         javaMap.forEach((name, url) -> assertTrue(
                 jvmLanguages.containsKey(name) && jvmLanguages.containsValue(url)));
     }

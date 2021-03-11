@@ -20,8 +20,7 @@ public class AntarcticaTimeZones {
                         .filter(regionId -> regionId.contains("Antarctica"))
                         .map(ZoneId::of)  // Stream<ZoneId>
                         .map(now::atZone) // Stream<ZonedDateTime>
-                        .sorted(comparingInt(
-                                zoneId -> zoneId.getOffset().getTotalSeconds()))
+                        .sorted(comparingInt(zoneId -> zoneId.getOffset().getTotalSeconds()))
                         .collect(Collectors.toList());
 
         antarcticZones.forEach(zdt ->
