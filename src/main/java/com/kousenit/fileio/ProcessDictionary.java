@@ -14,15 +14,24 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-@SuppressWarnings("GrazieInspection")
 public class ProcessDictionary {
     private final Path dictionary = Paths.get("src/main/resources/dict/words");
     private final Logger logger = Logger.getLogger("default");
 
+    int maxLength() {
+        try (Stream<String> words = Files.lines(dictionary)) {
+            return words.max(Comparator.comparing(String::length)).orElse("").length();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public void printTenLongestWords() {
         System.out.println("\nTen Longest Words:");
+        int maxForFilter = maxLength() - 5;
         try (Stream<String> words = Files.lines(dictionary)) {
-            words.filter(s -> s.length() > 20)
+            words.filter(s -> s.length() > maxForFilter)
                     .sorted(Comparator.comparingInt(String::length).reversed()
                             //.thenComparing(Comparator.reverseOrder()))
                     )
