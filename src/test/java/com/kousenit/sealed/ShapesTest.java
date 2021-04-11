@@ -17,7 +17,7 @@ public class ShapesTest {
 
     @Test
     void getAreas() {
-        assertAll(
+        assertAll(g
                 () -> assertEquals(Math.PI, circle.getArea(), 0.001),
                 () -> assertEquals(1, square.getArea(), 0.001),
                 () -> assertEquals(2, rectangle.getArea(), 0.001),
