@@ -17,14 +17,14 @@ public class ShapesTest {
 
     @Test
     void getAreas() {
-        assertAll(g
+        assertAll(
                 () -> assertEquals(Math.PI, circle.getArea(), 0.001),
                 () -> assertEquals(1, square.getArea(), 0.001),
                 () -> assertEquals(2, rectangle.getArea(), 0.001),
                 () -> assertEquals(2, transparentRectangle.getArea(), 0.001),
                 () -> assertTrue(transparentRectangle.isTransparent()),  // not about area
                 () -> assertEquals(2, filledRectangle.getArea(), 0.001),
-                () -> assertFalse(filledRectangle.isTransparent())       // not about area
+                () -> assertFalse(filledRectangle.isTransparent())      // not about area
         );
     }
 
