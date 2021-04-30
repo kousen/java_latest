@@ -33,7 +33,7 @@ public class ShapesTest {
         List<Shape> shapes = List.of(circle, square, rectangle,
                 transparentRectangle, filledRectangle);
 
-        // Eventually will work, but not in JDK 15
+        // Eventually will work, but not in JDK 16
         for (Shape shape : shapes) {
               // enhanced switch
 //            double value = switch (shape) {
