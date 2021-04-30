@@ -19,7 +19,7 @@ public class ProcessDictionary {
     private final Logger logger = Logger.getLogger("default");
 
     int maxLength() {
-        try (Stream<String> words = Files.lines(dictionary).parallel()) {
+        try (Stream<String> words = Files.lines(dictionary)) {
             return words.max(Comparator.comparing(String::length)).orElse("").length();
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class ProcessDictionary {
 
     public void printTenLongestWords() {
         System.out.println("\nTen Longest Words:");
-        int maxForFilter = maxLength() - 5;
+        int maxForFilter = maxLength() - 10;
         try (Stream<String> words = Files.lines(dictionary)) {
             words.filter(s -> s.length() > maxForFilter)
                     .sorted(Comparator.comparingInt(String::length).reversed()
@@ -45,8 +45,9 @@ public class ProcessDictionary {
 
     public void printWordsOfEachLength() {
         System.out.println("\nList of words of each length:");
-        try (Stream<String> lines = Files.lines(dictionary)) {
-            lines.filter(s -> s.length() > 20)
+        int maxForFilter = maxLength() - 10;
+        try (Stream<String> words = Files.lines(dictionary)) {
+            words.filter(s -> s.length() > maxForFilter)
                     .collect(groupingBy(String::length)) // Map<Integer,List<String>>
                     .forEach((len, wordList) -> System.out.println(len + ": " + wordList));
         } catch (IOException e) {
