@@ -45,7 +45,7 @@ public class ProcessDictionary {
 
     public void printWordsOfEachLength() {
         System.out.println("\nList of words of each length:");
-        int maxForFilter = maxLength() - 10;
+        int maxForFilter = maxLength() - 5;
         try (Stream<String> words = Files.lines(dictionary)) {
             words.filter(s -> s.length() > maxForFilter)
                     .collect(groupingBy(String::length)) // Map<Integer,List<String>>
