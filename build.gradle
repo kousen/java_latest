@@ -23,12 +23,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'com.squareup.moshi:moshi:1.12.0'
     implementation 'com.squareup.moshi:moshi-adapters:1.12.0'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation "net.jqwik:jqwik:1.5.1"
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -37,6 +38,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines 'jqwik', 'junit-jupiter'
+    }
     jvmArgs(['--enable-preview'])
 }

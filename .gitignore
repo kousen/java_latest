@@ -10,3 +10,4 @@ out
 *.iml
 *.ipr
 *.iws
+.jqwik-database
