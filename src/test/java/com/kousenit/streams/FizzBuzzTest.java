@@ -13,14 +13,28 @@ class FizzBuzzTest {
                 .startsWith("Fizz");
     }
 
+    @Property
+    boolean every_fifth_element_ends_with_Buzz(@ForAll("divisibleBy5") int i) {
+        return fizzBuzz().get(i - 1)
+                .endsWith("Buzz");
+    }
+
     @Provide
     Arbitrary<Integer> divisibleBy3() {
-        return Arbitraries.integers().between(1, 100)
+        return Arbitraries.integers()
+                .between(1, 100)
                 .filter(i -> i % 3 == 0);
     }
 
+    @Provide
+    Arbitrary<Integer> divisibleBy5() {
+        return Arbitraries.integers()
+                .between(1, 100)
+                .filter(i -> i % 5 == 0);
+    }
+
     private List<String> fizzBuzz() {
-        return IntStream.range(1, 100)
+        return IntStream.rangeClosed(1, 100)
                 .mapToObj(FizzBuzz::int2fizzbuzz)
                 .collect(Collectors.toList());
     }

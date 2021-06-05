@@ -37,6 +37,10 @@ tasks.withType(JavaCompile).configureEach {
     // it.options.compilerArgs.addAll(['--release', '15'])
 }
 
+compileTestJava {
+    options.compilerArgs += '-parameters'
+}
+
 test {
     useJUnitPlatform {
         includeEngines 'jqwik', 'junit-jupiter'
