@@ -3,13 +3,14 @@ package com.kousenit.patternmatching;
 public class UseShapes {
     public static double getArea(Object shape) {
         if (shape instanceof Square s) {
+            // Square s = (Square) shape;
             return s.getSide() * s.getSide();
         } else if (shape instanceof Circle c) {
             return c.getRadius() * c.getRadius() * Math.PI;
         } else if (shape instanceof Rectangle rect) {
             return rect.base() * rect.height();
         }
-        throw new IllegalArgumentException("Only circles and squares work");
+        throw new IllegalArgumentException("Only circles, squares, and rectangles work");
     }
 
     public static void main(String[] args) {
