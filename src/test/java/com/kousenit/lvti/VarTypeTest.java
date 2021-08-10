@@ -1,5 +1,6 @@
 package com.kousenit.lvti;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class VarTypeTest {
 
         // Of course, Map now has a forEach(BiConsumer)
         // As of Java 11, var is okay in lambda expressions
-        map.forEach((var s, var list) -> System.out.println(s + ": " + list));
+        map.forEach((@NotNull var s, var list) -> System.out.println(s + ": " + list));
         map.forEach((s, list) -> System.out.println(s + ": " + list));
     }
 
@@ -93,9 +94,5 @@ class Var {
 
     public Var(String var) {
         this.var = var;
-    }
-
-    public String getVar() {
-        return var;
     }
 }

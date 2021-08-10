@@ -15,8 +15,7 @@ public class AntarcticaTimeZones {
         Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
         System.out.println("There are " + availableZoneIds.size() + " zoneids around the world");
         List<ZonedDateTime> antarcticZones =
-                availableZoneIds
-                        .stream()  // Stream<String>
+                availableZoneIds.stream()  // Stream<String>
                         .filter(regionId -> regionId.contains("Antarctica"))
                         .map(ZoneId::of)  // Stream<ZoneId>
                         .map(now::atZone) // Stream<ZonedDateTime>
