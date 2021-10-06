@@ -35,26 +35,14 @@ public class PatternTest {
         }
     }
 
-    // Pattern matching does not work with switch statements
-//    private double getAreaUsingEnhancedSwitch(Object shape) {
-//        return switch (shape) {
-//            case shape instanceof Square s -> {
-//                Square s = (Square) shape;
-//                yield s.getSide() * s.getSide();
-//            } // s.getSide() * s.getSide();
-//            case shape instanceof Circle c -> {
-//                Circle c = (Circle) shape;
-//                yield c.getRadius() * c.getRadius() * Math.PI;
-//            }// c.getRadius() * c.getRadius() * Math.PI;
-//            case shape instanceof Triangle t -> {
-//                Triangle t = (Triangle) shape;
-//                yield 0.5 * t.base * t.height;
-//            }// 0.5 * t.base * t.height;
-//            case shape instanceof Rectangle r -> {
-//                Rectangle r = (Rectangle) shape;
-//                yield r.length * r.width;
-//            }// r.length * r.width;
-//            default -> 0;
-//        };
-//    }
+    // Pattern matching with switch statements (17 preview)
+    private double getAreaUsingEnhancedSwitch(Object shape) {
+        return switch (shape) {
+            case Square s -> s.getSide() * s.getSide();
+            case Circle c -> c.getRadius() * c.getRadius() * Math.PI;
+            case Triangle t -> 0.5 * t.base * t.height;
+            case Rectangle r -> r.length * r.width;
+            default -> 0;
+        };
+    }
 }
