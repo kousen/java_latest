@@ -80,7 +80,8 @@ public class VarTypeTest {
 
     @Test
     void nullProblem() {
-        // var x = null;
+        var x = (Void) null;
+        // var y = null;
     }
 
     @Test
