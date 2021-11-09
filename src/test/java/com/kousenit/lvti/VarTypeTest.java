@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection"})
 public class VarTypeTest {
+    // private var x;
+
     @Test
     void inferString() {
         var s = "Hello, World!";
@@ -81,12 +83,19 @@ public class VarTypeTest {
     @Test
     void nullProblem() {
         var x = (Void) null;
+        var z = (String) null;
         // var y = null;
     }
 
     @Test
     void dontDoThis() {
         var var =  new Var("var");
+    }
+
+    @Test
+    void canNotReassignTypeAtRuntime() {
+        var x = "abc";
+        // x = 3;
     }
 }
 

@@ -5,7 +5,7 @@ public class UseShapes {
         if (shape instanceof Square s) {
             // Square s = (Square) shape;
             return s.getSide() * s.getSide();
-        } else if (shape instanceof Circle c) {
+        } else if (shape instanceof Circle c && c.getRadius() > 0) {
             return c.getRadius() * c.getRadius() * Math.PI;
         } else if (shape instanceof Rectangle rect) {
             return rect.base() * rect.height();

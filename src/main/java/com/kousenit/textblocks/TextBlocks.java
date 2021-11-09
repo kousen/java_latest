@@ -12,7 +12,7 @@ public class TextBlocks {
                     This is a 
                         multiline string
                 with newlines inside
-                """;
+                        """;
     }
 
     public String json() {

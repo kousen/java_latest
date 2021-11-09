@@ -31,7 +31,8 @@ public class ImmutableMapTest {
         List<String> strings = List.of("a", "b");
         assertAll(
                 () -> assertThrows(UnsupportedOperationException.class, () -> strings.add("c")),
-                () -> assertThrows(UnsupportedOperationException.class, () -> strings.remove("c"))
+                () -> assertThrows(UnsupportedOperationException.class, () -> strings.remove("c")),
+                () -> assertThrows(UnsupportedOperationException.class, () -> strings.replaceAll(String::toUpperCase))
         );
     }
 
@@ -44,7 +45,7 @@ public class ImmutableMapTest {
     void noNullArguments() {
         assertAll("No null keys or values",
                 () -> assertThrows(NullPointerException.class, () -> List.of(null, null)),
-                () -> assertThrows(NullPointerException.class, () -> Set.of(null, null, null)),
+                () -> assertThrows(NullPointerException.class, () -> Set.of(null, null)),
                 () -> assertThrows(NullPointerException.class, () -> Map.of(null, "value")),
                 () -> assertThrows(NullPointerException.class, () -> Map.of("key", null)));
     }
