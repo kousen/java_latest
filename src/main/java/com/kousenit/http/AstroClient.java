@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
@@ -36,6 +37,21 @@ public class AstroClient {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public HttpResponse<Void> getResponseToHeadRequest(String site) {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(site))
+                .method("HEAD", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<Void> response = null;
+        try {
+            response = client.send(request, HttpResponse.BodyHandlers.discarding());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return response;
     }
 
     public AstroResponse getAstroResponse() {
