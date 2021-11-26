@@ -5,7 +5,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CustomerDAO {
-    private Map<Integer, Customer> map = new HashMap<>();
+    private final Map<Integer, Customer> map;
 
     public CustomerDAO() {
         List<Customer> customers = Arrays.asList(

@@ -20,7 +20,7 @@ public class UsePerson {
         System.out.println(p1.id() + ": " + p1.first() + " " + p1.last());
 
         // Inner record
-        record Employee(int id, double salary) {};
+        record Employee(int id, double salary) {}
         Employee emp = new Employee(1, 100_000.0);
         System.out.println(emp);
 

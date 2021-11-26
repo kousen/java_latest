@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.net.HttpURLConnection;
-import java.net.InetAddress;
 import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +13,7 @@ class AstroClientTest {
     private final AstroClient client = new AstroClient();
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() {
         // Works for a ping, but that may not be reliable
 //        Assumptions.assumeTrue(
 //                InetAddress.getByName("api.open-notify.org").isReachable(2000),
