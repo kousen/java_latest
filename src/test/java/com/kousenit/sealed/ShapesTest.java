@@ -33,31 +33,31 @@ public class ShapesTest {
         List<Shape> shapes = List.of(circle, square, rectangle,
                 transparentRectangle, filledRectangle);
 
-        // Eventually will work, but not in JDK 16
+        // Pattern matching for switch (preview of Java 17)
         for (Shape shape : shapes) {
               // enhanced switch
-//            double value = switch (shape) {
-//                case Circle c -> c.getRadius();
-//                case Square sq -> sq.getSide();
-//                case TransparentRectangle trect -> trect.getLength();
-//                case FilledRectangle filledRect -> filledRect.getWidth();
-//                case Rectangle rect -> rect.getWidth();
-                  // no default clause needed
-//            }
+            double value = switch (shape) {
+                case Circle c -> c.getRadius();
+                case Square sq -> sq.getSide();
+                case TransparentRectangle trect -> trect.getLength();
+                case FilledRectangle filledRect -> filledRect.getWidth();
+                case Rectangle rect -> rect.getWidth();
+                   // no default clause needed
+            };
 
-            double value = 0.;
-            // Pattern matching works
-            if (shape instanceof Circle c) {
-                value = c.getRadius();
-            } else if (shape instanceof Square sq) {
-                value = sq.getSide();
-            } else if (shape instanceof TransparentRectangle tRect) {
-                value = tRect.getLength();
-            } else if (shape instanceof FilledRectangle filledRect) {
-                value = filledRect.getWidth();
-            } else if (shape instanceof Rectangle rect) {
-                value = rect.getWidth();
-            }
+//            double value = 0.;
+//            // Pattern matching works
+//            if (shape instanceof Circle c) {
+//                value = c.getRadius();
+//            } else if (shape instanceof Square sq) {
+//                value = sq.getSide();
+//            } else if (shape instanceof TransparentRectangle tRect) {
+//                value = tRect.getLength();
+//            } else if (shape instanceof FilledRectangle filledRect) {
+//                value = filledRect.getWidth();
+//            } else if (shape instanceof Rectangle rect) {
+//                value = rect.getWidth();
+//            }
         }
     }
 }
