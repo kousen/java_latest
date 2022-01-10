@@ -22,14 +22,31 @@ repositories {
     mavenCentral()
 }
 
+String assertJVersion = '3.21.0'
+String gsonVersion = '2.8.9'
+String hamcrestVersion = '2.2'
+String jacksonVersion = '2.13.1'
+String jqwikVersion = '1.6.2'
+String junitVersion = '5.8.2'
+String mockitoVersion = '4.2.0'
+String moshiVersion = '1.13.0'
+String wiremockversion = '2.32.0'
+
 dependencies {
-    implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'com.squareup.moshi:moshi:1.13.0'
-    implementation 'com.squareup.moshi:moshi-adapters:1.13.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation 'net.jqwik:jqwik:1.6.2'
+    // JSON parsers
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+
+    // Testing
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+    testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
+    testImplementation "org.assertj:assertj-core:$assertJVersion"
+    testImplementation "net.jqwik:jqwik:$jqwikVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+    testImplementation "com.github.tomakehurst:wiremock-jre8:$wiremockversion"
 }
 
 tasks.withType(JavaCompile).configureEach {
