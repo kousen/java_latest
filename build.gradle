@@ -22,13 +22,13 @@ repositories {
     mavenCentral()
 }
 
-String assertJVersion = '3.21.0'
-String gsonVersion = '2.8.9'
+String assertJVersion = '3.22.0'
+String gsonVersion = '2.9.0'
 String hamcrestVersion = '2.2'
-String jacksonVersion = '2.13.1'
-String jqwikVersion = '1.6.2'
+String jacksonVersion = '2.13.2'
+String jqwikVersion = '1.6.4'
 String junitVersion = '5.8.2'
-String mockitoVersion = '4.2.0'
+String mockitoVersion = '4.3.1'
 String moshiVersion = '1.13.0'
 String wiremockversion = '2.32.0'
 

@@ -11,7 +11,7 @@ public class ProcessDemo {
         System.out.println(proc.isAlive());
         System.out.println(proc.pid());
 
-        Process proc1 = Runtime.getRuntime().exec("ls");
+        Process proc1 = Runtime.getRuntime().exec(new String[]{"ls"});
         System.out.println(proc1.isAlive());
         System.out.println(proc1.pid());
         proc1.destroy();
