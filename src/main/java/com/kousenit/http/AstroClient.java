@@ -2,6 +2,9 @@ package com.kousenit.http;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.google.gson.Gson;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
 import java.io.IOException;
 import java.net.URI;
@@ -53,7 +56,7 @@ public class AstroClient {
         // Gson does not work yet
 //        return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
 
-        // Neither does Moshi
+        // Moshi works!
 //        Moshi moshi = new Moshi.Builder().build();
 //        JsonAdapter<AstroResponse> adapter = moshi.adapter(AstroResponse.class);
 //        try {

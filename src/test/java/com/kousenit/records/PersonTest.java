@@ -36,6 +36,6 @@ class PersonTest {
     @Test
     void canUseInstanceMethods() {
         Person p = new Person(999, "Wesley", "Crusher");
-        assertEquals("Wesley Crusher", p.getName());
+        assertEquals("Wesley Crusher", p.name());
     }
 }

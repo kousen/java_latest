@@ -8,7 +8,7 @@ public record Person(Integer id, String first, String last) {
         this(999, first, last);
     }
 
-    public String getName() {
+    public String name() {
         return first + " " + last;
     }
 
