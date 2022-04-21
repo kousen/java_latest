@@ -25,7 +25,7 @@ repositories {
 String assertJVersion = '3.22.0'
 String gsonVersion = '2.9.0'
 String hamcrestVersion = '2.2'
-String jacksonVersion = '2.13.2'
+String jacksonVersion = '2.13.2.2'
 String jqwikVersion = '1.6.5'
 String junitVersion = '5.8.2'
 String mockitoVersion = '4.3.1'

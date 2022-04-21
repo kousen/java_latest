@@ -12,29 +12,28 @@ public class TextBlocks {
                     This is a
                         multiline string
                 with newlines inside
-                    """;
+                """;
     }
 
     public String json() {
         return """
-                {
-                    "people": [{"craft": "ISS", "name": "Andrew Morgan"},
-                               {"craft": "ISS", "name": "Oleg Skripochka"},
-                               {"craft": "ISS", "name": "Jessica Meir"}],
-                    "message": "success",
-                    "number": 3
-                }
-        """;
+                        {
+                            "people": [{"craft": "ISS", "name": "Andrew Morgan"},
+                                       {"craft": "ISS", "name": "Oleg Skripochka"},
+                                       {"craft": "ISS", "name": "Jessica Meir"}],
+                            "message": "success",
+                            "number": 3
+                        }
+                """;
     }
 
     public String getAstroData() {
-        HttpClient client = HttpClient.newBuilder().build();
-        HttpRequest request = HttpRequest.newBuilder(
-                URI.create("http://api.open-notify.org/astros.json"))
+        HttpClient client = HttpClient.newBuilder()
+                .build();
+        HttpRequest request = HttpRequest.newBuilder(URI.create("http://api.open-notify.org/astros.json"))
                 .build();
         try {
-            HttpResponse<String> response = client.send(request,
-                    HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200) {
                 return response.body();
             }
