@@ -8,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.counting;
@@ -16,7 +15,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class ProcessDictionary {
     private final Path dictionary = Paths.get("src/main/resources/dict/words");
-    private final Logger logger = Logger.getLogger("default");
+    // private final Logger logger = Logger.getLogger("default");
 
     int maxLength() {
         try (Stream<String> words = Files.lines(dictionary)) {
@@ -83,7 +82,7 @@ public class ProcessDictionary {
     public void printSortedMapOfWordsUsingBufferedReader() {
         System.out.println("\nNumber of words of each length (desc order):");
         try (Stream<String> lines =
-                     new BufferedReader(new FileReader("/usr/share/dict/words")).lines()) {
+                     new BufferedReader(new FileReader("src/main/resources/dict/words")).lines()) {
             Map<Integer, Long> map = lines.filter(s -> s.length() > 20)
                     .collect(groupingBy(String::length, counting()));
 

@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection"})
 public class VarTypeTest {
@@ -85,17 +84,18 @@ public class VarTypeTest {
         // var y = null;
         var x = (Void) null;
         var z = (String) null;
-    }
-
-    @Test
-    void dontDoThis() {
-        var var =  new Var("var");
+        System.out.println(x + ", " + z);
     }
 
     @Test
     void canNotReassignTypeAtRuntime() {
         var x = "abc";
         // x = 3;
+    }
+
+    @Test
+    void dontDoThis() {
+        var var =  new Var("var");
     }
 }
 
