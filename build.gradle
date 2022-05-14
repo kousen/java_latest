@@ -6,7 +6,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(18))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -28,9 +28,9 @@ String hamcrestVersion = '2.2'
 String jacksonVersion = '2.13.2.2'
 String jqwikVersion = '1.6.5'
 String junitVersion = '5.8.2'
-String mockitoVersion = '4.4.0'
+String mockitoVersion = '4.5.1'
 String moshiVersion = '1.13.0'
-String wiremockversion = '2.33.0'
+String wiremockversion = '2.33.2'
 
 dependencies {
     // JSON parsers
