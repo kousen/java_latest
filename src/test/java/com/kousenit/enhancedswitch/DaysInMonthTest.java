@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 import java.time.Month;
 
-import static java.time.Month.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DaysInMonthTest {

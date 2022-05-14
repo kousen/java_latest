@@ -54,7 +54,7 @@ public class AstroClient {
 
     public AstroResponse getAstroResponse() {
         // Gson does not work yet
-//        return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
+        //return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
 
         // Moshi works!
 //        Moshi moshi = new Moshi.Builder().build();

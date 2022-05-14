@@ -19,5 +19,6 @@ public class UseShapes {
         System.out.println(getArea(new Circle(1.0)));
         System.out.println(getArea(new Square(1.0)));
         System.out.println(getArea(new Rectangle(1.0, 2.0)));
+        System.out.println(getArea(new Circle(-1.0)));
     }
 }
