@@ -1,5 +1,5 @@
 plugins {
-    id 'java-library'
+    id 'java'
     id 'application'
     id 'eclipse'
     alias(libs.plugins.versions)
@@ -31,7 +31,7 @@ dependencies {
     implementation libs.jackson
 
     // Testing
-    testImplementation libs.bundles.junit
+    testImplementation libs.junit.jupiter
     testImplementation libs.assertj
     testImplementation libs.jqwik
     testImplementation libs.bundles.mockito
