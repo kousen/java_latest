@@ -15,8 +15,8 @@ class JokeClientTest {
     private final Logger logger = Logger.getLogger(JokeClientTest.class.getName());
 
     private final JokeClient client = new JokeClient();
-    private final String heroFirstName = "Chris";
-    private final String heroLastName = "Hayes";
+    private final String heroFirstName = "Venkat";
+    private final String heroLastName = "Subramaniam";
 
     @BeforeEach
     void setUp() throws IOException {

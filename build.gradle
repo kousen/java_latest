@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
     id 'application'
     id 'eclipse'
+    alias(libs.plugins.versions)
+    alias(libs.plugins.version.catalog.update)
 }
 
 java {
@@ -22,31 +24,18 @@ repositories {
     mavenCentral()
 }
 
-String assertJVersion = '3.22.0'
-String gsonVersion = '2.9.0'
-String hamcrestVersion = '2.2'
-String jacksonVersion = '2.13.2.2'
-String jqwikVersion = '1.6.5'
-String junitVersion = '5.8.2'
-String mockitoVersion = '4.5.1'
-String moshiVersion = '1.13.0'
-String wiremockversion = '2.33.2'
-
 dependencies {
     // JSON parsers
-    implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation "com.squareup.moshi:moshi:$moshiVersion"
-    implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    implementation libs.gson
+    implementation libs.bundles.moshi
+    implementation libs.jackson
 
     // Testing
-    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
-    testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
-    testImplementation "org.assertj:assertj-core:$assertJVersion"
-    testImplementation "net.jqwik:jqwik:$jqwikVersion"
-    testImplementation "org.mockito:mockito-core:$mockitoVersion"
-    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
-    testImplementation "com.github.tomakehurst:wiremock-jre8:$wiremockversion"
+    testImplementation libs.bundles.junit
+    testImplementation libs.assertj
+    testImplementation libs.jqwik
+    testImplementation libs.bundles.mockito
+    testImplementation libs.wiremock
 }
 
 tasks.withType(JavaCompile).configureEach {
