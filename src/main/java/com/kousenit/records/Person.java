@@ -1,5 +1,9 @@
 package com.kousenit.records;
 
+// toString, equals, hashCode
+// immutable
+// primary constructor
+// final and extends java.lang.Record
 // public record Person(Integer id, String first, String last) {}
 
 public record Person(Integer id, String first, String last) {
