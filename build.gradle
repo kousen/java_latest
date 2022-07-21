@@ -33,7 +33,6 @@ dependencies {
     // Testing
     testImplementation libs.junit.jupiter
     testImplementation libs.assertj
-    testImplementation libs.jqwik
     testImplementation libs.bundles.mockito
     testImplementation libs.wiremock
 }
