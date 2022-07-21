@@ -46,7 +46,7 @@ public class VarTypeTest {
 
     @Test
     void loopOverComplicatedMap() {
-        Map<String, List<Integer>> map = Map.ofEntries(
+        var map = Map.ofEntries(
                 Map.entry("a", List.of(1, 2, 3)),
                 Map.entry("b", List.of(1, 2, 3)),
                 Map.entry("c", List.of(1, 2, 3)),
@@ -84,6 +84,7 @@ public class VarTypeTest {
         // var y = null;
         var x = (Void) null;
         var z = (String) null;
+        String w = null;
         System.out.println(x + ", " + z);
     }
 

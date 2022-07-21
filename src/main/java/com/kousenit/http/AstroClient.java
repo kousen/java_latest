@@ -28,8 +28,8 @@ public class AstroClient {
         try {
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.statusCode());
-            System.out.println(response.headers());
+            System.out.println("Status code: " + response.statusCode());
+            System.out.println("Headers: " + response.headers());
             return response.body();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -54,7 +54,7 @@ public class AstroClient {
 
     public AstroResponse getAstroResponse() {
         // Gson does not work yet
-        //return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
+        // return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
 
         // Moshi works!
 //        Moshi moshi = new Moshi.Builder().build();
