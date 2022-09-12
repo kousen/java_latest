@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,7 +33,7 @@ class JokeClientTest {
     }
 
     @Test
-    void getJokeAsync() throws ExecutionException, InterruptedException {
+    void getJokeAsync() {
         String joke = client.getJokeAsync(heroFirstName, heroLastName);
         logger.info(joke);
         assertTrue(joke.contains(heroFirstName) ||

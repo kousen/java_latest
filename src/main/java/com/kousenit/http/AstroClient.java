@@ -2,9 +2,6 @@ package com.kousenit.http;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.google.gson.Gson;
-import com.squareup.moshi.JsonAdapter;
-import com.squareup.moshi.Moshi;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,6 +10,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
+import static java.net.http.HttpRequest.BodyPublishers;
+import static java.net.http.HttpRequest.newBuilder;
+
 public class AstroClient {
 
     public String getJsonResponse() {
@@ -20,7 +20,7 @@ public class AstroClient {
                 .connectTimeout(Duration.ofSeconds(2))
                 .build();
 
-        HttpRequest request = HttpRequest.newBuilder()
+        HttpRequest request = newBuilder()
                 .uri(URI.create("http://api.open-notify.org/astros.json"))
                 .GET() // default (could leave that out)
                 .build();
@@ -39,9 +39,9 @@ public class AstroClient {
 
     public HttpResponse<Void> getResponseToHeadRequest(String site) {
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
+        HttpRequest request = newBuilder()
                 .uri(URI.create(site))
-                .method("HEAD", HttpRequest.BodyPublishers.noBody())
+                .method("HEAD", BodyPublishers.noBody()) // NOTE: .HEAD() in Java 18+
                 .build();
         HttpResponse<Void> response = null;
         try {
