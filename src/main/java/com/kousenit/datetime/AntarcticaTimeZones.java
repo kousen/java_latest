@@ -5,7 +5,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
 
@@ -19,8 +18,7 @@ public class AntarcticaTimeZones {
                         .filter(regionId -> regionId.contains("Antarctica"))
                         .map(ZoneId::of)  // Stream<ZoneId>
                         .map(now::atZone) // Stream<ZonedDateTime>
-                        .sorted(comparingInt(zoneId -> zoneId.getOffset()
-                                .getTotalSeconds()))
+                        .sorted(comparingInt(zoneId -> zoneId.getOffset().getTotalSeconds()))
                         .toList();
 
         antarcticZones.forEach(zdt ->

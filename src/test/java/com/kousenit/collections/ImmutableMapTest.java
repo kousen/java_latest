@@ -2,10 +2,7 @@ package com.kousenit.collections;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static java.util.Map.entry;
 import static java.util.Map.ofEntries;
@@ -18,12 +15,27 @@ public class ImmutableMapTest {
     void setOf() {
         Set<String> letters = Set.of("a", "b");
         assertEquals(2, letters.size());
+        System.out.println(letters.getClass().getName());
     }
 
     @Test
     void listOf() {
         List<String> letters = List.of("a", "b");
         assertEquals(2, letters.size());
+        System.out.println(letters.getClass().getName());
+    }
+
+    @Test
+    void arraysAslist() {
+        List<String> strings = Arrays.asList("this", "is", "a", "list");
+        System.out.println(strings);
+        System.out.println(strings.getClass().getName());
+        Collections.sort(strings);
+        System.out.println(strings);
+
+        // This WON'T work
+        // List<String> myStrings = List.of("b", "c", "a");
+        // Collections.sort(myStrings);  // throws UnsupportedOperationException
     }
 
     @Test

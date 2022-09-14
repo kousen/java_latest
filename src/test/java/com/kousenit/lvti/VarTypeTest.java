@@ -11,17 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection"})
 public class VarTypeTest {
-    // private var x;
+    // private var x = "abc";
 
     @Test
     void inferString() {
-        var s = "Hello, World!";
+        var s = "Hello, World!";  // Not helpful
         assertEquals(String.class, s.getClass());
     }
 
     @Test
     void inferInteger() {
         var num = 3;
+        // System.out.println(num.getClass());  // doesn't compile because num is type int
         assertTrue(Integer.valueOf(num) instanceof Integer);
     }
 
@@ -84,7 +85,6 @@ public class VarTypeTest {
         // var y = null;
         var x = (Void) null;
         var z = (String) null;
-        String w = null;
         System.out.println(x + ", " + z);
     }
 

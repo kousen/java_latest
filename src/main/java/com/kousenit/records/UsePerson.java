@@ -7,8 +7,8 @@ public class UsePerson {
     public static void main(String[] args) {
         Person p1 = new Person(1, "Jean-Luc", "Picard");
         Person p2 = new Person(1, "Jean-Luc", "Picard");
-        System.out.println(p1);
-        System.out.println(p1.equals(p2));
+        System.out.println(p1);  // toString() method available
+        System.out.println(p1.equals(p2)); // equals() method implemented
         System.out.println(p1 == p2);
         Set<Person> people = new HashSet<>();
         people.add(p1); people.add(p2);  // only adds unique elements
