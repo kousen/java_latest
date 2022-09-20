@@ -2,10 +2,10 @@
 assertj = "3.23.1"
 gson = "2.9.1"
 jackson = "2.13.4"
-junit = "5.9.0"
+junit = "5.9.1"
 mockito = "4.8.0"
 moshi = "1.14.0"
-wiremock = "2.33.2"
+wiremock = "2.34.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
