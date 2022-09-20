@@ -1,13 +1,16 @@
 package com.kousenit.lvti;
 
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection"})
 public class VarTypeTest {
@@ -88,22 +91,20 @@ public class VarTypeTest {
         System.out.println(x + ", " + z);
     }
 
-    @Test
+    @Test @DisplayName("Can't reassign a type at runtime")
     void canNotReassignTypeAtRuntime() {
         var x = "abc";
         // x = 3;
+        assertThat(x).isExactlyInstanceOf(String.class);
     }
 
     @Test
     void dontDoThis() {
+        // Can't use "var" as a type name or a field type
+        record Var(String var) { }
+
+        // So silliest thing I can manage is:
         var var =  new Var("var");
-    }
-}
-
-class Var {
-    private final String var;
-
-    public Var(String var) {
-        this.var = var;
+        assertEquals("var", var.var());
     }
 }
