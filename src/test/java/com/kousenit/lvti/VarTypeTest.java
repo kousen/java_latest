@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection"})
 public class VarTypeTest {
-    // private var x = "abc";
+    // private var x = "abc";  // var is not allowed here
 
     @Test
     void inferString() {
