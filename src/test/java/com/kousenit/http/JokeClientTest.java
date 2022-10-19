@@ -23,10 +23,13 @@ class JokeClientTest {
 
     @BeforeEach
     void setUp() throws IOException, InterruptedException {
+        // Sometimes this works
         assumeTrue(
                 InetAddress.getByName("icndb.com")
                         .isReachable(2000),
                 "ICNDB API site is down");
+
+        // But this is more reliable (requires Java 18 for HEAD request method)
         HttpResponse<Void> response = HttpClient.newHttpClient()
                 .send(HttpRequest.newBuilder()
                                 .uri(URI.create("http://icndb.com"))
