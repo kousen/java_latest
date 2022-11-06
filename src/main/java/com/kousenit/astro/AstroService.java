@@ -3,7 +3,6 @@ package com.kousenit.astro;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class AstroService {
     private final Gateway<AstroResponse> gateway;
 

@@ -27,18 +27,18 @@ public class ISSPosition {
                 client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.statusCode());
         System.out.println(response.headers());
-        // System.out.println(response.body());
+        System.out.println(response.body());
 
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
                 .thenAccept(System.out::println)
                 .join();
 
-        ISSResponse issResponse = getResponseMoshi(response);
-        System.out.println(issResponse);
-        System.out.printf("The ISS is currently at (%s, %s)%n",
-                issResponse.iss_position().latitude(),
-                issResponse.iss_position().longitude());
+//        ISSResponse issResponse = getResponseMoshi(response);
+//        System.out.println(issResponse);
+//        System.out.printf("The ISS is currently at (%s, %s)%n",
+//                issResponse.iss_position().latitude(),
+//                issResponse.iss_position().longitude());
     }
 
     @Nullable
