@@ -12,7 +12,7 @@ assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 jackson = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
-mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
@@ -20,7 +20,7 @@ wiremock = { module = "com.github.tomakehurst:wiremock-jre8", version.ref = "wir
 
 [bundles]
 mockito = [
-    "mockito-inline",
+    "mockito-core",
     "mockito-junit",
 ]
 moshi = [
