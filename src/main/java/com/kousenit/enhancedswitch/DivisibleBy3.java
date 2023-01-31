@@ -18,7 +18,7 @@ public class DivisibleBy3 {
                 case 0 -> System.out.println(i + " % 3 == 0");
                 case 1 -> System.out.println(i + " % 3 == 1");
                 case 2 -> System.out.println(i + " % 3 == 2");
-            };
+            }
         }
     }
 }

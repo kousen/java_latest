@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SuppressWarnings("DataFlowIssue")
 public class ImmutableCollectionsTest {
 
     private Integer[] intArgs(int n) {

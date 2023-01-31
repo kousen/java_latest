@@ -1,6 +1,6 @@
 package com.kousenit.astro;
 
-import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,7 +23,7 @@ public class AstroGateway implements Gateway<AstroResponse> {
 
     private final HttpClient client = HttpClient.newHttpClient();
 
-    private final JsonMapper jsonMapper = new JsonMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public Result<AstroResponse> getResponse() {
@@ -35,7 +35,7 @@ public class AstroGateway implements Gateway<AstroResponse> {
             HttpResponse<String> httpResponse =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
             return new Success<>(
-                    jsonMapper.readValue(httpResponse.body(), AstroResponse.class));
+                    objectMapper.readValue(httpResponse.body(), AstroResponse.class));
         } catch (IOException | InterruptedException e) {
             return new Failure<>(new RuntimeException(e));
         }

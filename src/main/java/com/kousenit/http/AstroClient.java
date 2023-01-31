@@ -1,7 +1,7 @@
 package com.kousenit.http;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URI;
@@ -66,9 +66,9 @@ public class AstroClient {
 //        }
 
         // Jackson 2 works
-        JsonMapper jsonMapper = new JsonMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return jsonMapper.readValue(getJsonResponse(), AstroResponse.class);
+            return objectMapper.readValue(getJsonResponse(), AstroResponse.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e.getMessage());
         }

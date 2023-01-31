@@ -8,7 +8,7 @@ import static java.util.Map.entry;
 import static java.util.Map.ofEntries;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
+@SuppressWarnings({"ResultOfMethodCallIgnored", "DataFlowIssue"})
 public class ImmutableMapTest {
 
     @Test
@@ -48,6 +48,7 @@ public class ImmutableMapTest {
         );
     }
 
+    @SuppressWarnings("OverwrittenKey")
     @Test
     void setOfDuplicates() {
         assertThrows(IllegalArgumentException.class, () -> Set.of("a", "a"));
@@ -62,6 +63,7 @@ public class ImmutableMapTest {
                 () -> assertThrows(NullPointerException.class, () -> Map.of("key", null)));
     }
 
+    @SuppressWarnings("OverwrittenKey")
     @Test
     void noDuplicateKeysInMap() {
         assertThrows(IllegalArgumentException.class,
