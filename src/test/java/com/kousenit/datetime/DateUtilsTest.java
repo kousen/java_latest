@@ -80,7 +80,7 @@ class DateUtilsTest {
 
         long days = daysBetween - weeks * 7;
         System.out.println("There are " + weeks + " weeks and " + days +
-                " days between Groundhog Day and the first day of spring");
+                " days between Groundhog Day and the first day of Spring");
     }
 
 }
