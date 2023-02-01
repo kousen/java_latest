@@ -20,12 +20,15 @@ public class CompactNumberFormatDemo {
         System.out.println(instance.format(amount));
 
 
-        // instance = NumberFormat.getCompactNumberInstance(new Locale("hi", "IN"), NumberFormat.Style.LONG);
+        // instance = NumberFormat.getCompactNumberInstance(
+        //      new Locale("hi", "IN"), NumberFormat.Style.LONG);
         // Java 19+ only
-        instance = NumberFormat.getCompactNumberInstance(Locale.of("hi", "IN"), NumberFormat.Style.LONG);
+        instance = NumberFormat.getCompactNumberInstance(
+                Locale.of("hi", "IN"), NumberFormat.Style.LONG);
         System.out.println(instance.format(amount));
         // Java 19+ only
-        instance = NumberFormat.getCompactNumberInstance(Locale.of("hi", "IN"), NumberFormat.Style.SHORT);
+        instance = NumberFormat.getCompactNumberInstance(
+                Locale.of("hi", "IN"), NumberFormat.Style.SHORT);
         System.out.println(instance.format(amount));
     }
 }
