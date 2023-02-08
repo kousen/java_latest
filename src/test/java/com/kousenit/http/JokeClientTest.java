@@ -33,8 +33,8 @@ class JokeClientTest {
         HttpResponse<Void> response = HttpClient.newHttpClient()
                 .send(HttpRequest.newBuilder()
                                 .uri(URI.create("http://icndb.com"))
-                                .HEAD()
-                        // alternative is ".method("HEAD", BodyPublishers.noBody())"
+                                // .HEAD()  // Java 18
+                                .method("HEAD", HttpRequest.BodyPublishers.noBody())
                                 .build(),
                         HttpResponse.BodyHandlers.discarding());
         assumeTrue(response.statusCode() == 200, "ICNDB API site is down");

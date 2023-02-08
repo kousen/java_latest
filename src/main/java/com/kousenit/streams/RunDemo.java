@@ -5,13 +5,14 @@ import java.util.concurrent.Executors;
 
 public class RunDemo {
     public static void main(String[] args) {
-        try (ExecutorService service = Executors.newCachedThreadPool()) {
+        // ExecutorService doesn't implement AutoCloseable until Java 19
+//        try (ExecutorService service = Executors.newCachedThreadPool()) {
+        ExecutorService service = Executors.newCachedThreadPool();
+        TakeWhileDemo demo = new TakeWhileDemo();
+        service.execute(demo);
+        service.execute(demo::stop);
 
-            TakeWhileDemo demo = new TakeWhileDemo();
-            service.execute(demo);
-            service.execute(demo::stop);
-
-            service.shutdown();
-        }
+        service.shutdown();
+//        }
     }
 }
