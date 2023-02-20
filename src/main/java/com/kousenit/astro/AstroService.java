@@ -30,8 +30,7 @@ public class AstroService {
     }
 
     private Map<String, Long> extractMap(AstroResponse data) {
-        return data.people()
-                .stream()
+        return data.people().stream()
                 .collect(Collectors.groupingBy(
                         Assignment::craft, Collectors.counting()));
     }
