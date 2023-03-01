@@ -37,4 +37,4 @@ moshi = [
 
 [plugins]
 version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
-versions = "com.github.ben-manes.versions:0.45.0"
+versions = "com.github.ben-manes.versions:0.46.0"
