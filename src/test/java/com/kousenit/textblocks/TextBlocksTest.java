@@ -10,6 +10,8 @@ public class TextBlocksTest {
     @Test
     void helloTextBlock() {
         System.out.println(textBlocks.hello());
+        System.out.println(textBlocks.hello("Dolly"));
+
     }
 
     @Test

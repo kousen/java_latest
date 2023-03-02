@@ -15,6 +15,15 @@ public class TextBlocks {
                 """;
     }
 
+    public String hello(String name) {
+        return """
+                    Hello, %s!
+                    This is a
+                        multiline string
+                with newlines inside
+        """.formatted(name);
+    }
+
     public String json() {
         return """
                         {
@@ -24,7 +33,7 @@ public class TextBlocks {
                             "message": "success",
                             "number": 3
                         }
-                """;
+                        """;
     }
 
     public String getAstroData() {
