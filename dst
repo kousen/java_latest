@@ -1,0 +1,11 @@
+#!/usr/bin/java --source 17
+import java.time.*;
+public class DST {
+    public static void main(String[] args) {
+        var southPole = ZoneId.of("Antarctica/South_Pole");
+        var now = Instant.now();
+        boolean dst = southPole.getRules().isDaylightSavings(now);
+        System.out.println(
+            "South Pole %s on DST".formatted(dst ? "IS" : "IS NOT"));
+    }
+}
