@@ -14,18 +14,17 @@ import static java.net.http.HttpRequest.BodyPublishers;
 import static java.net.http.HttpRequest.newBuilder;
 
 public class AstroClient {
-
-    public String getJsonResponse() {
-        HttpClient client = HttpClient.newBuilder()
+    private final HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(2))
                 .build();
 
-        HttpRequest request = newBuilder()
+    private final HttpRequest request = newBuilder()
                 .uri(URI.create("http://api.open-notify.org/astros.json"))
                 .header("Accept", "application/json")
                 .GET() // default (could leave that out)
                 .build();
 
+    public String getJsonResponse() {
         try {
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -39,16 +38,6 @@ public class AstroClient {
     }
 
     public CompletableFuture<String> getJsonResponseAsync() {
-        HttpClient client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(2))
-                .build();
-
-        HttpRequest request = newBuilder()
-                .uri(URI.create("http://api.open-notify.org/astros.json"))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
-
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(response -> {
                     System.out.println("Status code: " + response.statusCode());
@@ -58,14 +47,13 @@ public class AstroClient {
     }
 
     public HttpResponse<Void> getResponseToHeadRequest(String site) {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = newBuilder()
+        HttpRequest req = newBuilder()
                 .uri(URI.create(site))
                 .method("HEAD", BodyPublishers.noBody()) // NOTE: .HEAD() in Java 18+
                 .build();
         HttpResponse<Void> response = null;
         try {
-            response = client.send(request, HttpResponse.BodyHandlers.discarding());
+            response = client.send(req, HttpResponse.BodyHandlers.discarding());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
