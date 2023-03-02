@@ -50,4 +50,11 @@ class AstroClientTest {
                 () -> assertEquals(response.people().size(), response.number())
         );
     }
+
+    @Test
+    void getAstroResponseAsync() {
+        client.getJsonResponseAsync()
+                .thenAccept(System.out::println)
+                .join();
+    }
 }

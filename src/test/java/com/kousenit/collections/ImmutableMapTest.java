@@ -44,6 +44,7 @@ public class ImmutableMapTest {
         assertAll(
                 () -> assertThrows(UnsupportedOperationException.class, () -> strings.add("c")),
                 () -> assertThrows(UnsupportedOperationException.class, () -> strings.remove("c")),
+                () -> assertThrows(UnsupportedOperationException.class, strings::clear),
                 () -> assertThrows(UnsupportedOperationException.class, () -> strings.replaceAll(String::toUpperCase))
         );
     }
@@ -108,5 +109,13 @@ public class ImmutableMapTest {
                 "https://kotlinlang.org/");
         javaMap.forEach((name, url) -> assertTrue(
                 jvmLanguages.containsKey(name) && jvmLanguages.containsValue(url)));
+    }
+
+    @Test
+    void hashMapFromMap() {
+        Map<String, String> map = ofEntries(entry("k1", "v1"), entry("k2", "v2"));
+        Map<String, String> modifiableMap = new HashMap<>(map);
+        modifiableMap.put("k3", "v3");
+        assertEquals(3, modifiableMap.size());
     }
 }

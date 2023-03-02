@@ -8,6 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.concurrent.CompletableFuture;
 
 import static java.net.http.HttpRequest.BodyPublishers;
 import static java.net.http.HttpRequest.newBuilder;
@@ -21,6 +22,7 @@ public class AstroClient {
 
         HttpRequest request = newBuilder()
                 .uri(URI.create("http://api.open-notify.org/astros.json"))
+                .header("Accept", "application/json")
                 .GET() // default (could leave that out)
                 .build();
 
@@ -34,6 +36,25 @@ public class AstroClient {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public CompletableFuture<String> getJsonResponseAsync() {
+        HttpClient client = HttpClient.newBuilder()
+                .connectTimeout(Duration.ofSeconds(2))
+                .build();
+
+        HttpRequest request = newBuilder()
+                .uri(URI.create("http://api.open-notify.org/astros.json"))
+                .header("Accept", "application/json")
+                .GET()
+                .build();
+
+        return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(response -> {
+                    System.out.println("Status code: " + response.statusCode());
+                    System.out.println("Headers: " + response.headers());
+                    return response.body();
+                });
     }
 
     public HttpResponse<Void> getResponseToHeadRequest(String site) {
