@@ -15,6 +15,7 @@ class AstroGatewayTest {
             case Success<AstroResponse> astroSuccess -> {
                 AstroResponse data = astroSuccess.data();
                 assertAll(
+                        () -> assertEquals("success", data.message()),
                         () -> assertTrue(data.number() >= 0),
                         () -> assertEquals(data.people().size(), data.number())
                 );

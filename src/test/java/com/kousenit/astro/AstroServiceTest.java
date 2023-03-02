@@ -104,7 +104,7 @@ class AstroServiceTest {
     @Test
     void testAstroData_OwnMockGateway() {
         service = new AstroService(new MockGateway());
-        Map<String, Long> astroData = service.getAstroData();
+        var astroData = service.getAstroData();
         astroData.forEach((craft, number) -> {
             System.out.println(number + " astronauts aboard " + craft);
             assertAll(
