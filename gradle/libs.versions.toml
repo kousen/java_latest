@@ -1,11 +1,11 @@
 [versions]
 assertj = "3.24.2"
 gson = "2.10.1"
-jackson = "2.14.2"
-junit = "5.9.2"
-mockito = "5.1.1"
+jackson = "2.15.0"
+junit = "5.9.3"
+mockito = "5.3.1"
 moshi = "1.14.0"
-slf4j = "2.0.6"
+slf4j = "2.0.7"
 wiremock = "2.35.0"
 
 [libraries]
@@ -36,5 +36,5 @@ moshi = [
 ]
 
 [plugins]
-version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.0"
 versions = "com.github.ben-manes.versions:0.46.0"
