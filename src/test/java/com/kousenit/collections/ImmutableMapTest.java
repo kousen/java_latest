@@ -8,7 +8,7 @@ import static java.util.Map.entry;
 import static java.util.Map.ofEntries;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings({"ResultOfMethodCallIgnored", "DataFlowIssue"})
+@SuppressWarnings({"DataFlowIssue"})
 public class ImmutableMapTest {
 
     @Test

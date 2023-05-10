@@ -20,7 +20,9 @@ public class ProcessDictionary {
 
     int maxLength() {
         try (Stream<String> words = Files.lines(dictionary)) {
-            return words.max(Comparator.comparing(String::length)).orElse("").length();
+            return words.max(Comparator.comparing(String::length))
+                    .orElse("")
+                    .length();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -36,6 +36,14 @@ public class TextBlocks {
                         """;
     }
 
+    public String sql() {
+        return """
+                SELECT * FROM people
+                WHERE first_name = 'Joshua'
+                AND last_name = 'Bloch'
+                """;
+    }
+
     public String getAstroData() {
         HttpClient client = HttpClient.newBuilder().build();
         HttpRequest request = HttpRequest.newBuilder(URI.create("http://api.open-notify.org/astros.json")).build();
