@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.counting;
@@ -68,6 +69,25 @@ public class ProcessDictionary {
         }
     }
 
+    public void teeingCollectorDoesBoth() {
+        System.out.println("\nTeeing collector:");
+        try (Stream<String> lines = Files.lines(dictionary)) {
+            var map = lines.filter(s -> s.length() > 20)
+                    .collect(Collectors.teeing(
+                                groupingBy(String::length, counting()),
+                                groupingBy(String::length),
+                                (map1, map2) -> map1.entrySet().stream().collect(
+                                        Collectors.toMap(
+                                                Map.Entry::getKey,
+                                                e -> Map.of("count", e.getValue(),
+                                                        "words", map2.get(e.getKey())))))
+                            );
+            map.forEach((k, v) -> System.out.printf("%d: %s%n", k, v));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void printSortedMapOfWords() {
         System.out.println("\nNumber of words of each length (desc order):");
         try (Stream<String> lines = Files.lines(dictionary)) {
@@ -102,6 +122,7 @@ public class ProcessDictionary {
         processDictionary.printTenLongestWords();
         processDictionary.printWordsOfEachLength();
         processDictionary.printHowManyWordsOfEachLength();
+        processDictionary.teeingCollectorDoesBoth();
         processDictionary.printSortedMapOfWords();
         processDictionary.printSortedMapOfWordsUsingBufferedReader();
     }
