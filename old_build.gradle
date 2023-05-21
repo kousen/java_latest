@@ -41,11 +41,19 @@ dependencies {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.compilerArgs.add('--enable-preview')
+    options.compilerArgs += '--enable-preview'
 }
 
 test {
+    jvmArgs '--enable-preview'
     useJUnitPlatform()
-    jvmArgs(['--enable-preview'])
     maxParallelForks = (int) (Runtime.getRuntime().availableProcessors() / 2 + 1)
+}
+
+// See: https://github.com/redhat-developer/vscode-java/wiki/Enabling-Java-preview-features
+//Buildship doesn't use that hook (https://discuss.gradle.org/t/when-does-buildship-eclipse-customization-run/20781/2)
+//you need to run `gradlew eclipse` separately
+eclipse.jdt.file.withProperties { props ->
+    props['org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures'] = 'enabled'
+    props['org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures'] = 'ignore'
 }
