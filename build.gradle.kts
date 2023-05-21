@@ -1,5 +1,3 @@
-import org.gradle.plugins.ide.eclipse.model.EclipseModel
-
 plugins {
     java
     application
@@ -42,12 +40,12 @@ dependencies {
     testImplementation(libs.wiremock)
 }
 
-tasks.withType(JavaCompile::class).configureEach {
-    options.compilerArgs.plusAssign("--enable-preview")
+tasks.withType<JavaCompile>().forEach {
+    it.options.compilerArgs.plusAssign("--enable-preview")
 }
 
 tasks.test {
-    jvmArgs = listOf("--enable-preview")
+    jvmArgs("--enable-preview")
     useJUnitPlatform()
     maxParallelForks = Runtime.getRuntime().availableProcessors() / 2 + 1
 }
@@ -60,12 +58,12 @@ tasks.test {
 //    props["org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures"] = "ignore"
 //}
 
-configure<EclipseModel> {
+eclipse {
     jdt {
         file {
             withProperties {
-                setProperty("org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures", "enabled")
-                setProperty("org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures", "ignore")
+                set("org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures", "enabled")
+                set("org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures", "ignore")
             }
         }
     }
