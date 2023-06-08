@@ -21,9 +21,7 @@ public class ProcessDictionary {
 
     int maxLength() {
         try (Stream<String> words = Files.lines(dictionary)) {
-            return words.max(Comparator.comparing(String::length))
-                    .orElse("")
-                    .length();
+            return words.max(Comparator.comparing(String::length)).orElse("").length();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,11 +72,11 @@ public class ProcessDictionary {
         try (Stream<String> lines = Files.lines(dictionary)) {
             var map = lines.filter(s -> s.length() > 20)
                     .collect(Collectors.teeing(
-                                groupingBy(String::length, counting()),
-                                groupingBy(String::length),
+                                groupingBy(String::length, counting()), // Map<Integer,Long>
+                                groupingBy(String::length),             // Map<Integer,List<String>>
                                 (map1, map2) -> map1.entrySet().stream().collect(
                                         Collectors.toMap(
-                                                Map.Entry::getKey,
+                                                Map.Entry::getKey,  // length of word
                                                 e -> Map.of("count", e.getValue(),
                                                         "words", map2.get(e.getKey())))))
                             );
@@ -104,8 +102,7 @@ public class ProcessDictionary {
 
     public void printSortedMapOfWordsUsingBufferedReader() {
         System.out.println("\nNumber of words of each length (desc order):");
-        try (Stream<String> lines =
-                     new BufferedReader(new FileReader("src/main/resources/dict/words")).lines()) {
+        try (Stream<String> lines = new BufferedReader(new FileReader("src/main/resources/dict/words")).lines()) {
             Map<Integer, Long> map = lines.filter(s -> s.length() > 20)
                     .collect(groupingBy(String::length, counting()));
 

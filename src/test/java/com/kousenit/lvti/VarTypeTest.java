@@ -1,6 +1,5 @@
 package com.kousenit.lvti;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +49,7 @@ public class VarTypeTest {
 
     @Test
     void loopOverComplicatedMap() {
-        var map = Map.ofEntries(
+        Map<? extends String, List<? extends Integer>> map = Map.ofEntries(
                 Map.entry("a", List.of(1, 2, 3)),
                 Map.entry("b", List.of(1, 2, 3)),
                 Map.entry("c", List.of(1, 2, 3)),
@@ -63,7 +62,7 @@ public class VarTypeTest {
 
         // Of course, Map now has a forEach(BiConsumer)
         // As of Java 11, var is okay in lambda expressions
-        map.forEach((@NotNull var s, var list) -> System.out.println(s + ": " + list));
+        map.forEach((@Deprecated var s, var list) -> System.out.println(s + ": " + list));
         map.forEach((s, list) -> System.out.println(s + ": " + list));
     }
 
@@ -98,6 +97,11 @@ public class VarTypeTest {
         assertThat(x).isExactlyInstanceOf(String.class);
     }
 
+    // Records: (GA as of Java 16)
+    // - immutable data holders
+    // - have a primary constructor defined before the {}
+    // - autogenerate equals(), hashCode(), and toString() methods
+    // - "getters" take the names of the properties
     @Test
     void dontDoThis() {
         // Can't use "var" as a type name or a field type

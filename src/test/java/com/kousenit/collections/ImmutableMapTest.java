@@ -36,6 +36,12 @@ public class ImmutableMapTest {
         // This WON'T work
         // List<String> myStrings = List.of("b", "c", "a");
         // Collections.sort(myStrings);  // throws UnsupportedOperationException
+
+        strings = List.of("this", "is", "a", "list");
+        List<String> sorted = strings.stream()
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .toList();
+        System.out.println(sorted);
     }
 
     @Test
