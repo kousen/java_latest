@@ -12,7 +12,7 @@ class DaysInMonthTest {
     @ParameterizedTest(name = "Checking days in {0}")
     @EnumSource(Month.class)
     void daysIn2022(Month month) {
-        int days = DaysInMonth.getDays(month, 2022);
+        int days = DaysInMonth.getDays(month, 2023);
         switch (month) {
             case FEBRUARY:
                 assertEquals(28, days);
@@ -31,7 +31,7 @@ class DaysInMonthTest {
     @ParameterizedTest(name = "Checking days in {0}")
     @EnumSource(Month.class)
     void daysIn2022Enhanced(Month month) {
-        int days = DaysInMonth.getDays(month, 2022);
+        int days = DaysInMonth.getDays(month, 2023);
         switch (month) {
             case FEBRUARY -> assertEquals(28, days);
             case APRIL, JUNE, SEPTEMBER, NOVEMBER -> assertEquals(30, days);

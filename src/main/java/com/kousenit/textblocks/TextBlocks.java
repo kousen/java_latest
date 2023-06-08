@@ -17,23 +17,23 @@ public class TextBlocks {
 
     public String hello(String name) {
         return """
-                    Hello, %s!
-                    This is a
-                        multiline string
-                with newlines inside
-        """.formatted(name);
+                            Hello, %s!
+                            This is a
+                                multiline string
+                        with newlines inside
+                """.formatted(name);
     }
 
     public String json() {
         return """
-                        {
-                            "people": [{"craft": "ISS", "name": "Andrew Morgan"},
-                                       {"craft": "ISS", "name": "Oleg Skripochka"},
-                                       {"craft": "ISS", "name": "Jessica Meir"}],
-                            "message": "success",
-                            "number": 3
-                        }
-                        """;
+                {
+                    "people": [{"craft": "ISS", "name": "Andrew Morgan"},
+                               {"craft": "ISS", "name": "Oleg Skripochka"},
+                               {"craft": "ISS", "name": "Jessica Meir"}],
+                    "message": "success",
+                    "number": 3
+                }
+                """;
     }
 
     public String sql() {
@@ -45,8 +45,10 @@ public class TextBlocks {
     }
 
     public String getAstroData() {
-        HttpClient client = HttpClient.newBuilder().build();
-        HttpRequest request = HttpRequest.newBuilder(URI.create("http://api.open-notify.org/astros.json")).build();
+        HttpClient client = HttpClient.newBuilder()
+                .build();
+        HttpRequest request = HttpRequest.newBuilder(URI.create("http://api.open-notify.org/astros.json"))
+                .build();
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200) {
