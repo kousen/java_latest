@@ -75,7 +75,7 @@ public class ImmutableMapTest {
     void noDuplicateKeysInMap() {
         assertThrows(IllegalArgumentException.class,
                 () -> ofEntries(entry("k1", "v1"),
-                        entry("k2", "v1"),
+                        entry("k2", "v2"),
                         entry("k1", "v2")));
     }
 

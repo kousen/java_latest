@@ -32,9 +32,8 @@ public class AstroClient {
             System.out.println("Headers: " + response.headers());
             return response.body();
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return "";
     }
 
     public CompletableFuture<String> getJsonResponseAsync() {
@@ -51,11 +50,11 @@ public class AstroClient {
                 .uri(URI.create(site))
                 .method("HEAD", BodyPublishers.noBody()) // NOTE: .HEAD() in Java 18+
                 .build();
-        HttpResponse<Void> response = null;
+        HttpResponse<Void> response;
         try {
             response = client.send(req, HttpResponse.BodyHandlers.discarding());
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return response;
     }

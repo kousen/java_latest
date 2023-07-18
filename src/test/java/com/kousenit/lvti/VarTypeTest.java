@@ -1,9 +1,11 @@
 package com.kousenit.lvti;
 
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +47,15 @@ public class VarTypeTest {
     void inferArrayListOfString() {
         var strings = new ArrayList<String>();
         assertEquals(ArrayList.class, strings.getClass());
+    }
+
+    @Test
+    void reassignVar() {
+        var list = List.of("a", "b", "c");
+        list = new LinkedList<>();
+
+        var arrayList = new ArrayList<String>();
+        // arrayList = new LinkedList<String>();
     }
 
     @Test
