@@ -21,11 +21,10 @@ public class ProcessDictionary {
 
     int maxLength() {
         try (Stream<String> words = Files.lines(dictionary)) {
-            return words.max(Comparator.comparing(String::length)).orElse("").length();
+            return words.mapToInt(String::length).max().orElse(0);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return 0;
     }
 
     public void printTenLongestWords() {
@@ -37,7 +36,8 @@ public class ProcessDictionary {
                             //.thenComparing(Comparator.reverseOrder()))
                     )
                     .limit(10)
-                    .forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
+                    //.forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
+                    .forEach(w -> System.out.printf("%s (%d)%n".formatted(w, w.length())));
                 // .forEach(w -> logger.info(() -> "the word is " + w + " and its length is " + w.length()));
         } catch (IOException e) {
             e.printStackTrace();
