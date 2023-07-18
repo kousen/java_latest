@@ -1,4 +1,4 @@
-package com.kousenit.refactoring;
+package com.kousenit.refactoring.before;
 
 import java.util.*;
 

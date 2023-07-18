@@ -40,7 +40,7 @@ public class ProcessDictionary {
                     .forEach(w -> System.out.printf("%s (%d)%n".formatted(w, w.length())));
                 // .forEach(w -> logger.info(() -> "the word is " + w + " and its length is " + w.length()));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -52,7 +52,7 @@ public class ProcessDictionary {
                     .collect(groupingBy(String::length)) // Map<Integer,List<String>>
                     .forEach((len, wordList) -> System.out.println(len + ": " + wordList));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -63,7 +63,7 @@ public class ProcessDictionary {
                     .collect(groupingBy(String::length, counting())) // Map<Integer,Long>
                     .forEach((len, num) -> System.out.printf("%d: %d%n", len, num));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -82,7 +82,7 @@ public class ProcessDictionary {
                             );
             map.forEach((k, v) -> System.out.printf("%d: %s%n", k, v));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -96,7 +96,7 @@ public class ProcessDictionary {
                     .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                     .forEach(e -> System.out.printf("Length %d: %d words%n", e.getKey(), e.getValue()));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -110,7 +110,7 @@ public class ProcessDictionary {
                     .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                     .forEach(e -> System.out.printf("Length %d: %d words%n", e.getKey(), e.getValue()));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
