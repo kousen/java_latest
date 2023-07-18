@@ -17,13 +17,13 @@ class PersonTest {
         );
     }
 
-    @Test @DisplayName("two-arg constructor delegates to three-arg ctor")
-    void checkTwoArgCtor() {
-        Person p = new Person("Will", "Riker");
+    @Test @DisplayName("copy constructor delegates to three-arg ctor")
+    void checkCopyCtor() {
+        Person willCopy = new Person(9, "Will", "Riker");
         assertAll(
-                () -> assertEquals("Will", p.first()),
-                () -> assertEquals("Riker", p.last()),
-                () -> assertEquals(999, p.id())
+                () -> assertEquals("Will", willCopy.first()),
+                () -> assertEquals("Riker", willCopy.last()),
+                () -> assertEquals(9, willCopy.id())
         );
     }
 

@@ -13,8 +13,8 @@ import java.util.Objects;
 public record Person(Integer id, String first, String last) {
 
     // Any additional constructors must delegate to the primary constructor
-    public Person(String first, String last) {
-        this(999, first, last);
+    public Person(Person other) {
+        this(other.id(), other.first(), other.last());
     }
 
     public String name() {

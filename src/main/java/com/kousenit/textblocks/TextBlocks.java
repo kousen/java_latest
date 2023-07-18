@@ -12,7 +12,7 @@ public class TextBlocks {
                     This is a
                         multiline string
                 with newlines inside
-                """;
+        """;
     }
 
     public String hello(String name) {
@@ -20,8 +20,8 @@ public class TextBlocks {
                             Hello, %s!
                             This is a
                                 multiline string
-                        with newlines inside
-                """.formatted(name);
+                        with newlines inside \
+                        """.formatted(name);
     }
 
     public String json() {
