@@ -9,10 +9,10 @@ import java.net.http.HttpResponse;
 public class TextBlocks {
     public String hello() {
         return """
-                    This is a
+                   This is a
                         multiline string
                 with newlines inside
-        """;
+                """;
     }
 
     public String hello(String name) {
