@@ -35,7 +35,7 @@ public class PatternTest {
         }
     }
 
-    // Pattern matching with switch statements (17, 18, 19 preview)
+    // Pattern matching with switch statements (17, 18, 19, 20 preview)
     private double getAreaUsingEnhancedSwitch(Object shape) {
         return switch (shape) {
             case Square s -> s.getSide() * s.getSide();

@@ -27,6 +27,7 @@ class PersonTest {
         );
     }
 
+    @SuppressWarnings("unused")
     @Test
     void canNotModifyFields() {
         Person p = new Person(999, "Wesley", "Crusher");

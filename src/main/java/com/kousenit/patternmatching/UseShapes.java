@@ -8,7 +8,7 @@ public class UseShapes {
         } else if (shape instanceof Circle c && c.getRadius() > 0) {
             return c.getRadius() * c.getRadius() * Math.PI;
         } else if (shape instanceof Circle c) {
-            throw new IllegalArgumentException("Circle must have non-negative radius");
+            throw new IllegalArgumentException("Circle " + c + " must have non-negative radius");
         } else if (shape instanceof Rectangle rect) {
             return rect.base() * rect.height();
         }

@@ -45,17 +45,15 @@ public class TextBlocks {
     }
 
     public String getAstroData() {
-        HttpClient client = HttpClient.newBuilder()
-                .build();
-        HttpRequest request = HttpRequest.newBuilder(URI.create("http://api.open-notify.org/astros.json"))
-                .build();
+        HttpClient client = HttpClient.newBuilder().build();
+        HttpRequest request = HttpRequest.newBuilder(URI.create("http://api.open-notify.org/astros.json")).build();
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200) {
                 return response.body();
             }
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return "";
     }
