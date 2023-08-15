@@ -10,7 +10,6 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
-import static java.net.http.HttpRequest.BodyPublishers;
 import static java.net.http.HttpRequest.newBuilder;
 
 public class AstroClient {
@@ -45,19 +44,6 @@ public class AstroClient {
                 });
     }
 
-    public HttpResponse<Void> getResponseToHeadRequest(String site) {
-        HttpRequest req = newBuilder()
-                .uri(URI.create(site))
-                .method("HEAD", BodyPublishers.noBody()) // NOTE: .HEAD() in Java 18+
-                .build();
-        HttpResponse<Void> response;
-        try {
-            response = client.send(req, HttpResponse.BodyHandlers.discarding());
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return response;
-    }
 
     public AstroResponse getAstroResponse() {
         // Gson works as of version 2.10
