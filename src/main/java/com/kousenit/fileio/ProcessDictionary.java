@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,7 +15,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 @SuppressWarnings("DuplicatedCode")
 public class ProcessDictionary {
-    private final Path dictionary = Paths.get("src/main/resources/dict/words");
+    private final Path dictionary = Path.of("src/main/resources/dict/words");
     // private final Logger logger = Logger.getLogger("default");
 
     int maxLength() {
