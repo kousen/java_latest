@@ -1,5 +1,7 @@
 package com.kousenit.astro;
 
+import com.kousenit.http.AstroResponse;
+import com.kousenit.http.AstroResponse.Assignment;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

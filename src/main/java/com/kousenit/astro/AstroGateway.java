@@ -1,13 +1,13 @@
 package com.kousenit.astro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kousenit.http.AstroResponse;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class AstroGateway implements Gateway<AstroResponse> {
     private static final String DEFAULT_URL = "http://api.open-notify.org/astros.json";
@@ -41,12 +41,3 @@ public class AstroGateway implements Gateway<AstroResponse> {
         }
     }
 }
-
-record Assignment(String name, String craft) {
-}
-
-record AstroResponse(int number,
-                     String message,
-                     List<Assignment> people) {
-}
-
