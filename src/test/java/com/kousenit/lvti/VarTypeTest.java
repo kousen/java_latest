@@ -1,6 +1,5 @@
 package com.kousenit.lvti;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection"})
+@SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
 public class VarTypeTest {
     // private var x = "abc";  // var is not allowed here
 
@@ -53,6 +52,7 @@ public class VarTypeTest {
     void reassignVar() {
         var list = List.of("a", "b", "c");
         list = new LinkedList<>();
+        assertTrue(list instanceof LinkedList);
 
         var arrayList = new ArrayList<String>();
         // arrayList = new LinkedList<String>();
@@ -112,7 +112,7 @@ public class VarTypeTest {
     // - immutable data holders
     // - have a primary constructor defined before the {}
     // - autogenerate equals(), hashCode(), and toString() methods
-    // - "getters" take the names of the properties
+    // - "getters" take the names of the properties, as in var() below
     @Test
     void dontDoThis() {
         // Can't use "var" as a type name or a field type

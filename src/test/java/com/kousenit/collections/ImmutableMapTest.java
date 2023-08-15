@@ -28,10 +28,10 @@ public class ImmutableMapTest {
     @Test
     void arraysAslist() {
         List<String> strings = Arrays.asList("this", "is", "a", "list");
-        System.out.println(strings);
+        System.out.println("original list: " + strings);
         System.out.println(strings.getClass().getName());
         Collections.sort(strings);
-        System.out.println(strings);
+        System.out.println("After Collections.sort(): " + strings);
 
         // This WON'T work
         // List<String> myStrings = List.of("b", "c", "a");
@@ -40,7 +40,7 @@ public class ImmutableMapTest {
         strings = List.of("this", "is", "a", "list");
         List<String> sorted = strings.stream()
                 .sorted(Comparator.comparingInt(String::length).reversed())
-                .toList();
+                .toList(); // produces unmodifiable list (from Java 16)
         System.out.println(sorted);
     }
 
