@@ -3,6 +3,7 @@ package com.kousenit.fileio;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -22,7 +23,7 @@ public class ProcessDictionary {
         try (Stream<String> words = Files.lines(dictionary)) {
             return words.mapToInt(String::length).max().orElse(0);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UncheckedIOException(e);
         }
     }
 

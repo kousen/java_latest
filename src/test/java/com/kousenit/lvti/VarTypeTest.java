@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
 public class VarTypeTest {
@@ -31,9 +30,9 @@ public class VarTypeTest {
 
     @Test
     void inferListOfString() {
-        var strings = List.of("this", "is", "a", "list", "of", "strings");
+        var strings = List.of("this", "is", "a", "list", "of", "strings", 42);
         System.out.println(strings.getClass().getName());
-        assertTrue(strings instanceof List);
+        assertInstanceOf(List.class, strings);
 
         List<Integer> nums = new ArrayList<>();
         nums.add(3); nums.add(1); nums.add(4);
