@@ -7,63 +7,51 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
-import static java.net.http.HttpRequest.newBuilder;
-
 public class AstroClient {
-    private final HttpClient client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(2))
-                .build();
+    private static final String REQUEST_URL = "http://api.open-notify.org/astros.json";
 
-    private final HttpRequest request = newBuilder()
-                .uri(URI.create("http://api.open-notify.org/astros.json"))
+    private HttpRequest createRequest() {
+        return HttpRequest.newBuilder()
+                .uri(URI.create(REQUEST_URL))
                 .header("Accept", "application/json")
-                .GET() // default (could leave that out)
+                .GET()
                 .build();
+    }
 
-    public String getJsonResponse() {
-        try {
-            HttpResponse<String> response =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Status code: " + response.statusCode());
-            System.out.println("Headers: " + response.headers());
-            return response.body();
+    private HttpResponse<String> sendRequest(HttpRequest request) {
+        try (HttpClient httpClient = HttpClient.newHttpClient()) {
+            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public CompletableFuture<String> getJsonResponseAsync() {
-        return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(response -> {
-                    System.out.println("Status code: " + response.statusCode());
-                    System.out.println("Headers: " + response.headers());
-                    return response.body();
-                });
+    public String getJsonResponse() {
+        HttpResponse<String> response = sendRequest(createRequest());
+        System.out.println("Status code: " + response.statusCode());
+        System.out.println("Headers: " + response.headers());
+        return response.body();
     }
 
+    public CompletableFuture<String> getJsonResponseAsync() {
+        try (HttpClient httpClient = HttpClient.newHttpClient()) {
+            return httpClient.sendAsync(createRequest(), HttpResponse.BodyHandlers.ofString())
+                    .thenApply(response -> {
+                        System.out.println("Status code: " + response.statusCode());
+                        System.out.println("Headers: " + response.headers());
+                        return response.body();
+                    });
+        }
+    }
 
     public AstroResponse getAstroResponse() {
-        // Gson works as of version 2.10
-        return new Gson().fromJson(getJsonResponse(), AstroResponse.class);
+        return parseJson(getJsonResponse());
+    }
 
-        // Moshi works!
-//        Moshi moshi = new Moshi.Builder().build();
-//        JsonAdapter<AstroResponse> adapter = moshi.adapter(AstroResponse.class);
-//        try {
-//            return adapter.fromJson(getJsonResponse());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e.getCause());
-//        }
-
-        // Jackson 2 works
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        try {
-//            return objectMapper.readValue(getJsonResponse(), AstroResponse.class);
-//        } catch (JsonProcessingException e) {
-//            throw new RuntimeException(e.getMessage());
-//        }
+    private AstroResponse parseJson(String jsonResponse) {
+        // Use your favorite JSON library here
+        return new Gson().fromJson(jsonResponse, AstroResponse.class);
     }
 }

@@ -115,7 +115,8 @@ public class VarTypeTest {
     @Test
     void dontDoThis() {
         // Can't use "var" as a type name or a field type
-        record Var(String var) { }
+        record Var(String var) {
+        }
 
         // So silliest thing I can manage is:
         var var =  new Var("var");

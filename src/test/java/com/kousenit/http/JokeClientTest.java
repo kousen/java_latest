@@ -4,14 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.channels.UnresolvedAddressException;
+import java.time.Duration;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class JokeClientTest {
@@ -22,22 +24,19 @@ class JokeClientTest {
     private final String heroLastName = "Subramaniam";
 
     @BeforeEach
-    void setUp() throws IOException, InterruptedException {
-        // Sometimes this works
-        assumeTrue(
-                InetAddress.getByName("icndb.com")
-                        .isReachable(2000),
-                "ICNDB API site is down");
-
-        // But this is more reliable (requires Java 18 for HEAD request method)
-        HttpResponse<Void> response = HttpClient.newHttpClient()
-                .send(HttpRequest.newBuilder()
-                                .uri(URI.create("http://icndb.com"))
-                                // .HEAD()  // Java 18
-                                .method("HEAD", HttpRequest.BodyPublishers.noBody())
-                                .build(),
-                        HttpResponse.BodyHandlers.discarding());
-        assumeTrue(response.statusCode() == 200, "ICNDB API site is down");
+    void setUp() {
+        try (HttpClient client = HttpClient.newBuilder()
+                .connectTimeout(Duration.ofSeconds(2))
+                .build()) {
+            HttpRequest req = HttpRequest.newBuilder()
+                    .uri(URI.create("http://api.icndb.com"))
+                    .HEAD()
+                    .build();
+            HttpResponse<Void> response = client.send(req, HttpResponse.BodyHandlers.discarding());
+            assumeTrue(response.statusCode() == 200, "ICNDB API site is down");
+        } catch (UnresolvedAddressException | IOException | InterruptedException e) {
+            assumeFalse(true, "Site is unreachable: " + e.getMessage());
+        }
     }
 
     @Test
@@ -45,7 +44,7 @@ class JokeClientTest {
         String joke = client.getJokeSync(heroFirstName, heroLastName);
         logger.info(joke);
         assertTrue(joke.contains(heroFirstName) ||
-                joke.contains(heroLastName));
+                   joke.contains(heroLastName));
     }
 
     @Test
@@ -53,6 +52,6 @@ class JokeClientTest {
         String joke = client.getJokeAsync(heroFirstName, heroLastName);
         logger.info(joke);
         assertTrue(joke.contains(heroFirstName) ||
-                joke.contains(heroLastName));
+                   joke.contains(heroLastName));
     }
 }
