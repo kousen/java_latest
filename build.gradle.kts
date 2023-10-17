@@ -17,7 +17,6 @@ version = "1.0"
 
 application {
     mainClass.set("com.kousenit.fileio.ProcessDictionary")
-    applicationDefaultJvmArgs = listOf("--enable-preview")
 }
 
 repositories {
@@ -45,7 +44,6 @@ tasks.withType<JavaCompile>().forEach {
 }
 
 tasks.test {
-    jvmArgs("--enable-preview")
     useJUnitPlatform()
     maxParallelForks = Runtime.getRuntime().availableProcessors() / 2 + 1
 }
@@ -58,13 +56,13 @@ tasks.test {
 //    props["org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures"] = "ignore"
 //}
 
-eclipse {
-    jdt {
-        file {
-            withProperties {
-                set("org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures", "enabled")
-                set("org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures", "ignore")
-            }
-        }
-    }
-}
+//eclipse {
+//    jdt {
+//        file {
+//            withProperties {
+//                set("org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures", "enabled")
+//                set("org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures", "ignore")
+//            }
+//        }
+//    }
+//}
