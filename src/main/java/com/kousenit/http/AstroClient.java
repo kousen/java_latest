@@ -35,6 +35,15 @@ public class AstroClient {
         return response.body();
     }
 
+    public AstroResponse getAstroResponse() {
+        return parseJson(getJsonResponse());
+    }
+
+    private AstroResponse parseJson(String jsonResponse) {
+        // Use your favorite JSON library here
+        return new Gson().fromJson(jsonResponse, AstroResponse.class);
+    }
+
     public CompletableFuture<String> getJsonResponseAsync() {
         try (HttpClient httpClient = HttpClient.newHttpClient()) {
             return httpClient.sendAsync(createRequest(), HttpResponse.BodyHandlers.ofString())
@@ -46,12 +55,4 @@ public class AstroClient {
         }
     }
 
-    public AstroResponse getAstroResponse() {
-        return parseJson(getJsonResponse());
-    }
-
-    private AstroResponse parseJson(String jsonResponse) {
-        // Use your favorite JSON library here
-        return new Gson().fromJson(jsonResponse, AstroResponse.class);
-    }
 }
