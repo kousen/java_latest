@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
 public class VarTypeTest {
-    // private var x = "abc";  // var is not allowed here
+    // private final var x = "abc";  // var is not allowed here
 
     @Test
     void inferString() {
@@ -23,9 +23,9 @@ public class VarTypeTest {
 
     @Test
     void inferInteger() {
-        var num = 3;
-        // System.out.println(num.getClass());  // doesn't compile because num is type int
-        assertTrue(Integer.valueOf(num) instanceof Integer);
+        var num = 3.0;
+        // System.out.println(num.getClass());  // doesn't compile because num is type double
+        assertTrue(Double.valueOf(num) instanceof Double);
     }
 
     @Test
@@ -60,6 +60,7 @@ public class VarTypeTest {
     @Test
     void loopOverComplicatedMap() {
         Map<? extends String, List<? extends Integer>> map = Map.ofEntries(
+        // var map = Map.ofEntries(    // actually get a Map<String, List<Integer>>
                 Map.entry("a", List.of(1, 2, 3)),
                 Map.entry("b", List.of(1, 2, 3)),
                 Map.entry("c", List.of(1, 2, 3)),
@@ -95,8 +96,8 @@ public class VarTypeTest {
     @Test
     void nullProblem() {
         // var y = null;
-        var x = (Void) null;
         var z = (String) null;
+        var x = (Void) null;
         System.out.println(x + ", " + z);
     }
 
@@ -115,8 +116,7 @@ public class VarTypeTest {
     @Test
     void dontDoThis() {
         // Can't use "var" as a type name or a field type
-        record Var(String var) {
-        }
+        record Var(String var) { }
 
         // So silliest thing I can manage is:
         var var =  new Var("var");
