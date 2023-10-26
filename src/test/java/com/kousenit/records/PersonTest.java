@@ -19,7 +19,8 @@ class PersonTest {
 
     @Test @DisplayName("copy constructor delegates to three-arg ctor")
     void checkCopyCtor() {
-        Person willCopy = new Person(9, "Will", "Riker");
+        Person will = new Person(9, "Will", "Riker");
+        Person willCopy = new Person(will);
         assertAll(
                 () -> assertEquals("Will", willCopy.first()),
                 () -> assertEquals("Riker", willCopy.last()),

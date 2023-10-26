@@ -27,7 +27,7 @@ public class TextBlocks {
                     "message": "success",
                     "number": 3
                 }
-                """;
+                """.stripIndent();
     }
 
     public String sql() {

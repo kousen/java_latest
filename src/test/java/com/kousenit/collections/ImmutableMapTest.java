@@ -20,8 +20,8 @@ public class ImmutableMapTest {
 
     @Test
     void listOf() {
-        List<String> letters = List.of("a", "b");
-        assertEquals(2, letters.size());
+        List<String> letters = List.of("a", "b", "b");
+        assertEquals(3, letters.size());
         System.out.println(letters.getClass().getName());
     }
 
@@ -40,6 +40,7 @@ public class ImmutableMapTest {
         strings = List.of("this", "is", "a", "list");
         List<String> sorted = strings.stream()
                 .sorted(Comparator.comparingInt(String::length).reversed())
+                // .collect(Collectors.toList())
                 .toList(); // produces unmodifiable list (from Java 16)
         System.out.println(sorted);
     }

@@ -25,5 +25,6 @@ public class TextBlocksTest {
                 blue \s
                 """;
         System.out.println(colors);
+        colors.lines().forEach(line -> System.out.println(line.length()));
     }
 }

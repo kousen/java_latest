@@ -21,13 +21,13 @@ public class AstroGateway implements Gateway<AstroResponse> {
         this.url = url;
     }
 
-    private final HttpClient client = HttpClient.newHttpClient();
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public Result<AstroResponse> getResponse() {
-        try {
+        // As of Java 21, HttpClient implements AutoCloseable
+        try (HttpClient client = HttpClient.newHttpClient()) {
             HttpRequest request = HttpRequest.newBuilder(URI.create(url))
                     .header("Accept", "application/json")
                     .GET() // default (could leave that out)

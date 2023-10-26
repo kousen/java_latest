@@ -64,8 +64,7 @@ class AstroClientTest {
         assertAll(
                 () -> assertEquals(response.message(), "success"),
                 () -> assertTrue(response.number() >= 0),
-                () -> assertEquals(response.people()
-                        .size(), response.number())
+                () -> assertEquals(response.people().size(), response.number())
         );
         System.out.println("There are " + response.number() + " people in space");
         response.people()

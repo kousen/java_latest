@@ -21,6 +21,7 @@ public class PatternTest {
                 .forEach(System.out::println);
     }
 
+    @SuppressWarnings("IfCanBeSwitch")
     private double getArea(Object shape) {
         if (shape instanceof Square s) {
             return s.getSide() * s.getSide();
@@ -36,6 +37,7 @@ public class PatternTest {
     }
 
     // Pattern matching with switch statements (17, 18, 19, 20 preview)
+    @SuppressWarnings("unused")
     private double getAreaUsingEnhancedSwitch(Object shape) {
         return switch (shape) {
             case Square s -> s.getSide() * s.getSide();
