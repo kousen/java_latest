@@ -34,6 +34,7 @@ dependencies {
 
     // Testing
     testImplementation(libs.junit.jupiter)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(libs.assertj)
     testImplementation(libs.bundles.mockito)
     testImplementation(libs.wiremock)
@@ -45,5 +46,6 @@ tasks.withType<JavaCompile>().forEach {
 
 tasks.test {
     useJUnitPlatform()
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
     maxParallelForks = Runtime.getRuntime().availableProcessors() / 2 + 1
 }
