@@ -34,6 +34,7 @@ public class AstroGateway implements Gateway<AstroResponse> {
                     .build();
             HttpResponse<String> httpResponse =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(httpResponse.statusCode());
             return new Success<>(
                     objectMapper.readValue(httpResponse.body(), AstroResponse.class));
         } catch (IOException | InterruptedException e) {
