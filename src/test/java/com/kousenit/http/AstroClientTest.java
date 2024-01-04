@@ -55,10 +55,10 @@ class AstroClientTest {
     @Test
     void headRequest() {
         HttpResponse<Void> response = getResponseToHeadRequest();
-        System.out.println("Status code: " + response.statusCode());
+        System.out.printf("Status code: %d%n", response.statusCode());
         response.headers()
                 .map()
-                .forEach((key, values) -> System.out.println(key + ": " + values));
+                .forEach((key, values) -> System.out.printf("%s: %s%n", key, values));
     }
 
     @Test

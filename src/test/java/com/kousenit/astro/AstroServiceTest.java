@@ -94,7 +94,7 @@ class AstroServiceTest {
         service = new AstroService(new AstroGateway());
         Map<String, Long> astroData = service.getAstroData();
         astroData.forEach((craft, number) -> {
-            System.out.println(number + " astronauts aboard " + craft);
+            System.out.printf("%d astronauts aboard %s%n", number, craft);
             assertAll(
                     () -> assertThat(number).isPositive(),
                     () -> assertThat(craft).isNotBlank()
