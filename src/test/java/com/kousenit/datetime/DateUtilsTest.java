@@ -53,7 +53,6 @@ class DateUtilsTest {
         assertEquals(366, daysBetween);
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
     void periodBetween() {
         Period period = DateUtils.periodBetween(

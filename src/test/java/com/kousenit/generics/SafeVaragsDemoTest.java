@@ -10,8 +10,8 @@ import static org.hamcrest.Matchers.arrayContaining;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SafeVaragsDemoTest {
-    private SafeVaragsDemo demo = new SafeVaragsDemo();
-    private LocalDate now = LocalDate.now();
+    private final SafeVaragsDemo demo = new SafeVaragsDemo();
+    private final LocalDate now = LocalDate.now();
 
     @Test
     void replaceFirstStringWithDate() {

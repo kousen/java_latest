@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateRangeTest {
-    private DateRange range = new DateRange();
+    private final DateRange range = new DateRange();
 
     @Test
     public void dateRange_oneWeekInDays() {

@@ -5,7 +5,6 @@ public class DST {
         var southPole = ZoneId.of("Antarctica/South_Pole");
         var now = Instant.now();
         boolean dst = southPole.getRules().isDaylightSavings(now);
-        System.out.println(
-            "South Pole %s on DST".formatted(dst ? "IS" : "IS NOT"));
+        System.out.printf("South Pole %s on DST%n", dst ? "IS" : "IS NOT");
     }
 }

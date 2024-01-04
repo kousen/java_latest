@@ -35,7 +35,7 @@ public class StreamTests {
         bigDecimals = Stream.iterate(BigDecimal.ZERO,
                 bd -> bd.longValue() < 10L,
                 bd -> bd.add(BigDecimal.ONE))
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(10, bigDecimals.size());
     }
