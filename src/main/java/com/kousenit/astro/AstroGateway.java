@@ -21,7 +21,6 @@ public class AstroGateway implements Gateway<AstroResponse> {
         this.url = url;
     }
 
-
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
