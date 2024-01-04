@@ -23,8 +23,8 @@ public class ImmutableCollectionsTest {
                 .forEach(n -> {
                     List<Integer> intList = List.of(intArgs(n));
                     assertEquals(n, intList.size());
-                    assertEquals(1, intList.get(0).intValue());
-                    assertEquals(n, intList.get(intList.size() - 1).intValue());
+                    assertEquals(1, intList.getFirst().intValue());
+                    assertEquals(n, intList.getLast().intValue());
                 });
     }
 
@@ -43,7 +43,7 @@ public class ImmutableCollectionsTest {
     @Test
     public void showImmutabilityRemove() {
         List<Integer> intList = List.of(1, 2, 3);
-        assertThrows(UnsupportedOperationException.class, () -> intList.remove(0));
+        assertThrows(UnsupportedOperationException.class, intList::removeFirst);
     }
 
     @Test
@@ -61,17 +61,17 @@ public class ImmutableCollectionsTest {
     @Test
     public void areWeImmutableOrArentWe() {
         List<Holder> holders = List.of(new Holder(1), new Holder(2));
-        assertEquals(1, holders.get(0).getX());
+        assertEquals(1, holders.getFirst().getX());
 
-        holders.get(0).setX(4);
-        assertEquals(4, holders.get(0).getX());
+        holders.getFirst().setX(4);
+        assertEquals(4, holders.getFirst().getX());
     }
 
     @Test
     public void testVarargsList() {
         List<Integer> intList = List.of(intArgs(11));
         assertEquals(11, intList.size());
-        assertEquals( 1, intList.get(0).intValue());
-        assertEquals(11, intList.get(intList.size() - 1).intValue());
+        assertEquals( 1, intList.getFirst().intValue());
+        assertEquals(11, intList.getLast().intValue());
     }
 }

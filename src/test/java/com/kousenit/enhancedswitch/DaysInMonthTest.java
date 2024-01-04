@@ -8,7 +8,6 @@ import java.time.Month;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DaysInMonthTest {
-    @SuppressWarnings("EnhancedSwitchMigration")
     @ParameterizedTest(name = "Checking days in {0}")
     @EnumSource(Month.class)
     void daysIn2022(Month month) {

@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Stream;
 
 public class TakeWhileDemo implements Runnable {
-    private AtomicBoolean running = new AtomicBoolean(true);
+    private final AtomicBoolean running = new AtomicBoolean(true);
 
     @Override
     public void run() {
@@ -17,10 +17,10 @@ public class TakeWhileDemo implements Runnable {
             System.out.println("Running...");
             //lines.takeWhile(s -> running.get())
             lines
-                    .takeWhile(s -> running.get())
+                    .takeWhile(_ -> running.get())
                     .forEach(s -> System.out.println(running.get() + " " + s));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

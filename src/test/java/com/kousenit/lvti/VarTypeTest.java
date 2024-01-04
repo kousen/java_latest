@@ -51,7 +51,7 @@ public class VarTypeTest {
     void reassignVar() {
         var list = List.of("a", "b", "c");
         list = new LinkedList<>();
-        assertTrue(list instanceof LinkedList);
+        assertInstanceOf(LinkedList.class, list);
 
         var arrayList = new ArrayList<String>();
         // arrayList = new LinkedList<String>();
