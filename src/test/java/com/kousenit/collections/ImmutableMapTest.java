@@ -27,18 +27,18 @@ public class ImmutableMapTest {
 
     @Test
     void arraysAslist() {
-        List<String> strings = Arrays.asList("this", "is", "a", "list");
+        final List<String> strings = Arrays.asList("this", "is", "a", "list");
         System.out.println("original list: " + strings);
         System.out.println(strings.getClass().getName());
         Collections.sort(strings);
         System.out.println("After Collections.sort(): " + strings);
+        assertThrows(UnsupportedOperationException.class, () -> strings.add("new"));
 
+
+        List<String> others = List.of("this", "is", "a", "list");
         // This WON'T work
-        // List<String> myStrings = List.of("b", "c", "a");
-        // Collections.sort(myStrings);  // throws UnsupportedOperationException
-
-        strings = List.of("this", "is", "a", "list");
-        List<String> sorted = strings.stream()
+        assertThrows(UnsupportedOperationException.class, () -> Collections.sort(others));
+        List<String> sorted = others.stream()
                 .sorted(Comparator.comparingInt(String::length).reversed())
                 // .collect(Collectors.toList())
                 .toList(); // produces unmodifiable list (from Java 16)
@@ -129,7 +129,7 @@ public class ImmutableMapTest {
     @Test
     void modifyMapViaIterator() {
         Map<String, Integer> map = Map.of("one", 1, "two", 2, "three", 3);
-        map.forEach((k, v) -> {
+        map.forEach((_, v) -> {
             // creates a local variable, which does NOT update the map
             v = v * 2;
         });
