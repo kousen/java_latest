@@ -125,4 +125,15 @@ public class ImmutableMapTest {
         modifiableMap.put("k3", "v3");
         assertEquals(3, modifiableMap.size());
     }
+
+    @Test
+    void modifyMapViaIterator() {
+        Map<String, Integer> map = Map.of("one", 1, "two", 2, "three", 3);
+        map.forEach((k, v) -> {
+            // creates a local variable, which does NOT update the map
+            v = v * 2;
+        });
+        System.out.println(map);
+        assertThrows(UnsupportedOperationException.class, () -> map.put("one", 11));
+    }
 }
