@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 public class AstroClient {
     private static final String REQUEST_URL = "http://api.open-notify.org/astros.json";
 
-    private HttpRequest createRequest() {
+    public HttpRequest createRequest() {
         return HttpRequest.newBuilder()
                 .uri(URI.create(REQUEST_URL))
                 .header("Accept", "application/json")
@@ -20,7 +20,7 @@ public class AstroClient {
                 .build();
     }
 
-    private HttpResponse<String> sendRequest(HttpRequest request) {
+    public HttpResponse<String> sendRequest(HttpRequest request) {
         try (HttpClient httpClient = HttpClient.newHttpClient()) {
             return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
@@ -30,8 +30,8 @@ public class AstroClient {
 
     public String getJsonResponse() {
         HttpResponse<String> response = sendRequest(createRequest());
-        System.out.println("Status code: " + response.statusCode());
-        System.out.println("Headers: " + response.headers());
+        System.out.printf("Status code: %d%n", response.statusCode());
+        System.out.printf("Headers: %s%n", response.headers());
         return response.body();
     }
 
@@ -48,8 +48,8 @@ public class AstroClient {
         try (HttpClient httpClient = HttpClient.newHttpClient()) {
             return httpClient.sendAsync(createRequest(), HttpResponse.BodyHandlers.ofString())
                     .thenApply(response -> {
-                        System.out.println("Status code: " + response.statusCode());
-                        System.out.println("Headers: " + response.headers());
+                        System.out.printf("Status code: %d%n", response.statusCode());
+                        System.out.printf("Headers: %s%n", response.headers());
                         return response.body();
                     });
         }

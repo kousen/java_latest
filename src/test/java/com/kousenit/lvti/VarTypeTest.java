@@ -25,7 +25,7 @@ public class VarTypeTest {
     void inferInteger() {
         var num = 3.0;
         // System.out.println(num.getClass());  // doesn't compile because num is type double
-        assertTrue(Double.valueOf(num) instanceof Double);
+        assertInstanceOf(Double.class, Double.valueOf(num));
     }
 
     @Test

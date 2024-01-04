@@ -31,6 +31,15 @@ class AstroClientTest {
         );
     }
 
+    @Test
+    void getResponse() {
+        HttpResponse<String> response = client.sendRequest(client.createRequest());
+        System.out.printf("Status code: %d%n", response.statusCode());
+        System.out.printf("Headers: %s%n", response.headers());
+        System.out.printf("Body: %s%n", response.body());
+        assertEquals(200, response.statusCode());
+    }
+
     private HttpResponse<Void> getResponseToHeadRequest() {
         try (HttpClient client = HttpClient.newHttpClient()) {
             HttpRequest req = newBuilder()
@@ -66,9 +75,8 @@ class AstroClientTest {
                 () -> assertTrue(response.number() >= 0),
                 () -> assertEquals(response.people().size(), response.number())
         );
-        System.out.println("There are " + response.number() + " people in space");
-        response.people()
-                .forEach(System.out::println);
+        System.out.printf("There are %d people in space%n", response.number());
+        response.people().forEach(System.out::println);
     }
 
     @Test
