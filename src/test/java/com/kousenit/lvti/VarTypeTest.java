@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
 public class VarTypeTest {
-    // private final var x = "abc";  // var is not allowed here
+    // private var x = "abc";  // var is not allowed here
 
     @Test
     void inferString() {
@@ -68,13 +68,13 @@ public class VarTypeTest {
 
         // LVTI useful in for loops and try-with-resource blocks
         for (var entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            System.out.printf("%s: %s%n", entry.getKey(), entry.getValue());
         }
 
         // Of course, Map now has a forEach(BiConsumer)
         // As of Java 11, var is okay in lambda expressions
-        map.forEach((@Deprecated var s, var list) -> System.out.println(s + ": " + list));
-        map.forEach((s, list) -> System.out.println(s + ": " + list));
+        map.forEach((@Deprecated var s, var list) -> System.out.printf("%s: %s%n", s, list));
+        map.forEach((s, list) -> System.out.printf("%s: %s%n", s, list));
     }
 
     @Test
@@ -98,7 +98,7 @@ public class VarTypeTest {
         // var y = null;
         var z = (String) null;
         var x = (Void) null;
-        System.out.println(x + ", " + z);
+        System.out.printf("%s, %s%n", x, z);
     }
 
     @Test @DisplayName("Can't reassign a type at runtime")

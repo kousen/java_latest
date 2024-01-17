@@ -12,6 +12,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 import static java.net.http.HttpRequest.newBuilder;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AstroClientTest {
@@ -38,6 +39,7 @@ class AstroClientTest {
         System.out.printf("Headers: %s%n", response.headers());
         System.out.printf("Body: %s%n", response.body());
         assertEquals(200, response.statusCode());
+        assertThat(response.body()).contains("success");
     }
 
     private HttpResponse<Void> getResponseToHeadRequest() {

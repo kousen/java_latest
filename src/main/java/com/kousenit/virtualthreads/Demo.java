@@ -17,6 +17,6 @@ public class Demo {
                             }));
         }
         long endTime = System.nanoTime();
-        System.out.println("Elapsed time: " + (endTime - startTime) / 1_000_000 + " ms");
+        System.out.printf("Elapsed time: %d ms%n", (endTime - startTime) / 1_000_000);
     }
 }
