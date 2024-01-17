@@ -46,6 +46,6 @@ tasks.withType<JavaCompile>().forEach {
 
 tasks.test {
     useJUnitPlatform()
-    jvmArgs("-XX:+EnableDynamicAgentLoading")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "--enable-preview")
     maxParallelForks = Runtime.getRuntime().availableProcessors() / 2 + 1
 }

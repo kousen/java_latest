@@ -28,12 +28,11 @@ public class ImmutableMapTest {
     @Test
     void arraysAslist() {
         final List<String> strings = Arrays.asList("this", "is", "a", "list");
-        System.out.println("original list: " + strings);
+        System.out.printf("original list: %s%n", strings);
         System.out.println(strings.getClass().getName());
         Collections.sort(strings);
-        System.out.println("After Collections.sort(): " + strings);
+        System.out.printf("After Collections.sort(): %s%n", strings);
         assertThrows(UnsupportedOperationException.class, () -> strings.add("new"));
-
 
         List<String> others = List.of("this", "is", "a", "list");
         // This WON'T work
@@ -75,9 +74,11 @@ public class ImmutableMapTest {
     @Test
     void noDuplicateKeysInMap() {
         assertThrows(IllegalArgumentException.class,
-                () -> ofEntries(entry("k1", "v1"),
+                () -> ofEntries(
+                        entry("k1", "v1"),
                         entry("k2", "v2"),
-                        entry("k1", "v2")));
+                        entry("k1", "v2"))
+        );
     }
 
     @Test
@@ -129,7 +130,7 @@ public class ImmutableMapTest {
     @Test
     void modifyMapViaIterator() {
         Map<String, Integer> map = Map.of("one", 1, "two", 2, "three", 3);
-        map.forEach((_, v) -> {
+        map.forEach((k, v) -> {
             // creates a local variable, which does NOT update the map
             v = v * 2;
         });

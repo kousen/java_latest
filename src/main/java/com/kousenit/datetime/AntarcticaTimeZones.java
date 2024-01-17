@@ -12,7 +12,7 @@ public class AntarcticaTimeZones {
     public static void main(String[] args) {
         LocalDateTime now = LocalDateTime.now();
         Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
-        System.out.println("There are " + availableZoneIds.size() + " zoneids around the world");
+        System.out.printf("There are %d zoneids around the world%n", availableZoneIds.size());
         List<ZonedDateTime> antarcticZones =
                 availableZoneIds.stream()  // Stream<String>
                         .filter(regionId -> regionId.contains("Antarctica"))

@@ -1,2 +1,2 @@
 # Java Latest
-Samples for Java features from Java 8 through 19 (including preview features).
+Samples for Java features from Java 8 through 21 (including preview features).
