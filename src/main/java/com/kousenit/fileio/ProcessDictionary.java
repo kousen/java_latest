@@ -50,7 +50,7 @@ public class ProcessDictionary {
         try (var words = Files.lines(dictionary)) {
             words.filter(s -> s.length() > maxForFilter)
                     .collect(groupingBy(String::length)) // Map<Integer,List<String>>
-                    .forEach((len, wordList) -> System.out.println(STR."\{len}: \{wordList}"));
+                    .forEach((len, wordList) -> System.out.printf("%d: %s%n", len, wordList));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

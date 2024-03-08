@@ -38,6 +38,8 @@ dependencies {
     testImplementation(libs.assertj)
     testImplementation(libs.bundles.mockito)
     testImplementation(libs.wiremock)
+    testImplementation("com.jayway.jsonpath:json-path:2.9.0")
+
 }
 
 tasks.withType<JavaCompile>().forEach {
