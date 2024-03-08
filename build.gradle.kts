@@ -42,12 +42,16 @@ dependencies {
 
 }
 
-tasks.withType<JavaCompile>().forEach {
-    it.options.compilerArgs.plusAssign("--enable-preview")
+tasks.withType<JavaCompile>().configureEach {
+    options.compilerArgs.add("--enable-preview")
 }
 
-tasks.test {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "--enable-preview")
+    jvmArgs("--enable-preview")
     maxParallelForks = Runtime.getRuntime().availableProcessors() / 2 + 1
+}
+
+tasks.withType<JavaExec>().configureEach {
+    jvmArgs("--enable-preview")
 }
