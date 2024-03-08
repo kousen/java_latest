@@ -22,7 +22,7 @@ public class VarTypeTest {
     }
 
     @Test
-    void inferInteger() {
+    void inferDouble() {
         var num = 3.0;
         // System.out.println(num.getClass());  // doesn't compile because num is type double
         assertInstanceOf(Double.class, Double.valueOf(num));
@@ -95,9 +95,9 @@ public class VarTypeTest {
 
     @Test
     void nullProblem() {
-        // var y = null;
         var z = (String) null;
         var x = (Void) null;
+        // var y = null;
         System.out.printf("%s, %s%n", x, z);
     }
 
@@ -110,7 +110,7 @@ public class VarTypeTest {
 
     // Records: (GA as of Java 16)
     // - immutable data holders
-    // - have a primary constructor defined before the {}
+    // - have a primary constructor defined BEFORE the {}
     // - autogenerate equals(), hashCode(), and toString() methods
     // - "getters" take the names of the properties, as in var() below
     @Test
