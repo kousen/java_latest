@@ -10,7 +10,15 @@ package com.kousenit.records;
 
 import java.util.Objects;
 
+// Canonical constructor
 public record Person(Integer id, String first, String last) {
+
+    // "compact" constructor (for validation)
+    public Person {
+        if (id < 0) {
+            throw new IllegalArgumentException("ID must be non-negative");
+        }
+    }
 
     // Any additional constructors must delegate to the primary constructor
     public Person(Person other) {
@@ -18,7 +26,7 @@ public record Person(Integer id, String first, String last) {
     }
 
     public String name() {
-        return first + " " + last;
+        return "%s %s".formatted(first, last);
     }
 
     public String getFirst() {

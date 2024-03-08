@@ -2,6 +2,8 @@ package com.kousenit.textblocks;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class TextBlocksTest {
     private final TextBlocks textBlocks = new TextBlocks();
 
@@ -25,6 +27,6 @@ public class TextBlocksTest {
                 blue \s
                 """;
         System.out.println(colors);
-        colors.lines().forEach(line -> System.out.println(line.length()));
+        colors.lines().forEach(line -> assertEquals(6, line.length()));
     }
 }

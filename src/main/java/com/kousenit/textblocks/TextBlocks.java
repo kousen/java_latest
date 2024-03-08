@@ -3,7 +3,7 @@ package com.kousenit.textblocks;
 public class TextBlocks {
     public String hello() {
         return """
-                                          This is a
+                  This is a
                         multiline string
                 with newlines inside
                 """;
