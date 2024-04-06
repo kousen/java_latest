@@ -25,7 +25,7 @@ public class PatternTest {
     private double getArea(Object shape) {
         if (shape instanceof Square s) {
             return s.getSide() * s.getSide();
-        } else if (shape instanceof Circle c) {
+        } else if (shape instanceof Circle c && c.getRadius() > 0) {
             return c.getRadius() * c.getRadius() * Math.PI;
         } else if (shape instanceof Triangle t) {
             return 0.5 * t.base * t.height;

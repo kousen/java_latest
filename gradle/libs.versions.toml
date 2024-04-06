@@ -1,7 +1,7 @@
 [versions]
 assertj = "3.25.3"
 gson = "2.10.1"
-jackson = "2.17.0-rc1"
+jackson = "2.17.0"
 junit = "5.10.2"
 mockito = "5.11.0"
 moshi = "1.15.1"
