@@ -49,7 +49,7 @@ tasks.withType<JavaCompile>().configureEach {
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     jvmArgs("--enable-preview")
-    maxParallelForks = Runtime.getRuntime().availableProcessors() / 2 + 1
+    setMaxParallelForks(Runtime.getRuntime().availableProcessors() / 2 + 1)
 }
 
 tasks.withType<JavaExec>().configureEach {
