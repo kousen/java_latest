@@ -7,6 +7,7 @@ import java.util.List;
 public class PatternTest {
     record Triangle(double base, double height) {}
     record Rectangle(double length, double width) {}
+    record Sphere(double radius) {}
 
     @Test
     void useRecordsInPatternMatching() {
@@ -36,15 +37,27 @@ public class PatternTest {
         }
     }
 
-    // Pattern matching with switch statements (17, 18, 19, 20 preview)
-    @SuppressWarnings("unused")
-    private double getAreaUsingEnhancedSwitch(Object shape) {
+    private double getAreaEnhancedSwitch(Object shape) {
         return switch (shape) {
             case Square s -> s.getSide() * s.getSide();
-            case Circle c -> c.getRadius() * c.getRadius() * Math.PI;
+            case Circle c when c.getRadius() > 0 -> c.getRadius() * c.getRadius() * Math.PI;
             case Triangle t -> 0.5 * t.base * t.height;
             case Rectangle r -> r.length * r.width;
-            default -> 0;
+            case Sphere s -> 4 * Math.PI * s.radius * s.radius;
+            default -> throw new IllegalArgumentException("Not supported");
         };
+    }
+
+    @Test
+    void getAreaTest() {
+        Square square = new Square(1);
+        Circle circle = new Circle(1);
+        Triangle triangle = new Triangle(1, 1);
+        Rectangle rectangle = new Rectangle(1, 1);
+        Sphere sphere = new Sphere(1);
+        List<Object> shapes = List.of(square, circle, triangle, rectangle, sphere);
+        shapes.stream()
+                .map(this::getAreaEnhancedSwitch)
+                .forEach(System.out::println);
     }
 }
