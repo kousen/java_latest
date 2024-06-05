@@ -114,6 +114,7 @@ public class ProcessDictionary {
         }
     }
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         ProcessDictionary processDictionary = new ProcessDictionary();
         processDictionary.printTenLongestWords();
