@@ -1,6 +1,26 @@
 package com.kousenit.http;
 
-public record ISSResponse(String message,
-                          Position iss_position,
-                          Long timestamp) {}
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
+public record ISSResponse(
+        String message,
+        long timestamp,
+        Position issPosition) {
+
+    @Override
+    public String toString() {
+        return "ISSResponse{message='%s', timestamp=%s, issPosition=%s}"
+                    .formatted(message,
+                            LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp),
+                                    ZoneId.systemDefault()),
+                            issPosition);
+    }
+
+    public record Position(
+            double latitude,
+            double longitude) {
+    }
+}
 

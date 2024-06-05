@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
 public class VarTypeTest {
-    // private var x = "abc";  // var is not allowed here
+    // private final var x = "abc";  // var is not allowed here
 
     @Test
     void inferString() {
@@ -23,7 +23,7 @@ public class VarTypeTest {
 
     @Test
     void inferDouble() {
-        var num = 3.0;
+        var num = 3.0; // Is this "double" or "Double"? (it's "double")
         // System.out.println(num.getClass());  // doesn't compile because num is type double
         assertInstanceOf(Double.class, Double.valueOf(num));
     }
@@ -110,9 +110,10 @@ public class VarTypeTest {
 
     // Records: (GA as of Java 16)
     // - immutable data holders
-    // - have a primary constructor defined BEFORE the {}
+    // - have a primary ("canonical") constructor defined BEFORE the {}
     // - autogenerate equals(), hashCode(), and toString() methods
     // - "getters" take the names of the properties, as in var() below
+    // - records are final and extend java.lang.Record
     @Test
     void dontDoThis() {
         // Can't use "var" as a type name or a field type

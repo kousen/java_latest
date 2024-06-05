@@ -13,7 +13,8 @@ import java.util.Objects;
 // Canonical constructor
 public record Person(Integer id, String first, String last) {
 
-    // "compact" constructor (for validation)
+    // "compact" constructor (for validation or transformation)
+    // NOTE: No parentheses!
     public Person {
         if (id < 0) {
             throw new IllegalArgumentException("ID must be non-negative");
