@@ -39,7 +39,6 @@ dependencies {
     testImplementation(libs.bundles.mockito)
     testImplementation(libs.wiremock)
     testImplementation("com.jayway.jsonpath:json-path:2.9.0")
-
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -48,10 +47,10 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    jvmArgs("--enable-preview")
+    jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     setMaxParallelForks(Runtime.getRuntime().availableProcessors() / 2 + 1)
 }
 
 tasks.withType<JavaExec>().configureEach {
-    jvmArgs("--enable-preview")
+    jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
 }
