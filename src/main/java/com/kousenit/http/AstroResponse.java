@@ -2,7 +2,6 @@ package com.kousenit.http;
 
 import java.util.List;
 
-// """
 // {
 //   "message": "success",
 //   "number": NUMBER_OF_PEOPLE_IN_SPACE,
@@ -11,9 +10,15 @@ import java.util.List;
 //     ...
 //   ]
 // }
-// """
-public record AstroResponse(int number,
-                            String message,
-                            List<Assignment> people) {
+public record AstroResponse(
+        String message,
+        int number,
+        List<Assignment> people) {
     public record Assignment(String name, String craft) { }
+
+    public AstroResponse {
+        if (!message.equalsIgnoreCase("success")) {
+            throw new IllegalArgumentException("Houston, we have a problem");
+        }
+    }
 }

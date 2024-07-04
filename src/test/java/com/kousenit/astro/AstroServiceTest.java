@@ -19,7 +19,7 @@ import static org.mockito.BDDMockito.*;
 @ExtendWith(MockitoExtension.class)
 class AstroServiceTest {
     private final AstroResponse mockAstroResponse =
-            new AstroResponse(7, "Success", List.of(
+            new AstroResponse("Success", 7, List.of(
                     new Assignment("John Sheridan", "Babylon 5"),
                     new Assignment("Susan Ivanova", "Babylon 5"),
                     new Assignment("Beckett Mariner", "USS Cerritos"),

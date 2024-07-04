@@ -26,8 +26,8 @@ public class AstroGateway implements Gateway<AstroResponse> {
     @Override
     public Result<AstroResponse> getResponse() {
         // As of Java 21, HttpClient implements AutoCloseable
-        try (HttpClient client = HttpClient.newHttpClient()) {
-            HttpRequest request = HttpRequest.newBuilder()
+        try (var client = HttpClient.newHttpClient()) {
+            var request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .header("Accept", "application/json")
                     .GET() // default (could leave that out)
