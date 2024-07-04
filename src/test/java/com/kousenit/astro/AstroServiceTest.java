@@ -40,7 +40,7 @@ class AstroServiceTest {
     void testAstroData_InjectedMockGateway() {
         // Mock Gateway already injected into AstroService using annotations
         // Set the expectations on the mock
-        given(gateway.getResponse())
+        given(gateway.getResult())
                 .willReturn(new Success<>(mockAstroResponse));
 
         // Call the method under test
@@ -60,7 +60,7 @@ class AstroServiceTest {
         });
 
         // Verify the stubbed method was called
-        then(gateway).should().getResponse();
+        then(gateway).should().getResult();
     }
 
     // Check network failure
@@ -69,7 +69,7 @@ class AstroServiceTest {
         // given:
         willReturn(new Failure<>(
                 new RuntimeException(new IOException("Network problems")
-        ))).given(gateway).getResponse();
+        ))).given(gateway).getResult();
 
         // when:
         Exception exception = assertThrows(
@@ -84,7 +84,7 @@ class AstroServiceTest {
         );
 
         // verify:
-        then(gateway).should().getResponse();
+        then(gateway).should().getResult();
         then(gateway).shouldHaveNoMoreInteractions();
     }
 
@@ -124,7 +124,7 @@ class AstroServiceTest {
         Gateway<AstroResponse> mockGateway = mock(Gateway.class);
 
         // 2. Set up the mock Gateway to return a specific AstroResponse
-        when(mockGateway.getResponse())
+        when(mockGateway.getResult())
                 .thenReturn(new Success<>(mockAstroResponse));
 
         // 3. Create an instance of AstroService using the mock Gateway
@@ -146,7 +146,7 @@ class AstroServiceTest {
         });
 
         // 5. Verify that the mock Gateway was called
-        verify(mockGateway).getResponse();
+        verify(mockGateway).getResult();
     }
 
 

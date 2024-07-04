@@ -13,7 +13,7 @@ public class AstroService {
     }
 
     public Map<String, Long> getAstroData() {
-        var response = gateway.getResponse();
+        var response = gateway.getResult();
 
         // Pattern matching for switch (Java 21 feature)
         return switch (response) {

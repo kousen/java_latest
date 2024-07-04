@@ -42,7 +42,7 @@ public class WiremockGatewayTest {
     @Test
     void testWithWiremock(WireMockRuntimeInfo info) {
         AstroGateway gateway = new AstroGateway(info.getHttpBaseUrl() + "/astros.json");
-        Result<AstroResponse> result = gateway.getResponse();
+        Result<AstroResponse> result = gateway.getResult();
         switch (result) {
             case Success<AstroResponse> astroSuccess -> {
                 AstroResponse data = astroSuccess.data();
