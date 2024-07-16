@@ -29,7 +29,7 @@ public class ProcessDictionaryV2 {
     }
 
     public void printNTenLongestWords(int n) {
-        System.out.println("\nTen Longest Words:");
+        System.out.printf("\n%d Longest Words:%n", n);
         int maxForFilter = maxLength() - 10;
         processFile(words -> {
             words.filter(s -> s.length() > maxForFilter)
@@ -55,29 +55,6 @@ public class ProcessDictionaryV2 {
         System.out.println("\nNumber of words of each length:");
         int maxForFilter = maxLength() - 10;
         printWordLengthStats(s -> s.length() > maxForFilter);
-    }
-
-    public void teeingCollectorDoesBoth() {
-        System.out.println("\nTeeing collector:");
-        int maxForFilter = maxLength() - 10;
-        processFile(words -> {
-            var map = words.filter(s -> s.length() > maxForFilter)
-                    .collect(Collectors.teeing(
-                            Collectors.groupingBy(String::length, Collectors.counting()),
-                            Collectors.groupingBy(String::length),
-                            (map1, map2) -> map1.entrySet()
-                                    .stream()
-                                    .collect(
-                                            Collectors.toMap(
-                                                    Map.Entry::getKey,
-                                                    e -> Map.of("count", e.getValue(),
-                                                            "words", map2.get(e.getKey()))
-                                            )
-                                    )
-                    ));
-            map.forEach((k, v) -> System.out.printf("%d: %s%n", k, v));
-            return null;
-        });
     }
 
     public void teeingCollectorExample() {
@@ -134,7 +111,6 @@ public class ProcessDictionaryV2 {
         processDictionary.printNTenLongestWords(10);
         processDictionary.printWordsOfEachLength();
         processDictionary.printHowManyWordsOfEachLength();
-        processDictionary.teeingCollectorDoesBoth();
         processDictionary.teeingCollectorExample();
         processDictionary.printSortedMapOfWords();
     }
