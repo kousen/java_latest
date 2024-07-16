@@ -25,7 +25,7 @@ class AstroGatewayTest {
         assertAll(
                 () -> assertThat(data.message()).isEqualTo("success"),
                 () -> assertThat(data.number())
-                        .isGreaterThanOrEqualTo(0)
+                        .isPositive()
                         .isEqualTo(data.people().size())
         );
     }
