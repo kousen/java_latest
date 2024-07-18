@@ -16,6 +16,7 @@ public record AstroResponse(
         List<Assignment> people) {
     public record Assignment(String name, String craft) { }
 
+    // compact constructor
     public AstroResponse {
         if (!message.equalsIgnoreCase("success")) {
             throw new IllegalArgumentException("Houston, we have a problem");

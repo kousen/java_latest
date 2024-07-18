@@ -21,7 +21,7 @@ public class AstroClient {
     }
 
     public HttpResponse<String> sendRequest(HttpRequest request) {
-        try (HttpClient httpClient = HttpClient.newHttpClient()) {
+        try (var httpClient = HttpClient.newHttpClient()) {
             return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
