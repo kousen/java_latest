@@ -43,15 +43,13 @@ class JokeClientTest {
     void getJokeSync() throws IOException, InterruptedException {
         String joke = client.getJokeSync(heroFirstName, heroLastName);
         logger.info(joke);
-        assertTrue(joke.contains(heroFirstName) ||
-                   joke.contains(heroLastName));
+        assertTrue(joke.contains(heroFirstName) || joke.contains(heroLastName));
     }
 
     @Test
     void getJokeAsync() {
         String joke = client.getJokeAsync(heroFirstName, heroLastName);
         logger.info(joke);
-        assertTrue(joke.contains(heroFirstName) ||
-                   joke.contains(heroLastName));
+        assertTrue(joke.contains(heroFirstName) || joke.contains(heroLastName));
     }
 }

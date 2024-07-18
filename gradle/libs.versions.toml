@@ -1,12 +1,12 @@
 [versions]
-assertj = "3.25.3"
-gson = "2.10.1"
-jackson = "2.17.0"
-junit = "5.10.2"
-mockito = "5.11.0"
+assertj = "3.26.3"
+gson = "2.11.0"
+jackson = "2.17.2"
+junit = "5.11.0-M2"
+mockito = "5.12.0"
 moshi = "1.15.1"
 slf4j = "2.1.0-alpha1"
-wiremock = "3.0.1"
+wiremock = "3.8.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -19,7 +19,7 @@ mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "m
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
-wiremock = { module = "com.github.tomakehurst:wiremock-jre8", version.ref = "wiremock" }
+wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
 
 [bundles]
 jackson = [
