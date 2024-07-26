@@ -17,7 +17,7 @@ public class TakeWhileDemo implements Runnable {
             System.out.println("Running...");
             //lines.takeWhile(s -> running.get())
             lines
-                    .takeWhile(_ -> running.get())
+                    .takeWhile(s -> running.get())
                     .forEach(s -> System.out.printf("%s %s%n", running.get(), s));
         } catch (IOException e) {
             throw new RuntimeException(e);

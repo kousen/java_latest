@@ -41,15 +41,17 @@ dependencies {
     testImplementation("com.jayway.jsonpath:json-path:2.9.0")
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    options.compilerArgs.add("--enable-preview")
-}
+//tasks.withType<JavaCompile>().configureEach {
+//    options.compilerArgs.add("--enable-preview")
+//}
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    // jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
 }
 
 tasks.withType<JavaExec>().configureEach {
-    jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    // jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
 }

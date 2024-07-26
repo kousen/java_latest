@@ -3,6 +3,8 @@ package com.kousenit.http;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -15,18 +17,13 @@ import static java.net.http.HttpRequest.newBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+// This service doesn't handle concurrent requests well
+@Execution(ExecutionMode.SAME_THREAD)
 class AstroClientTest {
     private final AstroClient client = new AstroClient();
 
     @BeforeEach
     void setUp() {
-        // Works for a ping, but that may not be reliable
-//        Assumptions.assumeTrue(
-//                InetAddress.getByName("api.open-notify.org").isReachable(2000),
-//                "api.open-notify.org is down");
-
-        // Check response to an HTTP HEAD request
-        // statusCode() returns an int, not an enum
         Assumptions.assumeTrue(
                 getResponseToHeadRequest().statusCode() == HttpURLConnection.HTTP_OK
         );
