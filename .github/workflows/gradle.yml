@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ ubuntu-latest, windows-latest, macOS-latest ]
 
     steps:
       - uses: actions/checkout@v4
@@ -20,9 +20,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Set up Gradle
-        uses: gradle/setup-gradle@v3
-
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v2
 
@@ -35,11 +32,11 @@ jobs:
       - name: Upload build reports
         uses: actions/upload-artifact@v4
         with:
-          name: build-reports-${{ matrix.os }}
-          path: build/reports/
+            name: build-reports-${{ matrix.os }}
+            path: build/reports/
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.os }}
-          path: build/test-results/
+            name: test-results-${{ matrix.os }}
+            path: build/test-results/
