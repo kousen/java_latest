@@ -35,6 +35,20 @@ class AstroServiceTest {
     @InjectMocks
     private AstroService service;
 
+    // Integration test -- no mocks
+    @Test
+    void testAstroData_RealGateway() {
+        service = new AstroService(new AstroGateway());
+        Map<String, Long> astroData = service.getAstroData();
+        astroData.forEach((craft, number) -> {
+            System.out.printf("%d astronauts aboard %s%n", number, craft);
+            assertAll(
+                    () -> assertThat(number).isPositive(),
+                    () -> assertThat(craft).isNotBlank()
+            );
+        });
+    }
+
     // Unit test with injected mock Gateway
     @Test
     void testAstroData_InjectedMockGateway() {
@@ -88,19 +102,6 @@ class AstroServiceTest {
         then(gateway).shouldHaveNoMoreInteractions();
     }
 
-    // Integration test -- no mocks
-    @Test
-    void testAstroData_RealGateway() {
-        service = new AstroService(new AstroGateway());
-        Map<String, Long> astroData = service.getAstroData();
-        astroData.forEach((craft, number) -> {
-            System.out.printf("%d astronauts aboard %s%n", number, craft);
-            assertAll(
-                    () -> assertThat(number).isPositive(),
-                    () -> assertThat(craft).isNotBlank()
-            );
-        });
-    }
 
     // Own mock class -- MockGateway
     @Test

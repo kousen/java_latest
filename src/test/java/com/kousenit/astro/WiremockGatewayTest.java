@@ -44,27 +44,27 @@ public class WiremockGatewayTest {
         AstroGateway gateway = new AstroGateway(info.getHttpBaseUrl() + "/astros.json");
         Result<AstroResponse> result = gateway.getResult();
         switch (result) {
-            case Success<AstroResponse> astroSuccess -> {
-                AstroResponse data = astroSuccess.data();
-                System.out.println(result);
-                assertAll(
-                        () -> assertTrue(data.number() >= 0),
-                        () -> assertEquals(data.people().size(), data.number()),
-                        () -> assertEquals("success", data.message()),
-                        () -> assertAll(
-                                () -> assertThat(data.people())
-                                        .extracting("craft")
-                                        .contains("Discovery One"),
-                                () -> assertThat(data.people())
-                                        .extracting("name")
-                                        .containsExactly("David Bowman", "Frank Poole", "HAL 9000"))
-                );
-            }
+            case Success<AstroResponse> astroSuccess -> checkSuccess(astroSuccess);
             case Failure<AstroResponse> astroFailure -> assertNotNull(astroFailure.exception());
-
         }
 
         verify(getRequestedFor(urlPathEqualTo("/astros.json"))
                 .withHeader("Accept", equalTo("application/json")));
+    }
+
+    private static void checkSuccess(Success<AstroResponse> astroSuccess) {
+        AstroResponse data = astroSuccess.data();
+        assertAll(
+                () -> assertTrue(data.number() >= 0),
+                () -> assertEquals(data.people().size(), data.number()),
+                () -> assertEquals("success", data.message()),
+                () -> assertAll(
+                        () -> assertThat(data.people())
+                                .extracting("craft")
+                                .contains("Discovery One"),
+                        () -> assertThat(data.people())
+                                .extracting("name")
+                                .containsExactly("David Bowman", "Frank Poole", "HAL 9000"))
+        );
     }
 }
