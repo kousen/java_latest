@@ -1,11 +1,11 @@
-package com.kousenit.astro;
+package com.kousenit.dataorientedprogramming;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.kousenit.astro.AstroDataService.Result;
+import static com.kousenit.dataorientedprogramming.AstroDataService.Result;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class AstroDataServiceTest {

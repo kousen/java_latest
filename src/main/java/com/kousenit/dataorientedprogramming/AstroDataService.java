@@ -1,4 +1,4 @@
-package com.kousenit.astro;
+package com.kousenit.dataorientedprogramming;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

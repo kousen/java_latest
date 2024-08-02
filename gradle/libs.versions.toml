@@ -2,7 +2,7 @@
 assertj = "3.26.3"
 gson = "2.11.0"
 jackson = "2.17.2"
-junit = "5.11.0-M2"
+junit = "5.11.0-RC1"
 mockito = "5.12.0"
 moshi = "1.15.1"
 slf4j = "2.1.0-alpha1"
