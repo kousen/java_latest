@@ -11,8 +11,7 @@ class UserServiceTest {
     @Test
     void testGetPersonInfo() {
         Person user = new User(1, "John Doe", "john@example.com");
-        Person admin = new Admin(2, "Jane Smith",
-                "jane@example.com", "ALL");
+        Person admin = new Admin(2, "Jane Smith", "jane@example.com", "ALL");
 
         assertAll(
                 () -> assertThat(UserService.getPersonInfo(user))

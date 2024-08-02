@@ -4,10 +4,10 @@ import static com.kousenit.dataorientedprogramming.UserRecords.*;
 
 public class UserService {
     public static String getPersonInfo(Person person) {
+        // Exhaustive switch expression because Person is sealed
         return switch (person) {
             case User user -> "User: %s (%s)".formatted(user.name(), user.email());
-            case Admin admin ->
-                    "Admin: %s (%s) with permissions: %s"
+            case Admin admin -> "Admin: %s (%s) with permissions: %s"
                             .formatted(admin.name(), admin.email(), admin.permissions());
         };
     }
