@@ -35,6 +35,9 @@ public class AstroGateway implements Gateway<AstroResponse> {
             HttpResponse<String> httpResponse =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
             System.out.println(httpResponse.statusCode());
+            if (httpResponse.statusCode() != 200) {
+                return new Failure<>(new RuntimeException("HTTP error: " + httpResponse.statusCode()));
+            }
             return new Success<>(
                     objectMapper.readValue(httpResponse.body(), AstroResponse.class));
         } catch (IOException | InterruptedException e) {
