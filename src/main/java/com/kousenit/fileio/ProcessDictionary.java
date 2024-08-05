@@ -37,7 +37,7 @@ public class ProcessDictionary {
                     )
                     .limit(10)
                     //.forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
-                    .forEach(w -> System.out.printf("%s (%d)%n".formatted(w, w.length())));
+                    .forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
                 // .forEach(w -> logger.info(() -> "the word is " + w + " and its length is " + w.length()));
         } catch (IOException e) {
             throw new RuntimeException(e);
