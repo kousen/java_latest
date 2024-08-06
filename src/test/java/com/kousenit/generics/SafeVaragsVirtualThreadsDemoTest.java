@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.arrayContaining;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class SafeVaragsDemoTest {
+class SafeVaragsVirtualThreadsDemoTest {
     private final SafeVaragsDemo demo = new SafeVaragsDemo();
     private final LocalDate now = LocalDate.now();
 

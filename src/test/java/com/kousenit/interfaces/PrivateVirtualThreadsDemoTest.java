@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PrivateDemoTest {
+public class PrivateVirtualThreadsDemoTest {
     private final PrivateDemo demo = new PrivateDemo();
 
     @Test

@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 
 // Example from: https://openjdk.org/jeps/444 (Virtual Threads)
-public class Demo {
+public class VirtualThreadsDemo {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
