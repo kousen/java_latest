@@ -13,10 +13,6 @@ import java.net.http.HttpResponse;
 public class ISSPosition {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        // Records:
-        // - are immutable
-        // - autogenerate equals, hashCode, and toString
-        // - do NOT have a default constructor
         String url = "http://api.open-notify.org/iss-now.json";
         try (HttpClient client = HttpClient.newHttpClient()) {
             HttpRequest request = HttpRequest.newBuilder()
@@ -41,14 +37,6 @@ public class ISSPosition {
 //                    issResponse.issPosition().longitude());
         }
     }
-
-//    @Nullable
-//    private static ISSResponse getResponseMoshi(HttpResponse<String> response) throws IOException {
-//        return new Moshi.Builder()
-//                .build()
-//                .adapter(ISSResponse.class)
-//                .fromJson(response.body());
-//    }
 
     private static ISSResponse getResponseGson(HttpResponse<String> response) {
         Gson gson = new GsonBuilder()

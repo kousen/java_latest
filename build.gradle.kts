@@ -26,7 +26,6 @@ repositories {
 dependencies {
     // JSON parsers
     implementation(libs.gson)
-    implementation(libs.bundles.moshi)
     implementation(libs.bundles.jackson)
 
     // Logging
