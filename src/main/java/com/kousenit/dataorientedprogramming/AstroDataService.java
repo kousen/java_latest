@@ -33,13 +33,15 @@ public class AstroDataService {
                     .header("Accept", "application/json")
                     .build();
 
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response =
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 return new Result.Failure("HTTP error: " + response.statusCode());
             }
 
-            AstroResponse astroResponse = objectMapper.readValue(response.body(), AstroResponse.class);
+            AstroResponse astroResponse =
+                    objectMapper.readValue(response.body(), AstroResponse.class);
 
             Map<String, List<String>> astronautsByCraft = groupAstronautsByCraft(astroResponse);
 
