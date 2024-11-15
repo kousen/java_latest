@@ -95,9 +95,9 @@ public class VarTypeTest {
 
     @Test
     void nullProblem() {
+        // var y = null;
         var z = (String) null;
         var x = (Void) null;
-        // var y = null;
         System.out.printf("%s, %s%n", x, z);
     }
 
