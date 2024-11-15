@@ -70,7 +70,7 @@ class AstroClientTest {
         AstroResponse response = client.getAstroResponse();
         System.out.println(response);
         assertAll(
-                () -> assertEquals(response.message(), "success"),
+                () -> assertEquals("success", response.message()),
                 () -> assertTrue(response.number() >= 0),
                 () -> assertEquals(response.people().size(), response.number())
         );
