@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 @SuppressWarnings({"UnnecessaryBoxing", "ConstantConditions", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
 public class VarTypeTest {
@@ -117,10 +118,14 @@ public class VarTypeTest {
     @Test
     void dontDoThis() {
         // Can't use "var" as a type name or a field type
-        record Var(String var) { }
+        record Var(String var) {
+            @SuppressWarnings("SameParameterValue")
+            // static factory method
+            static Var var(String var) { return new Var(var); }
+        }
 
-        // So silliest thing I can manage is:
-        var var =  new Var("var");
+        // Silliest thing I can manage is:
+        var var =  Var.var("var");
         assertEquals("var", var.var());
     }
 }
