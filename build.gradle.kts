@@ -41,7 +41,8 @@ dependencies {
 
     // Make vulnerability issues go away
     testImplementation("commons-io:commons-io:2.17.0")
-    // testImplementation("org.eclipse.jetty:jetty-http:12.0.15")
+//    testImplementation("org.eclipse.jetty:jetty-http:12.0.15")
+//    testImplementation("org.eclipse.jetty:jetty-server:12.0.15")
 }
 
 //tasks.withType<JavaCompile>().configureEach {

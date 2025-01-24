@@ -1,11 +1,11 @@
 [versions]
-assertj = "3.26.3"
+assertj = "3.27.3"
 gson = "2.11.0"
-jackson = "2.18.1"
-junit = "5.11.3"
-mockito = "5.14.2"
+jackson = "2.18.2"
+junit = "5.11.4"
+mockito = "5.15.2"
 slf4j = "2.1.0-alpha1"
-wiremock = "3.9.2"
+wiremock = "3.10.0"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -30,4 +30,4 @@ mockito = [
 
 [plugins]
 version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.5"
-versions = "com.github.ben-manes.versions:0.51.0"
+versions = "com.github.ben-manes.versions:0.52.0"
