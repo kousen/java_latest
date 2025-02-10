@@ -9,7 +9,7 @@ import static java.util.Map.ofEntries;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"DataFlowIssue"})
-public class ImmutableMapTest {
+public class CollectionsTest {
 
     @Test
     void setOf() {
