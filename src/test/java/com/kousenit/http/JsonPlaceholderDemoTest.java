@@ -8,7 +8,6 @@ class JsonPlaceholderDemoTest {
 
     private final JsonPlaceholderDemo demo = new JsonPlaceholderDemo();
 
-
     @Test
     void getPost() {
         BlogPost post1 = demo.getPost(1);
@@ -26,5 +25,14 @@ class JsonPlaceholderDemoTest {
         System.out.println("User ID: " + newPost.userId());
         System.out.println("Title: " + newPost.title());
         System.out.println("Body: " + newPost.body());
+    }
+
+    @Test
+    void getPostAsync() {
+        BlogPost post2 = demo.getPostAsync(2);
+        System.out.println("Id: " + post2.id());
+        System.out.println("User ID: " + post2.userId());
+        System.out.println("Title: " + post2.title());
+        System.out.println("Body: " + post2.body());
     }
 }

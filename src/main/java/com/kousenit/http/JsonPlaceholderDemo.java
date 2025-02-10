@@ -33,6 +33,20 @@ public class JsonPlaceholderDemo {
         }
     }
 
+    public BlogPost getPostAsync(int id) {
+        try (var client = HttpClient.newHttpClient()) {
+            var request = HttpRequest.newBuilder()
+                    .uri(URI.create("%s/posts/%d".formatted(BASE_URL, id)))
+                    .header("Accept", "application/json")
+                    .GET()
+                    .build();
+            return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenApply(body -> gson.fromJson(body, BlogPost.class))
+                    .join();
+        }
+    }
+
     public BlogPost addPost(BlogPost post) {
         try (var client = HttpClient.newHttpClient()) {
             var request = HttpRequest.newBuilder()
