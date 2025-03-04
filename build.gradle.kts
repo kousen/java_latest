@@ -2,6 +2,7 @@ plugins {
     java
     application
     eclipse
+    jacoco
     alias(libs.plugins.versions)
     alias(libs.plugins.version.catalog.update)
 }
@@ -53,6 +54,17 @@ tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     // jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    // Remove dependency on test so we can run report even with test failures
+    // dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+    }
 }
 
 tasks.withType<JavaExec>().configureEach {
