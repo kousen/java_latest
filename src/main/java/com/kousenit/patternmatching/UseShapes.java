@@ -9,8 +9,8 @@ public class UseShapes {
             return c.getRadius() * c.getRadius() * Math.PI;
         } else if (shape instanceof Circle c) {
             throw new IllegalArgumentException("Circle %s must have non-negative radius".formatted(c));
-        } else if (shape instanceof Rectangle rect) {
-            return rect.base() * rect.height();
+        } else if (shape instanceof Rectangle(double base, double height)) {
+            return base * height;
         }
         throw new IllegalArgumentException("Only circles, squares, and rectangles work");
     }

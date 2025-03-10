@@ -37,8 +37,8 @@ public class ProcessDictionary {
                     )
                     .limit(10)
                     //.forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
-                    .forEach(w -> System.out.printf("%s (%d)%n", w, w.length()));
-                // .forEach(w -> logger.info(() -> "the word is " + w + " and its length is " + w.length()));
+                    .forEach(w -> System.out.println(w + " (" + w.length() + ")"));
+            // .forEach(w -> logger.info(() -> "the word is " + w + " and its length is " + w.length()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -72,14 +72,14 @@ public class ProcessDictionary {
         try (Stream<String> lines = Files.lines(dictionary)) {
             var map = lines.filter(s -> s.length() > 20)
                     .collect(Collectors.teeing(
-                                groupingBy(String::length, counting()), // Map<Integer,Long>
-                                groupingBy(String::length),             // Map<Integer,List<String>>
-                                (map1, map2) -> map1.entrySet().stream().collect(
-                                        Collectors.toMap(
-                                                Map.Entry::getKey,  // length of word
-                                                e -> Map.of("count", e.getValue(),
-                                                        "words", map2.get(e.getKey())))))
-                            );
+                            groupingBy(String::length, counting()), // Map<Integer,Long>
+                            groupingBy(String::length),             // Map<Integer,List<String>>
+                            (map1, map2) -> map1.entrySet().stream().collect(
+                                    Collectors.toMap(
+                                            Map.Entry::getKey,  // length of word
+                                            e -> Map.of("count", e.getValue(),
+                                                    "words", map2.get(e.getKey())))))
+                    );
             map.forEach((k, v) -> System.out.printf("%d: %s%n", k, v));
         } catch (IOException e) {
             throw new RuntimeException(e);

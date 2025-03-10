@@ -28,10 +28,10 @@ public class PatternTest {
             return s.getSide() * s.getSide();
         } else if (shape instanceof Circle c && c.getRadius() > 0) {
             return c.getRadius() * c.getRadius() * Math.PI;
-        } else if (shape instanceof Triangle t) {
-            return 0.5 * t.base * t.height;
-        } else if (shape instanceof Rectangle r) {
-            return r.length * r.width;
+        } else if (shape instanceof Triangle(double base, double height)) {
+            return 0.5 * base * height;
+        } else if (shape instanceof Rectangle(double length, double width)) {
+            return length * width;
         } else {
             throw new IllegalArgumentException("Not supported");
         }
