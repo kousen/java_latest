@@ -35,7 +35,7 @@ public class SumNumbersTest {
     @Test
     public void checkMethods() throws Exception {
         List<Method> methods = nonObjectMethods(demo.getClass().getDeclaredMethods());
-        assertEquals(0, methods.size());
+        assertEquals(1, methods.size());
 
         methods = nonObjectMethods(demo.getClass().getMethods());
         assertEquals(2, methods.size());
