@@ -1760,6 +1760,26 @@ public class MovieSystemTest {
    - Use intermediate variables if needed
    - Refactor once working
 
+## Solutions
+
+Complete solutions for all exercises are available in the `exercises.solutions` package:
+
+```bash
+# Run solution tests to see working implementations
+./gradlew test --tests "exercises.solutions.*"
+
+# Compare your solutions with the provided ones
+# Navigate to src/test/java/exercises/solutions/ in your IDE
+```
+
+The solution files mirror the exercise structure:
+- `exercises.solutions.LambdaBasicsTest`
+- `exercises.solutions.StreamBasicsTest`
+- `exercises.solutions.CollectorsTest`
+- And so on...
+
+Use these as reference implementations and to verify your understanding of the concepts.
+
 ## Additional Resources
 
 - **Repository Examples**: Study the main source code in `src/main/java`
@@ -1769,19 +1789,3 @@ public class MovieSystemTest {
   - [Official Java Docs](https://docs.oracle.com/en/java/)
   - [JEP List](https://openjdk.org/jeps/)
   - [Java Tutorials](https://dev.java/learn/)
-
-## Workshop Schedule Suggestion
-
-### Day 1: Foundations (Java 8-11)
-- Morning: Lambdas, Streams, Collectors
-- Afternoon: Optional, CompletableFuture, HTTP Client
-
-### Day 2: Language Evolution (Java 12-17)
-- Morning: Records, Pattern Matching, Switch Expressions
-- Afternoon: Sealed Classes, Text Blocks
-
-### Day 3: Modern Java (Java 18+)
-- Morning: Virtual Threads, Pattern Matching in Switch
-- Afternoon: Data-Oriented Programming, Capstone Project
-
-Remember: The goal is to learn by doing. Don't worry about perfect solutions - focus on understanding the concepts and practicing the syntax. Happy coding!

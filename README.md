@@ -7,6 +7,7 @@ Comprehensive examples and demonstrations of Java features from Java 8 through J
 - **Practical Code Examples** - Real-world demonstrations of modern Java features
 - **Comprehensive Test Suite** - 160+ tests covering all major functionality  
 - **Slidev Presentation** - Complete slide deck covering Java evolution (`slides.md`)
+- **Workshop Exercises** - Hands-on labs with complete solutions (`workshop-exercises.md`)
 - **Data-Oriented Programming** - Examples of records, sealed classes, and pattern matching working together
 
 ## 🎯 Key Features Covered
@@ -73,20 +74,30 @@ cd java_latest
 The repository includes a comprehensive Slidev presentation:
 
 ```bash
-# Install Slidev (if not already installed)
-npm install -g @slidev/cli
+# Install dependencies for PDF export
+npm install
 
 # Start the presentation
-slidev slides.md
+npx slidev slides.md
+
+# Export to PDF
+npx slidev export slides.md --format pdf
 ```
 
 ## 🎓 Learning Path
 
+### For Self-Study
 1. **Start with Java 8** - `ProcessDictionaryV2.java` showcases functional programming
 2. **Explore Records** - See `Person.java`, `Customer.java` for data classes
 3. **Pattern Matching** - Check `UseShapes.java` for modern control flow
 4. **Virtual Threads** - `VirtualThreadsDemo.java` for scalable concurrency
 5. **Data-Oriented Programming** - Combine records, sealed classes, and pattern matching
+
+### For Workshops
+1. **Review the slides** - `slides.md` provides comprehensive coverage
+2. **Work through exercises** - `workshop-exercises.md` contains hands-on labs
+3. **Check solutions** - Complete implementations in `exercises.solutions` package
+4. **Practice with examples** - Explore the main codebase for real-world patterns
 
 ## 📚 Key Examples
 
@@ -103,6 +114,9 @@ slidev slides.md
 
 # Run tests for a specific package
 ./gradlew test --tests "*interfaces*"
+
+# Run workshop solution tests
+./gradlew test --tests "exercises.solutions.*"
 
 # Run with coverage
 ./gradlew test jacocoTestReport
