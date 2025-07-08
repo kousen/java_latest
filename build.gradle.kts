@@ -7,9 +7,13 @@ plugins {
     alias(libs.plugins.version.catalog.update)
 }
 
+jacoco {
+    toolVersion = "0.8.13"
+}
+
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(24))
     }
 }
 
@@ -46,13 +50,8 @@ dependencies {
 //    testImplementation("org.eclipse.jetty:jetty-server:12.0.15")
 }
 
-//tasks.withType<JavaCompile>().configureEach {
-//    options.compilerArgs.add("--enable-preview")
-//}
-
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    // jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     finalizedBy(tasks.jacocoTestReport)
 }
@@ -68,6 +67,5 @@ tasks.jacocoTestReport {
 }
 
 tasks.withType<JavaExec>().configureEach {
-    // jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
 }
