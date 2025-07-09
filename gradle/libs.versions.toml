@@ -6,6 +6,7 @@ junit = "5.13.3"
 mockito = "5.18.0"
 slf4j = "2.0.17"
 wiremock = "3.13.1"
+wiremock-jetty12 = "3.13.1"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
@@ -17,6 +18,7 @@ mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
 wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
+wiremock-jetty12 = { module = "org.wiremock:wiremock-jetty12", version.ref = "wiremock-jetty12" }
 
 [bundles]
 jackson = [

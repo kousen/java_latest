@@ -41,13 +41,12 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(libs.assertj)
     testImplementation(libs.bundles.mockito)
-    testImplementation(libs.wiremock)
+    testImplementation(libs.wiremock.jetty12)
     testImplementation("com.jayway.jsonpath:json-path:2.9.0")
 
     // Make vulnerability issues go away
     testImplementation("commons-io:commons-io:2.17.0")
-//    testImplementation("org.eclipse.jetty:jetty-http:12.0.15")
-//    testImplementation("org.eclipse.jetty:jetty-server:12.0.15")
+    // Jetty 12 is now included via wiremock-jetty12
 }
 
 tasks.withType<Test>().configureEach {
