@@ -31,7 +31,7 @@ public class StreamEnhancementsTest {
         assertEquals(List.of(7, 8, 9, 10), result);
     }
     
-    /** @noinspection UnusedAssignment*/
+    /** */
     @Test
     public void ofNullableExample() {
         String value = null;

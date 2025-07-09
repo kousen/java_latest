@@ -10,26 +10,7 @@ import static java.util.stream.Collectors.*;
 
 public class GroupByTasks {
     public static void main(String[] args) {
-        Developer venkat = new Developer("Venkat");
-        Developer daniel = new Developer("Daniel");
-        Developer brian = new Developer("Brian");
-        Developer matt = new Developer("Matt");
-        Developer nate = new Developer("Nate");
-        Developer craig = new Developer("Craig");
-        Developer ken = new Developer("Ken");
-
-        Task java = new Task("Java stuff", 100);
-        Task altJvm = new Task("Groovy/Kotlin/Scala/Clojure", 50);
-        Task javaScript = new Task("JavaScript (sorry)", 100);
-        Task spring = new Task("Spring", 50);
-        Task jpa = new Task("JPA/Hibernate", 20);
-
-        java.addDevelopers(venkat, daniel, brian, ken);
-        javaScript.addDevelopers(venkat, nate);
-        spring.addDevelopers(craig, matt, nate, ken);
-        altJvm.addDevelopers(venkat, daniel, ken);
-
-        List<Task> tasks = Arrays.asList(java, altJvm, javaScript, spring, jpa);
+        List<Task> tasks = getTasks();
 
         // No filtering
         Map<Long, List<Task>> taskMap = tasks.stream()
@@ -68,6 +49,29 @@ public class GroupByTasks {
         System.out.println();
         task2setdevs.forEach((name, devSet) -> System.out.printf("%30s: %s%n", name, devSet));
 
+    }
+
+    private static List<Task> getTasks() {
+        Developer venkat = new Developer("Venkat");
+        Developer daniel = new Developer("Daniel");
+        Developer brian = new Developer("Brian");
+        Developer matt = new Developer("Matt");
+        Developer nate = new Developer("Nate");
+        Developer craig = new Developer("Craig");
+        Developer ken = new Developer("Ken");
+
+        Task java = new Task("Java stuff", 100);
+        Task altJvm = new Task("Groovy/Kotlin/Scala/Clojure", 50);
+        Task javaScript = new Task("JavaScript (sorry)", 100);
+        Task spring = new Task("Spring", 50);
+        Task jpa = new Task("JPA/Hibernate", 20);
+
+        java.addDevelopers(venkat, daniel, brian, ken);
+        javaScript.addDevelopers(venkat, nate);
+        spring.addDevelopers(craig, matt, nate, ken);
+        altJvm.addDevelopers(venkat, daniel, ken);
+
+        return Arrays.asList(java, altJvm, javaScript, spring, jpa);
     }
 
     private static void printMap(String title, Map<Long, List<Task>> taskMap) {

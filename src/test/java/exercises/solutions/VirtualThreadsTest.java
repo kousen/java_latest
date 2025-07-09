@@ -2,8 +2,7 @@ package exercises.solutions;
 
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.*;
-import java.util.stream.*;
-import java.time.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VirtualThreadsTest {
@@ -13,9 +12,7 @@ public class VirtualThreadsTest {
         // Create and start a virtual thread
         Thread vThread = Thread.ofVirtual()
             .name("my-virtual-thread")
-            .start(() -> {
-                System.out.println("Running in: " + Thread.currentThread());
-            });
+            .start(() -> System.out.println("Running in: " + Thread.currentThread()));
         
         vThread.join();
         assertTrue(vThread.isVirtual());

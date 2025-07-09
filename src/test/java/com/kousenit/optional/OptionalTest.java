@@ -4,10 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -71,7 +69,7 @@ class OptionalTest {
         Collection<String> names = dao.findAllById(0, 1, 2, 999)
                 .stream()
                 .map(Customer::getName)
-                .collect(Collectors.toList());
+                .toList();
         
         names.forEach(System.out::println);
         
@@ -93,7 +91,7 @@ class OptionalTest {
         Collection<String> names = dao.findAllByIdBetter(0, 1, 2, 999)
                 .stream()
                 .map(Customer::getName)
-                .collect(Collectors.toList());
+                .toList();
         
         names.forEach(System.out::println);
         

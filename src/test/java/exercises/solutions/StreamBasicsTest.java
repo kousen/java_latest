@@ -2,7 +2,7 @@ package exercises.solutions;
 
 import org.junit.jupiter.api.Test;
 import java.util.*;
-import java.util.stream.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StreamBasicsTest {

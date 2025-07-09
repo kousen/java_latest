@@ -68,9 +68,7 @@ public class OptionalTest {
         String result2 = empty.orElseGet(() -> "Generated Default");
         
         // Throw exception if empty
-        assertThrows(NoSuchElementException.class, () -> {
-            empty.orElseThrow();
-        });
+        assertThrows(NoSuchElementException.class, () -> empty.orElseThrow());
         
         assertEquals("Default", result1);
         assertEquals("Generated Default", result2);

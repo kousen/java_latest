@@ -82,8 +82,8 @@ public class DataOrientedTest {
                 Event::getClass,
                 Collectors.counting()
             ));
-        
-        assertTrue(counts.size() > 0);
+
+        assertFalse(counts.isEmpty());
     }
     
     private List<Event> createMixedEvents() {

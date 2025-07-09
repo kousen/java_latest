@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,21 +17,7 @@ class CollectorsTest {
     private Department management;
     private Department sales;
     private List<Employee> employees;
-    
-    private Developer venkat;
-    private Developer daniel;
-    private Developer brian;
-    private Developer matt;
-    private Developer nate;
-    private Developer craig;
-    private Developer ken;
-    
-    private Task java;
-    private Task altJvm;
-    private Task javaScript;
-    private Task spring;
-    private Task jpa;
-    
+
     private List<Task> tasks;
 
     @BeforeEach
@@ -49,19 +34,19 @@ class CollectorsTest {
                 new Employee("Nate", it));
         
         // Set up developers and tasks
-        venkat = new Developer("Venkat");
-        daniel = new Developer("Daniel");
-        brian = new Developer("Brian");
-        matt = new Developer("Matt");
-        nate = new Developer("Nate");
-        craig = new Developer("Craig");
-        ken = new Developer("Ken");
-        
-        java = new Task("Java stuff", 100);
-        altJvm = new Task("Groovy/Kotlin/Scala/Clojure", 50);
-        javaScript = new Task("JavaScript (sorry)", 100);
-        spring = new Task("Spring", 50);
-        jpa = new Task("JPA/Hibernate", 20);
+        Developer venkat = new Developer("Venkat");
+        Developer daniel = new Developer("Daniel");
+        Developer brian = new Developer("Brian");
+        Developer matt = new Developer("Matt");
+        Developer nate = new Developer("Nate");
+        Developer craig = new Developer("Craig");
+        Developer ken = new Developer("Ken");
+
+        Task java = new Task("Java stuff", 100);
+        Task altJvm = new Task("Groovy/Kotlin/Scala/Clojure", 50);
+        Task javaScript = new Task("JavaScript (sorry)", 100);
+        Task spring = new Task("Spring", 50);
+        Task jpa = new Task("JPA/Hibernate", 20);
         
         java.addDevelopers(venkat, daniel, brian, ken);
         javaScript.addDevelopers(venkat, nate);

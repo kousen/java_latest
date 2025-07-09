@@ -20,7 +20,7 @@ class PointTest {
                 () -> assertSame(p1, p3, "two references to same object"),
                 () -> assertNotSame(p2, p3, "equal but different points"),
                 () -> assertNotEquals(p1, p4, "not equal"),
-                () -> assertNotEquals(p1, p5)
+                () -> assertNotEquals(p5, p1)
         );
     }
 }
