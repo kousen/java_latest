@@ -569,9 +569,10 @@ public class HttpClientTest {
     private final HttpClient client = HttpClient.newHttpClient();
     
     @Test
-    public void synchronousGet() {
-        // TODO: Create GET request to httpbin.org/get
+    public void synchronousGet() throws Exception {
+        // TODO: Create GET request to JSONPlaceholder
         // HttpRequest request = HttpRequest.newBuilder()
+        //     .uri(URI.create("https://jsonplaceholder.typicode.com/posts/1"))
         //     ...
         //     .build();
         
@@ -579,13 +580,17 @@ public class HttpClientTest {
         // HttpResponse<String> response = client.send(...);
         
         // assertEquals(200, response.statusCode());
-        // assertTrue(response.body().contains("httpbin.org"));
+        // assertTrue(response.body().contains("userId"));
+        // assertTrue(response.body().contains("title"));
     }
     
     @Test
-    public void asynchronousGet() {
-        // TODO: Create async GET request
-        // HttpRequest request = ...;
+    public void asynchronousGet() throws Exception {
+        // TODO: Create async GET request for user data
+        // HttpRequest request = HttpRequest.newBuilder()
+        //     .uri(URI.create("https://jsonplaceholder.typicode.com/users/1"))
+        //     ...
+        //     .build();
         
         // TODO: Send async and handle response
         // CompletableFuture<String> future = client
@@ -593,28 +598,31 @@ public class HttpClientTest {
         //     .thenApply(...);
         
         // String body = future.get(5, TimeUnit.SECONDS);
-        // assertTrue(body.contains("httpbin.org"));
+        // assertTrue(body.contains("Leanne Graham"));
+        // assertTrue(body.contains("Bret"));
     }
     
     @Test
-    public void postWithJson() {
+    public void postWithJson() throws Exception {
         String json = """
             {
-                "name": "Java",
-                "version": 21
+                "title": "Learning Modern Java",
+                "body": "Java 21 has many great features",
+                "userId": 1
             }
             """;
         
         // TODO: Create POST request with JSON body
         // HttpRequest request = HttpRequest.newBuilder()
-        //     .uri(URI.create("https://httpbin.org/post"))
+        //     .uri(URI.create("https://jsonplaceholder.typicode.com/posts"))
         //     .header("Content-Type", "application/json")
         //     ...
         //     .build();
         
         // HttpResponse<String> response = client.send(...);
-        // assertEquals(200, response.statusCode());
-        // assertTrue(response.body().contains("Java"));
+        // assertEquals(201, response.statusCode()); // 201 Created
+        // assertTrue(response.body().contains("Learning Modern Java"));
+        // assertTrue(response.body().contains("id")); // JSONPlaceholder adds an ID
     }
     
     @Test
