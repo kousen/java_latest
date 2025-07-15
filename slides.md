@@ -755,6 +755,63 @@ List<String> oldWay = stream.collect(Collectors.toList());
 
 ---
 
+# Stream Gatherers (Java 24)
+
+**Custom intermediate operations for streams**
+
+```java
+// Built-in gatherers
+List<List<Integer>> windows = numbers.stream()
+    .gather(Gatherers.windowFixed(3))
+    .toList();
+
+List<Integer> runningSum = numbers.stream()
+    .gather(Gatherers.scan(() -> 0, Integer::sum))
+    .toList();
+```
+
+---
+
+# Stream Gatherers: Built-in Operations
+
+```java
+List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+// Fixed-size windows
+List<List<Integer>> fixed = numbers.stream()
+    .gather(Gatherers.windowFixed(3))
+    .toList(); // [[1,2,3], [4,5,6], [7,8,9]]
+
+// Sliding windows  
+List<List<Integer>> sliding = numbers.stream()
+    .gather(Gatherers.windowSliding(3))
+    .toList(); // [[1,2,3], [2,3,4], [3,4,5], ...]
+```
+
+---
+
+# Stream Gatherers: Custom Implementation
+
+```java
+// Custom gatherer for consecutive pairs
+Gatherer<Integer, ArrayList<Integer>, Pair<Integer, Integer>> pairwise = 
+    Gatherer.ofSequential(
+        ArrayList::new,
+        Gatherer.Integrator.ofGreedy((state, element, downstream) -> {
+            state.add(element);
+            if (state.size() == 2) {
+                boolean result = downstream.push(
+                    new Pair<>(state.get(0), state.get(1)));
+                state.clear();
+                return result;
+            }
+            return true;
+        })
+    );
+```
+
+---
+
 # Parallel Streams (Java 8)
 
 ```java
