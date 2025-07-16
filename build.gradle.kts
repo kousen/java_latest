@@ -49,9 +49,13 @@ dependencies {
     // Jetty 12 is now included via wiremock-jetty12
 }
 
+tasks.withType<JavaCompile>().configureEach {
+    options.compilerArgs.add("--enable-preview")
+}
+
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off", "--enable-preview")
     finalizedBy(tasks.jacocoTestReport)
 }
 
@@ -66,5 +70,5 @@ tasks.jacocoTestReport {
 }
 
 tasks.withType<JavaExec>().configureEach {
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off", "--enable-preview")
 }
