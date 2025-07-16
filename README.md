@@ -6,7 +6,8 @@ Comprehensive examples and demonstrations of Java features from Java 8 through J
 
 - **Practical Code Examples** - Real-world demonstrations of modern Java features
 - **Comprehensive Test Suite** - 160+ tests covering all major functionality  
-- **Slidev Presentation** - Complete slide deck covering Java evolution (`slides.md`)
+- **Workshop Presentation** - Complete slide deck covering Java evolution (`slides.md`)
+- **Java Tier List Presentation** - Feature ranking and discussion format (`slides-java-tier-list.md`)
 - **Workshop Exercises** - Hands-on labs with complete solutions (`workshop-exercises.md`)
 - **Data-Oriented Programming** - Examples of records, sealed classes, and pattern matching working together
 
