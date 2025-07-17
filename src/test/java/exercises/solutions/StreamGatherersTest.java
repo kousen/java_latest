@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Gatherer;
 import java.util.stream.Gatherers;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -93,7 +92,7 @@ public class StreamGatherersTest {
         Gatherer<Transaction, ArrayList<Transaction>, List<Transaction>> groupConsecutiveByCategory = Gatherer.ofSequential(
                 ArrayList::new,
                 Gatherer.Integrator.ofGreedy((state, element, downstream) -> {
-                    if (state.isEmpty() || state.get(0).category().equals(element.category())) {
+                    if (state.isEmpty() || state.getFirst().category().equals(element.category())) {
                         state.add(element);
                         return true;
                     } else {

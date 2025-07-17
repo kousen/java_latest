@@ -1,7 +1,7 @@
 package com.kousenit.astro;
 
 public sealed interface Result<T>
-    permits Success, Failure { }
+        permits Success, Failure { }
 
 record Success<T>(T data) implements Result<T> { }
 
