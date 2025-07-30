@@ -2,7 +2,6 @@ package com.kousenit.virtualthreads;
 
 import java.util.List;
 import java.util.concurrent.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CustomerService {
@@ -40,7 +39,7 @@ public class CustomerService {
         CustomerService service = new CustomerService();
         List<Integer> customerIds = IntStream.rangeClosed(1, 5)
                 .boxed()
-                .collect(Collectors.toList());
+                .toList();
         List<Customer> customers = service.fetchCustomerData(customerIds);
         customers.forEach(System.out::println);
     }

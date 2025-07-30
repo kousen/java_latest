@@ -32,14 +32,14 @@ public class CustomerDAO {
                 .map(this::findById)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public Collection<Customer> findAllByIdBetter(Integer... ids) {
         return Arrays.stream(ids)
                 .map(this::findById)
                 .flatMap(Optional::stream)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public Optional<Customer> findByIdRemote(int id) {

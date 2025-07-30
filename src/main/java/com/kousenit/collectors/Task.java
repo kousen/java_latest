@@ -3,7 +3,6 @@ package com.kousenit.collectors;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Task {
     private String name;
@@ -33,7 +32,7 @@ public class Task {
 
     public void addDevelopers(Developer... devs) {
         developers = Arrays.stream(devs)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<Developer> getDevelopers() {

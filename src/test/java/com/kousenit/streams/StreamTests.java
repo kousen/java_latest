@@ -28,7 +28,7 @@ public class StreamTests {
         List<BigDecimal> bigDecimals =
                 Stream.iterate(BigDecimal.ZERO, bd -> bd.add(BigDecimal.ONE))
                 .limit(10)
-                .collect(Collectors.toList());
+                .toList();
 
         assertEquals(10, bigDecimals.size());
 
@@ -44,7 +44,7 @@ public class StreamTests {
     public void takeWhile() {
         List<String> strings = Stream.of("this is a list of strings".split(" "))
                 .takeWhile(s -> !s.equals("of"))
-                .collect(Collectors.toList());
+                .toList();
         List<String> correct = Arrays.asList("this", "is", "a", "list");
         assertEquals(correct, strings);
     }
@@ -53,7 +53,7 @@ public class StreamTests {
     public void dropWhile() {
         List<String> strings = Stream.of("this is a list of strings".split(" "))
                 .dropWhile(s -> !s.equals("of"))
-                .collect(Collectors.toList());
+                .toList();
         List<String> correct = Arrays.asList("of", "strings");
         assertEquals(correct, strings);
     }
@@ -65,7 +65,7 @@ public class StreamTests {
                 .boxed()
                 .sorted(Comparator.reverseOrder())
                 .takeWhile(n -> n > 90)
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println(nums);
         nums.forEach(n -> assertTrue(n > 70));
@@ -78,7 +78,7 @@ public class StreamTests {
                 .sorted()
                 .dropWhile(n -> n < 90)
                 .boxed()
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println(nums);
         nums.forEach(n -> assertTrue(n > 70));
