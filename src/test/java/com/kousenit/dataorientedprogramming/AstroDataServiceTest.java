@@ -17,9 +17,8 @@ class AstroDataServiceTest {
         Result result = processor.fetchAndProcessData();
 
         switch (result) {
-            case Result.Failure failure -> assertThat(failure.error()).contains("HTTP error");
-            case Result.Success success -> {
-                Map<String, List<String>> astronautsByCraft = success.astronautsByCraft();
+            case Result.Failure(var error) -> assertThat(error).contains("HTTP error");
+            case Result.Success(var astronautsByCraft) -> {
                 assertThat(astronautsByCraft)
                         .hasSize(2)
                         .containsKeys("ISS", "Tiangong");

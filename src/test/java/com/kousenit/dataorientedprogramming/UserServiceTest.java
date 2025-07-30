@@ -30,14 +30,18 @@ class UserServiceTest {
         Person updatedAdmin = UserService.updateEmail(admin, "jane.smith@example.com");
 
         assertAll(
-                () -> assertThat(updatedUser)
-                        .isInstanceOf(User.class)
-                        .extracting(u -> ((User) u).email())
-                        .isEqualTo("john.doe@example.com"),
-                () -> assertThat(updatedAdmin)
-                        .isInstanceOf(Admin.class)
-                        .extracting(a -> ((Admin) a).email())
-                        .isEqualTo("jane.smith@example.com")
+                () -> {
+                    assertThat(updatedUser).isInstanceOf(User.class);
+                    if (updatedUser instanceof User(var id, var name, var email)) {
+                        assertThat(email).isEqualTo("john.doe@example.com");
+                    }
+                },
+                () -> {
+                    assertThat(updatedAdmin).isInstanceOf(Admin.class);
+                    if (updatedAdmin instanceof Admin(var id, var name, var email, var permissions)) {
+                        assertThat(email).isEqualTo("jane.smith@example.com");
+                    }
+                }
                 );
     }
 }
