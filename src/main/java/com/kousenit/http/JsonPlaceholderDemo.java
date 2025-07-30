@@ -30,10 +30,10 @@ public class JsonPlaceholderDemo {
                 throw new RuntimeException("Failed to get post: " + response.body());
             }
             return gson.fromJson(response.body(), BlogPost.class);
-        } catch (IOException | InterruptedException e) {
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }
@@ -83,10 +83,10 @@ public class JsonPlaceholderDemo {
                 throw new RuntimeException("Failed to add post: " + response.body());
             }
             return gson.fromJson(response.body(), BlogPost.class);
-        } catch (IOException | InterruptedException e) {
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }

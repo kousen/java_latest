@@ -34,10 +34,10 @@ class JokeClientTest {
                     .build();
             HttpResponse<Void> response = client.send(req, HttpResponse.BodyHandlers.discarding());
             assumeTrue(response.statusCode() == 200, "ICNDB API site is down");
-        } catch (UnresolvedAddressException | IOException | InterruptedException e) {
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (UnresolvedAddressException | IOException e) {
+            assumeFalse(true, "Site is unreachable: " + e.getMessage());
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             assumeFalse(true, "Site is unreachable: " + e.getMessage());
         }
     }

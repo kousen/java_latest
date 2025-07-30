@@ -31,10 +31,10 @@ public class AstroDemo {
             System.out.println(response);
             System.out.println("There are " + response.number() + " people in space.");
             response.people().forEach(person -> System.out.println(person.name() + " is on the " + person.craft()));
-        } catch (IOException | InterruptedException e) {
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }
