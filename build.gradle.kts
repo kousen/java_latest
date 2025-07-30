@@ -5,7 +5,7 @@ plugins {
     jacoco
     alias(libs.plugins.versions)
     alias(libs.plugins.version.catalog.update)
-    id("org.sonarqube") version "4.4.1.3373"
+    id("org.sonarqube") version "6.0.1.5171"
 }
 
 jacoco {
@@ -77,7 +77,7 @@ tasks.withType<JavaExec>().configureEach {
 sonar {
     properties {
         property("sonar.projectKey", "kousen_java_latest")
-        property("sonar.organization", "kousen")
+        property("sonar.organization", "kousen-it-inc")
         property("sonar.host.url", "https://sonarcloud.io")
         
         // Disable rules that don't apply to educational/demo code

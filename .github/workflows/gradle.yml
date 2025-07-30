@@ -40,11 +40,3 @@ jobs:
         with:
             name: test-results-${{ matrix.os }}
             path: build/test-results/
-
-      # Only run SonarCloud on Ubuntu and for the main repository (not forks)
-      - name: SonarCloud Scan
-        if: matrix.os == 'ubuntu-latest' && github.repository == 'kousen/java_latest' && github.event_name != 'pull_request'
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
