@@ -47,6 +47,9 @@ public class AstroDataService {
             Map<String, List<String>> astronautsByCraft = groupAstronautsByCraft(astroResponse);
 
             return new Result.Success(astronautsByCraft);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return new Result.Failure("Error processing data: " + e.getMessage());
         } catch (Exception e) {
             return new Result.Failure("Error processing data: " + e.getMessage());
         }
