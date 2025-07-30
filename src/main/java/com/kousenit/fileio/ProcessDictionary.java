@@ -70,7 +70,7 @@ public class ProcessDictionary {
     public void teeingCollectorDoesBoth() {
         System.out.println("\nTeeing collector:");
         try (Stream<String> lines = Files.lines(dictionary)) {
-            var map = lines.filter(s -> s.length() > 20)
+            Map<Integer, Map<String, Object>> map = lines.filter(s -> s.length() > 20)
                     .collect(Collectors.teeing(
                             groupingBy(String::length, counting()), // Map<Integer,Long>
                             groupingBy(String::length),             // Map<Integer,List<String>>
