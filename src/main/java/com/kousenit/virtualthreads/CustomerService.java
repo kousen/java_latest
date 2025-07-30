@@ -27,6 +27,7 @@ public class CustomerService {
             Thread.sleep(1000);
             return new Customer(id, "Customer " + id, "customer" + id + "@example.com");
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException("Thread interrupted while fetching customer " + id, e);
         }
     }

@@ -57,6 +57,9 @@ class AstroClientTest {
                     .build();
             return HTTP_CLIENT.send(req, HttpResponse.BodyHandlers.discarding());
         } catch (IOException | InterruptedException e) {
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             throw new RuntimeException(e);
         }
     }

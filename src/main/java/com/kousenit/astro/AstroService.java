@@ -15,10 +15,10 @@ public class AstroService {
     public Map<String, Long> getAstroData() {
         var response = gateway.getResult();
 
-        // Pattern matching for switch (Java 21 feature)
+        // Pattern matching for switch with record patterns (Java 21 feature)
         return switch (response) {
-            case Success<AstroResponse> success -> extractMap(success.data());
-            case Failure<AstroResponse> failure -> throw failure.exception();
+            case Success<AstroResponse>(var data) -> extractMap(data);
+            case Failure<AstroResponse>(var exception) -> throw exception;
         };
 
     // Without pattern matching on sealed classes:

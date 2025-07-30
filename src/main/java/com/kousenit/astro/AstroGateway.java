@@ -41,6 +41,9 @@ public class AstroGateway implements Gateway<AstroResponse> {
             return new Success<>(
                     objectMapper.readValue(httpResponse.body(), AstroResponse.class));
         } catch (IOException | InterruptedException e) {
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             return new Failure<>(new RuntimeException(e));
         }
     }

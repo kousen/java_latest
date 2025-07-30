@@ -31,6 +31,9 @@ public class JsonPlaceholderDemo {
             }
             return gson.fromJson(response.body(), BlogPost.class);
         } catch (IOException | InterruptedException e) {
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             throw new RuntimeException(e);
         }
     }
@@ -81,6 +84,9 @@ public class JsonPlaceholderDemo {
             }
             return gson.fromJson(response.body(), BlogPost.class);
         } catch (IOException | InterruptedException e) {
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             throw new RuntimeException(e);
         }
     }
