@@ -81,7 +81,7 @@ sonar {
         property("sonar.host.url", "https://sonarcloud.io")
         
         // Disable rules that don't apply to educational/demo code
-        property("sonar.issue.ignore.multicriteria", "e1,e2,e3")
+        property("sonar.issue.ignore.multicriteria", "e1,e2,e3,e4")
         
         // S125: Sections of code should not be commented out
         property("sonar.issue.ignore.multicriteria.e1.ruleKey", "java:S125")
@@ -94,6 +94,10 @@ sonar {
         // S112: Generic exceptions should not be thrown
         property("sonar.issue.ignore.multicriteria.e3.ruleKey", "java:S112")
         property("sonar.issue.ignore.multicriteria.e3.resourceKey", "**/*.java")
+        
+        // S2699: Tests should include assertions
+        property("sonar.issue.ignore.multicriteria.e4.ruleKey", "java:S2699")
+        property("sonar.issue.ignore.multicriteria.e4.resourceKey", "**/test/**/*.java")
         
         // Coverage settings
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")

@@ -3,6 +3,7 @@ package com.kousenit.http;
 import org.junit.jupiter.api.Test;
 
 import static com.kousenit.http.JsonPlaceholderDemo.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class JsonPlaceholderDemoTest {
 
@@ -34,6 +35,10 @@ class JsonPlaceholderDemoTest {
         System.out.println("User ID: " + post2.userId());
         System.out.println("Title: " + post2.title());
         System.out.println("Body: " + post2.body());
+        
+        // Basic verification that we got the expected post
+        assertThat(post2.id()).isEqualTo(2);
+        assertThat(post2.title()).isNotBlank();
     }
 
     @Test
@@ -54,5 +59,10 @@ class JsonPlaceholderDemoTest {
         // Verify we got all three
         System.out.printf("Got posts with IDs: %d, %d, %d%n", 
             post1.id(), post2.id(), post3.id());
+            
+        // Verify the posts have the expected IDs
+        assertThat(post1.id()).isEqualTo(1);
+        assertThat(post2.id()).isEqualTo(2);
+        assertThat(post3.id()).isEqualTo(3);
     }
 }

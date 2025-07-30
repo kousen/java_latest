@@ -97,8 +97,14 @@ class AstroClientTest {
 
     @Test
     void getAstroResponseAsync() {
-        client.getJsonResponseAsync()
-                .thenAccept(System.out::println)
+        String response = client.getJsonResponseAsync()
+                .thenApply(json -> {
+                    System.out.println(json);
+                    return json;
+                })
                 .join();
+        
+        // Basic verification that we got a response
+        assertThat(response).isNotNull().contains("success");
     }
 }
