@@ -74,8 +74,8 @@ public class AstroDataService {
         Result result = processor.fetchAndProcessData();
 
         switch (result) {
-            case Result.Success success -> processor.printResults(success.astronautsByCraft());
-            case Result.Failure failure -> System.out.println("Error: " + failure.error());
+            case Result.Success(var astronautsByCraft) -> processor.printResults(astronautsByCraft);
+            case Result.Failure(var error) -> System.out.println("Error: " + error);
         }
     }
 }
