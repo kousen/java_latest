@@ -127,4 +127,9 @@ Originally created as separate project, went through major refactoring:
 - Maintain backward compatibility for workshop exercises
 - Keep tier list graphics updated with new feature additions
 
+### HttpClient Best Practices
+- As of Java 21, `HttpClient` implements `AutoCloseable` but should NOT be used with try-with-resources for async operations
+- All `HttpClient` instances in this codebase use `static final` fields for thread safety and proper async support
+- See `docs/httpclient-best-practices.md` for detailed explanation and migration notes
+
 This repository successfully serves multiple audiences: workshop attendees learning Java systematically, conference audiences engaging with feature rankings, and developers looking for practical Java examples.

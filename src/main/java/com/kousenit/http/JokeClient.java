@@ -12,7 +12,7 @@ import java.time.Duration;
 import static java.net.http.HttpResponse.*;
 
 public class JokeClient {
-    private final HttpClient client = HttpClient.newBuilder()
+    private static final HttpClient HTTP_CLIENT = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
             .connectTimeout(Duration.ofSeconds(2))
             .build();
@@ -28,7 +28,7 @@ public class JokeClient {
     }
 
     public String getJokeSync(String first, String last) throws IOException, InterruptedException {
-        HttpResponse<String> response = client.send(
+        HttpResponse<String> response = HTTP_CLIENT.send(
                 buildRequest(first, last),
                 BodyHandlers.ofString());
         System.out.println("Status code: " + response.statusCode());
@@ -37,7 +37,7 @@ public class JokeClient {
 
 
     public String getJokeAsync(String first, String last) {
-        String json = client.sendAsync(buildRequest(first, last),
+        String json = HTTP_CLIENT.sendAsync(buildRequest(first, last),
                         BodyHandlers.ofString())
                 .thenApply(response -> {
                     System.out.println("Status code: " + response.statusCode());

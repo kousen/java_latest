@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class AstroDataService {
     private static final String API_URL = "http://api.open-notify.org/astros.json";
+    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     // Record to represent an astronaut
@@ -27,14 +28,14 @@ public class AstroDataService {
     }
 
     public Result fetchAndProcessData() {
-        try (var client = HttpClient.newHttpClient()) {
+        try {
             var request = HttpRequest.newBuilder()
                     .uri(URI.create(API_URL))
                     .header("Accept", "application/json")
                     .build();
 
             HttpResponse<String> response =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
+                    HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 return new Result.Failure("HTTP error: " + response.statusCode());

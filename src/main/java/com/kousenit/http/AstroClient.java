@@ -11,6 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class AstroClient {
     private static final String REQUEST_URL = "http://api.open-notify.org/astros.json";
+    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
     public HttpRequest createRequest() {
         return HttpRequest.newBuilder()
@@ -21,8 +22,8 @@ public class AstroClient {
     }
 
     public HttpResponse<String> sendRequest(HttpRequest request) {
-        try (var httpClient = HttpClient.newHttpClient()) {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        try {
+            return HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -45,14 +46,12 @@ public class AstroClient {
     }
 
     public CompletableFuture<String> getJsonResponseAsync() {
-        try (HttpClient httpClient = HttpClient.newHttpClient()) {
-            return httpClient.sendAsync(createRequest(), HttpResponse.BodyHandlers.ofString())
-                    .thenApply(response -> {
-                        System.out.printf("Status code: %d%n", response.statusCode());
-                        System.out.printf("Headers: %s%n", response.headers());
-                        return response.body();
-                    });
-        }
+        return HTTP_CLIENT.sendAsync(createRequest(), HttpResponse.BodyHandlers.ofString())
+                .thenApply(response -> {
+                    System.out.printf("Status code: %d%n", response.statusCode());
+                    System.out.printf("Headers: %s%n", response.headers());
+                    return response.body();
+                });
     }
 
 }

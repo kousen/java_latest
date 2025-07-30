@@ -35,4 +35,24 @@ class JsonPlaceholderDemoTest {
         System.out.println("Title: " + post2.title());
         System.out.println("Body: " + post2.body());
     }
+
+    @Test
+    void testTrulyAsyncBehavior() throws Exception {
+        // Start multiple async requests
+        var future1 = demo.getPostTrulyAsync(1);
+        var future2 = demo.getPostTrulyAsync(2);
+        var future3 = demo.getPostTrulyAsync(3);
+        
+        // All requests are now in flight concurrently
+        System.out.println("All requests sent, waiting for responses...");
+        
+        // Wait for all to complete
+        BlogPost post1 = future1.get(5, java.util.concurrent.TimeUnit.SECONDS);
+        BlogPost post2 = future2.get(5, java.util.concurrent.TimeUnit.SECONDS);
+        BlogPost post3 = future3.get(5, java.util.concurrent.TimeUnit.SECONDS);
+        
+        // Verify we got all three
+        System.out.printf("Got posts with IDs: %d, %d, %d%n", 
+            post1.id(), post2.id(), post3.id());
+    }
 }

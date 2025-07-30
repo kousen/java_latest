@@ -540,7 +540,8 @@ double calculateArea(Shape shape) {
 
 ```java
 public class AstroClient {
-    private final HttpClient client = HttpClient.newHttpClient();
+    // Best practice: use static final for thread-safe reuse
+    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     
     public CompletableFuture<AstroResponse> getAstronautsAsync() {
         var request = HttpRequest.newBuilder()
@@ -549,7 +550,7 @@ public class AstroClient {
             .GET()
             .build();
             
-        return client.sendAsync(request, 
+        return HTTP_CLIENT.sendAsync(request, 
                 HttpResponse.BodyHandlers.ofString())
             .thenApply(HttpResponse::body)
             .thenApply(json -> gson.fromJson(json, AstroResponse.class));
@@ -563,6 +564,7 @@ public class AstroClient {
 - Built-in async support
 - HTTP/2 ready
 - No external HTTP client dependency needed
+- Java 21+: HttpClient implements AutoCloseable (but static final pattern still preferred)
 
 </v-clicks>
 

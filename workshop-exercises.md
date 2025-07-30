@@ -552,6 +552,8 @@ public class StreamEnhancementsTest {
 
 **Learning Objectives:** Use modern HTTP Client API
 
+**Important Note:** As of Java 21, HttpClient implements AutoCloseable. However, avoid using try-with-resources with async operations as it will close the client before the response arrives!
+
 Create: `src/test/java/exercises/HttpClientTest.java`
 
 ```java
@@ -566,6 +568,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HttpClientTest {
     
+    // Note: In production code, prefer static final for HttpClient
+    // For tests, instance fields are acceptable
     private final HttpClient client = HttpClient.newHttpClient();
     
     @Test

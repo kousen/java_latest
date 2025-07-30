@@ -11,6 +11,7 @@ import java.net.http.HttpResponse;
 
 public class AstroGateway implements Gateway<AstroResponse> {
     private static final String DEFAULT_URL = "http://api.open-notify.org/astros.json";
+    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     private final String url;
 
     public AstroGateway() {
@@ -25,15 +26,14 @@ public class AstroGateway implements Gateway<AstroResponse> {
 
     @Override
     public Result<AstroResponse> getResult() {
-        // As of Java 21, HttpClient implements AutoCloseable
-        try (var client = HttpClient.newHttpClient()) {
+        try {
             var request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .header("Accept", "application/json")
                     .GET() // default
                     .build();
             HttpResponse<String> httpResponse =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
+                    HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
             System.out.println(httpResponse.statusCode());
             if (httpResponse.statusCode() != 200) {
                 return new Failure<>(new RuntimeException("HTTP error: " + httpResponse.statusCode()));

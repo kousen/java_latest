@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 // This service doesn't handle concurrent requests well
 @Execution(ExecutionMode.SAME_THREAD)
 class AstroClientTest {
+    private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     private final AstroClient client = new AstroClient();
 
     @BeforeEach
@@ -49,12 +50,12 @@ class AstroClientTest {
     }
 
     private HttpResponse<Void> getResponseToHeadRequest() {
-        try (HttpClient client = HttpClient.newHttpClient()) {
+        try {
             HttpRequest req = newBuilder()
                     .uri(URI.create("http://api.open-notify.org"))
                     .method("HEAD", HttpRequest.BodyPublishers.noBody()) // NOTE: .HEAD() in Java 18+
                     .build();
-            return client.send(req, HttpResponse.BodyHandlers.discarding());
+            return HTTP_CLIENT.send(req, HttpResponse.BodyHandlers.discarding());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
