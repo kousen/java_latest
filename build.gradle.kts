@@ -81,7 +81,7 @@ sonar {
         property("sonar.host.url", "https://sonarcloud.io")
         
         // Disable rules that don't apply to educational/demo code
-        property("sonar.issue.ignore.multicriteria", "e1,e2,e3,e4")
+        property("sonar.issue.ignore.multicriteria", "e1,e2,e3,e4,e5")
         
         // S125: Sections of code should not be commented out
         property("sonar.issue.ignore.multicriteria.e1.ruleKey", "java:S125")
@@ -98,6 +98,10 @@ sonar {
         // S2699: Tests should include assertions
         property("sonar.issue.ignore.multicriteria.e4.ruleKey", "java:S2699")
         property("sonar.issue.ignore.multicriteria.e4.resourceKey", "**/test/**/*.java")
+        
+        // S1192: String literals should not be duplicated
+        property("sonar.issue.ignore.multicriteria.e5.ruleKey", "java:S1192")
+        property("sonar.issue.ignore.multicriteria.e5.resourceKey", "**/*.java")
         
         // Coverage settings
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
