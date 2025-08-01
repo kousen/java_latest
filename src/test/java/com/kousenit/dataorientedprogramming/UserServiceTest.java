@@ -32,16 +32,16 @@ class UserServiceTest {
         assertAll(
                 () -> {
                     assertThat(updatedUser).isInstanceOf(User.class);
-                    if (updatedUser instanceof User(var id, var name, var email)) {
+                    if (updatedUser instanceof User(_, _, var email)) {
                         assertThat(email).isEqualTo("john.doe@example.com");
                     }
                 },
                 () -> {
                     assertThat(updatedAdmin).isInstanceOf(Admin.class);
-                    if (updatedAdmin instanceof Admin(var id, var name, var email, var permissions)) {
+                    if (updatedAdmin instanceof Admin(_, _, var email, _)) {
                         assertThat(email).isEqualTo("jane.smith@example.com");
                     }
                 }
-                );
+        );
     }
 }

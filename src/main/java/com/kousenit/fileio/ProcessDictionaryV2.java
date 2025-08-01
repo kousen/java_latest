@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,7 +30,7 @@ public class ProcessDictionaryV2 {
     }
 
     public void printNTenLongestWords(int n) {
-        System.out.printf("\n%d Longest Words:%n", n);
+        System.out.printf("%n%d Longest Words:%n", n);
         int maxForFilter = maxLength() - 10;
         processFile(words -> {
             words.filter(s -> s.length() > maxForFilter)
@@ -92,9 +93,9 @@ public class ProcessDictionaryV2 {
         printWordLengthStats(s -> s.length() > maxForFilter);
     }
 
-    private void printWordLengthStats(Function<String, Boolean> filter) {
+    private void printWordLengthStats(Predicate<String> filter) {
         processFile(words -> {
-            Map<Integer, Long> map = words.filter(filter::apply)
+            Map<Integer, Long> map = words.filter(filter)
                     .collect(Collectors.groupingBy(String::length, Collectors.counting()));
 
             map.entrySet()

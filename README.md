@@ -49,9 +49,10 @@ Comprehensive examples and demonstrations of Java features from Java 8 through J
 
 ## 🛠️ Build Requirements
 
-- **Java 24** - Latest features and compatibility
+- **Java 24** - Latest features and compatibility with preview features enabled
 - **Gradle 8.14.3** - Modern build tooling with Java 24 support
 - **JUnit 5.13.3** - Modern testing framework
+- **SonarCloud** - Code quality analysis configured for educational code standards
 
 ## 🏃‍♂️ Quick Start
 

@@ -1,6 +1,5 @@
 package com.kousenit.collectors;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +10,9 @@ public class GroupByDepartment {
         Department it = new Department("IT");
         Department management = new Department("Management");
         Department sales = new Department("sales");
-        List<Employee> employees = Arrays.asList(new Employee("Venkat", it),
-                new Employee("Raju", it),
+        List<Employee> employees = List.of(
+                new Employee("Venkat", it),
+                new Employee("Raju", sales),
                 new Employee("Matt", management),
                 new Employee("Nate", it));
 
@@ -23,6 +23,7 @@ public class GroupByDepartment {
 
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void printEmpMap(String title, Map<Department, List<Employee>> map) {
         System.out.println();
         System.out.println(title);
