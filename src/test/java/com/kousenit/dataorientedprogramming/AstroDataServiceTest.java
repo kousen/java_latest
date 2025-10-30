@@ -20,4 +20,13 @@ class AstroDataServiceTest {
                     .containsKeys("ISS", "Tiangong");
         }
     }
+
+    @Test
+    void testMainMethodExecutes() {
+        // Test the main method which demonstrates the full data-oriented programming pattern
+        // Uses sealed interfaces, pattern matching in switch, and record patterns
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() ->
+                AstroDataService.main(new String[]{})
+        );
+    }
 }
