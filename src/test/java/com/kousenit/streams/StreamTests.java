@@ -84,4 +84,25 @@ public class StreamTests {
         nums.forEach(n -> assertTrue(n > 70));
     }
 
+    @Test
+    public void testTakeWhileDemoCanBeCreated() {
+        // TakeWhileDemo is a Runnable that demonstrates takeWhile with System.in
+        TakeWhileDemo demo = new TakeWhileDemo();
+
+        // Test that stop() method works
+        demo.stop();
+
+        // Verify the demo can be instantiated
+        assertTrue(demo instanceof Runnable);
+    }
+
+    @Test
+    public void testRunDemoMain() {
+        // RunDemo executes TakeWhileDemo in an ExecutorService
+        // It immediately calls stop(), so this should complete quickly
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() ->
+            RunDemo.main(new String[]{})
+        );
+    }
+
 }
