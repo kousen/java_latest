@@ -137,4 +137,16 @@ public class CollectionsTest {
         System.out.println(map);
         assertThrows(UnsupportedOperationException.class, () -> map.put("one", 11));
     }
+
+    @Test
+    void testFactoryMethodDemo() {
+        // Run the demo to ensure coverage of factory method examples
+        assertDoesNotThrow(() -> FactoryMethodDemo.main(new String[]{}));
+    }
+
+    @Test
+    void testMapDemo() {
+        // Run the demo to ensure coverage of Map examples
+        assertDoesNotThrow(() -> MapDemo.main(new String[]{}));
+    }
 }
