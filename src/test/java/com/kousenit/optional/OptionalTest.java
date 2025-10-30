@@ -106,4 +106,20 @@ class OptionalTest {
             );
         }
     }
+
+    @Test
+    @DisplayName("UseCustomerDAO demo executes without errors")
+    void testUseCustomerDAODemo() {
+        // Test the demo that showcases various Optional methods:
+        // isPresent/get, stream, or, orElse, ifPresentOrElse
+        assertDoesNotThrow(() -> UseCustomerDAO.main(new String[]{}));
+    }
+
+    @Test
+    @DisplayName("OrElseGetDemo executes without errors")
+    void testOrElseGetDemo() {
+        // Test the demo that shows the difference between
+        // orElse (eager) and orElseGet (lazy) evaluation
+        assertDoesNotThrow(() -> OrElseGetDemo.main(new String[]{}));
+    }
 }
