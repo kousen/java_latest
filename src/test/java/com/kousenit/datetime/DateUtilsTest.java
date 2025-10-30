@@ -82,4 +82,19 @@ class DateUtilsTest {
                 " days between Groundhog Day and the first day of Spring");
     }
 
+    @Test
+    @DisplayName("FunnyOffsets demo executes without errors")
+    void testFunnyOffsetsDemo() {
+        // Test the demo that shows time zones with non-hour offsets
+        // (e.g., +05:30, +09:30, +05:45)
+        assertDoesNotThrow(() -> FunnyOffsets.main(new String[]{}));
+    }
+
+    @Test
+    @DisplayName("AntarcticaTimeZones demo executes without errors")
+    void testAntarcticaTimeZonesDemo() {
+        // Test the demo that displays all Antarctic time zones
+        assertDoesNotThrow(() -> AntarcticaTimeZones.main(new String[]{}));
+    }
+
 }
