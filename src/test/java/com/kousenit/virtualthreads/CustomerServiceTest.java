@@ -43,4 +43,12 @@ class CustomerServiceTest {
                 "Execution time should be close to 1 second, but was " + executionTime + " ms");
         System.out.println("Execution time: " + executionTime + " ms");
     }
+
+    @Test
+    void testMainMethodExecutes() {
+        // Test the main method that demonstrates virtual threads with customer fetching
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() ->
+                CustomerService.main(new String[]{})
+        );
+    }
 }
