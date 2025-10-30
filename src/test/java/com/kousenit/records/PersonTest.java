@@ -40,4 +40,14 @@ class PersonTest {
         Person p = new Person(999, "Wesley", "Crusher");
         assertEquals("Wesley Crusher", p.name());
     }
+
+    @Test
+    @DisplayName("UsePerson demo executes without errors")
+    void testUsePersonDemo() {
+        // Test the demo that showcases record features including:
+        // - toString(), equals(), hashCode()
+        // - Inner records
+        // - Nested records
+        assertDoesNotThrow(() -> UsePerson.main(new String[]{}));
+    }
 }
