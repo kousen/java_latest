@@ -133,7 +133,7 @@ class CollectorsTest {
         Map<String, Set<Developer>> taskToDevs = tasks.stream()
                 .collect(groupingBy(Task::getName,
                         flatMapping(task -> task.getDevelopers().stream(), toSet())));
-        
+
         assertAll(
                 () -> assertEquals(5, taskToDevs.size()),
                 () -> assertEquals(4, taskToDevs.get("Java stuff").size()),
@@ -142,5 +142,20 @@ class CollectorsTest {
                 () -> assertEquals(3, taskToDevs.get("Groovy/Kotlin/Scala/Clojure").size()),
                 () -> assertEquals(0, taskToDevs.get("JPA/Hibernate").size())
         );
+    }
+
+    @Test
+    @DisplayName("GroupByDepartment demo executes without errors")
+    void testGroupByDepartmentDemo() {
+        // Test the demo main method for code coverage
+        assertDoesNotThrow(() -> GroupByDepartment.main(new String[]{}));
+    }
+
+    @Test
+    @DisplayName("GroupByTasks demo executes without errors")
+    void testGroupByTasksDemo() {
+        // Test the demo main method for code coverage
+        // This demo showcases filtering, mapping, and flatMapping collectors
+        assertDoesNotThrow(() -> GroupByTasks.main(new String[]{}));
     }
 }
