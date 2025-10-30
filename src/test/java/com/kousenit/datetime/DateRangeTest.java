@@ -32,4 +32,22 @@ public class DateRangeTest {
         assertEquals(dates, range.getMonths_java8(now, then));
     }
 
+    @Test
+    public void testGetDaysByIterate() {
+        LocalDate start = LocalDate.now();
+        List<LocalDate> dates = range.getDaysByIterate(start, 7);
+
+        assertEquals(7, dates.size());
+        assertEquals(start, dates.get(0));
+        assertEquals(start.plusDays(6), dates.get(6));
+    }
+
+    @Test
+    public void testMainMethodExecutes() {
+        // Test the main method that demonstrates all DateRange methods
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() ->
+                DateRange.main(new String[]{})
+        );
+    }
+
 }
