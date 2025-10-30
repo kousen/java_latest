@@ -65,12 +65,12 @@ The repository supports **two distinct presentation formats**:
 ## Technical Configuration
 
 ### Build Setup
-- **Java 24** with **preview features enabled**
+- **Java 25 LTS** with **preview features enabled**
 - Gradle configuration includes `--enable-preview` for:
   - Compilation (`JavaCompile` tasks)
-  - Testing (`Test` tasks) 
+  - Testing (`Test` tasks)
   - Execution (`JavaExec` tasks)
-- Required for features like Structured Concurrency (still in preview)
+- Required for features like Structured Concurrency (still in 5th preview in Java 25)
 
 ### Quality Assurance
 - **SonarCloud** integration with educational code standards
@@ -193,9 +193,10 @@ Originally created as separate project, went through major refactoring:
 ## Important Notes
 
 ### Preview Features
-- Build is configured for Java 24 with preview features
-- Currently used for Structured Concurrency examples
+- Build is configured for Java 25 LTS with preview features
+- Currently used for Structured Concurrency (5th preview) and other preview features
 - Must maintain `--enable-preview` flags in Gradle build
+- Java 25 finalized: Scoped Values, Module Import Declarations, Flexible Constructor Bodies, and more
 
 ### Educational vs Production Code
 The repository balances educational clarity with modern best practices:

@@ -13,11 +13,11 @@ info: |
 drawings:
   persist: false
 transition: slide-left
-title: "Modern Java: From 8 to 21 and Beyond"
+title: "Modern Java: From 8 to 25"
 mdc: true
 ---
 
-# Modern Java: From 8 to 21 and Beyond
+# Modern Java: From 8 to 25
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
@@ -1190,22 +1190,26 @@ See the `astro` package for the complete example!
 
 ---
 
-# Java 25 LTS (September 2025)
+# Java 25 LTS (Released September 2025)
 
 <div class="flex items-center justify-between">
 <div>
 
-**Language Features:**
-- Scoped Values (finalized) - Thread-safe data sharing
-- Primitive Types in Patterns (3rd preview)
-- Flexible Constructor Bodies (preview)
+**Finalized Language Features:**
+- Scoped Values - Thread-safe data sharing without ThreadLocal
+- Module Import Declarations - Simplified imports
+- Flexible Constructor Bodies - More flexible initialization
+- Compact Source Files and Instance Main Methods - Simplified learning
+- Key Derivation Function API - Modern cryptography
 
 **Performance & JVM:**
-- Ahead-of-Time Class Loading & Linking
-- Compact Object Headers (production)
-- Vector API (incubator)
+- Ahead-of-Time Class Loading & Linking (AOT)
+- Compact Object Headers - Reduced memory overhead
+- Generational Shenandoah - Improved garbage collection
 
-**Key Point:** Long-Term Support release for enterprise adoption
+**Still Preview:** Primitive Types in Patterns (3rd), Structured Concurrency (5th), Stable Values
+
+**Key Point:** Long-Term Support release with 8+ years of support
 
 </div>
 <div class="w-1/3">

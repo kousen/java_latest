@@ -41,16 +41,19 @@ Comprehensive examples and demonstrations of Java features from Java 8 through J
 - Pattern matching in switch
 - Enhanced pattern matching with guards
 
-### Java 22-25 - Cutting Edge
-- Unnamed variables with `_`
-- Primitive types in patterns (preview)
-- Scoped Values (finalized in Java 25)
-- Foreign Function & Memory API
+### Java 22-25 - Latest LTS
+- Unnamed variables with `_` (Java 22)
+- Stream Gatherers (Java 24)
+- Scoped Values (finalized in Java 25 LTS)
+- Module Import Declarations (Java 25)
+- Flexible Constructor Bodies (Java 25)
+- Primitive types in patterns (3rd preview in Java 25)
+- Structured Concurrency (5th preview in Java 25)
 
 ## 🛠️ Build Requirements
 
-- **Java 24** - Latest features and compatibility with preview features enabled
-- **Gradle 8.14.3** - Modern build tooling with Java 24 support
+- **Java 25 LTS** - Latest Long-Term Support release with preview features enabled
+- **Gradle 9.1.0+** - Modern build tooling with Java 25 support
 - **JUnit 5.13.3** - Modern testing framework
 - **SonarCloud** - Code quality analysis configured for educational code standards
 
