@@ -1,6 +1,6 @@
 package com.kousenit.sealed;
 
-final class Circle extends Shape {
+public final class Circle extends Shape {
 
     private final double radius;
 

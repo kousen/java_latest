@@ -1,7 +1,7 @@
 package com.kousenit.sealed;
 
 // non-sealed subclass -- can make any subclass of Square
-non-sealed class Square extends Shape {
+public non-sealed class Square extends Shape {
     private final double side;
 
     public Square(double side) {

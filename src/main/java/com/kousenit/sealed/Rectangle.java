@@ -1,6 +1,6 @@
 package com.kousenit.sealed;
 
-sealed class Rectangle extends Shape
+public sealed class Rectangle extends Shape
         permits TransparentRectangle, FilledRectangle {
 
     protected boolean transparent;

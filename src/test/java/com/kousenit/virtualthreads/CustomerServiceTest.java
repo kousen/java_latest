@@ -1,5 +1,6 @@
 package com.kousenit.virtualthreads;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -47,8 +48,7 @@ class CustomerServiceTest {
     @Test
     void testMainMethodExecutes() {
         // Test the main method that demonstrates virtual threads with customer fetching
-        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() ->
-                CustomerService.main(new String[]{})
+        Assertions.assertDoesNotThrow(() -> CustomerService.main(new String[]{})
         );
     }
 }
