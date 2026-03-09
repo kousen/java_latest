@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 @SuppressWarnings({"UnnecessaryBoxing", "UnnecessaryLocalVariable", "MismatchedQueryAndUpdateOfCollection", "unused"})
-public class VarTypeTest {
+class VarTypeTest {
     // private final var x = "abc";  // var is not allowed here
 
     @Test

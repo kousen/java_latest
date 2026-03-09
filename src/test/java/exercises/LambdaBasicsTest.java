@@ -1,4 +1,4 @@
-package com.kousenit.exercises;
+package exercises;
 
 import org.junit.jupiter.api.Test;
 
