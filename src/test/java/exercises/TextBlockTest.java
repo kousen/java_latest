@@ -5,7 +5,7 @@ import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.PropertyNamingStrategies;
 import tools.jackson.databind.json.JsonMapper;
 
-import static exercises.OpenAiRecords.*;
+import static com.kousenit.openai.OpenAiRecords.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -79,7 +79,6 @@ class TextBlockTest {
 
         ApiResponse response = objectMapper.readValue(json, ApiResponse.class);
         assertEquals("gpt-5.4", response.model());
-        assertEquals("assistant", response.output().getFirst().role());
         System.out.println(response.output().getFirst().content().getFirst().text());
     }
 

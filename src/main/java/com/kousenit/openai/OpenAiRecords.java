@@ -1,11 +1,11 @@
-package exercises;
+package com.kousenit.openai;
 
 import java.util.List;
 import java.util.Map;
 
 public class OpenAiRecords {
 
-    record ApiResponse(
+    public record ApiResponse(
             String id,
             String object,
             long createdAt,
@@ -32,7 +32,7 @@ public class OpenAiRecords {
             Map<String, Object> metadata
     ) {}
 
-    record OutputMessage(
+    public record OutputMessage(
             String type,
             String id,
             String status,
@@ -40,26 +40,26 @@ public class OpenAiRecords {
             List<Content> content
     ) {}
 
-    record Content(
+    public record Content(
             String type,
             String text,
             List<Object> annotations
     ) {}
 
-    record Reasoning(
+    public record Reasoning(
             String effort,
             String summary
     ) {}
 
-    record TextFormat(
+    public record TextFormat(
             Format format
     ) {}
 
-    record Format(
+    public record Format(
             String type
     ) {}
 
-    record Usage(
+    public record Usage(
             int inputTokens,
             TokenDetails inputTokensDetails,
             int outputTokens,
@@ -67,11 +67,11 @@ public class OpenAiRecords {
             int totalTokens
     ) {}
 
-    record TokenDetails(
+    public record TokenDetails(
             int cachedTokens
     ) {}
 
-    record OutputTokenDetails(
+    public record OutputTokenDetails(
             int reasoningTokens
     ) {}
 }
