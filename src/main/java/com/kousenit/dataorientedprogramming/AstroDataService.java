@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AstroDataService {
-    private static final String API_URL = "http://api.open-notify.org/astros.json";
+    private static final String API_URL = "https://raw.githubusercontent.com/kousen/java_latest/main/data/astro_data.json";
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 

@@ -545,7 +545,7 @@ public class AstroClient {
     
     public CompletableFuture<AstroResponse> getAstronautsAsync() {
         var request = HttpRequest.newBuilder()
-            .uri(URI.create("http://api.open-notify.org/astros.json"))
+            .uri(URI.create("https://raw.githubusercontent.com/kousen/java_latest/main/data/astro_data.json"))
             .header("Accept", "application/json")
             .GET()
             .build();

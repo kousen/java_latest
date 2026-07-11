@@ -10,7 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class AstroGateway implements Gateway<AstroResponse> {
-    private static final String DEFAULT_URL = "http://api.open-notify.org/astros.json";
+    private static final String DEFAULT_URL = "https://raw.githubusercontent.com/kousen/java_latest/main/data/astro_data.json";
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     private final String url;
 

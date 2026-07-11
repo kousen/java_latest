@@ -20,7 +20,7 @@ public class AstroDemo {
 
         try (var client = HttpClient.newHttpClient()) {
             var request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://api.open-notify.org/astros.json"))
+                    .uri(URI.create("https://raw.githubusercontent.com/kousen/java_latest/main/data/astro_data.json"))
                     .header("Accept", "application/json")
                     .build();
             HttpResponse<String> httpResponse =

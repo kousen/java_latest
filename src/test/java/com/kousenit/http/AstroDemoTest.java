@@ -1,53 +1,17 @@
 package com.kousenit.http;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.channels.UnresolvedAddressException;
-import java.time.Duration;
-
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class AstroDemoTest {
-
-    @BeforeEach
-    void setUp() {
-        // Check if the API is available before running tests
-        try (HttpClient client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(2))
-                .build()) {
-            HttpRequest req = HttpRequest.newBuilder()
-                    .uri(URI.create("http://api.open-notify.org"))
-                    .method("HEAD", HttpRequest.BodyPublishers.noBody())
-                    .build();
-            HttpResponse<Void> response = client.send(req, HttpResponse.BodyHandlers.discarding());
-            assumeTrue(response.statusCode() == 200, "Open Notify API site is down");
-        } catch (UnresolvedAddressException | IOException e) {
-            assumeFalse(true, "Site is unreachable: " + e.getMessage());
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            assumeFalse(true, "Site is unreachable: " + e.getMessage());
-        }
-    }
 
     @Test
     @DisplayName("AstroDemo executes without errors")
     void testAstroDemo() {
-        // Test the demo that fetches and displays astronauts currently in space
-        // Uses Gson to deserialize JSON response to records
-        try {
-            AstroDemo.main(new String[]{});
-        } catch (RuntimeException e) {
-            // The setUp guard checks reachability, but Open Notify can still
-            // fail between the check and the actual request; skip, don't fail
-            assumeTrue(false, "Open Notify failed mid-test: " + e.getMessage());
-        }
+        // Fetches the crew manifest hosted in this repository, so no
+        // reachability guard is needed
+        assertDoesNotThrow(() -> AstroDemo.main(new String[]{}));
     }
 }
