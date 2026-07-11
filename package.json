@@ -1,5 +1,15 @@
 {
+  "name": "java_latest",
+  "private": true,
+  "description": "Modern Java workshop slides (Slidev)",
+  "author": "Kenneth Kousen <ken.kousen@kousenit.com>",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "export": "slidev export slides.md --output modern-java-slides.pdf"
+  },
   "devDependencies": {
+    "@slidev/cli": "^52.17.0",
+    "@slidev/theme-seriph": "^0.25.0",
     "playwright-chromium": "^1.53.2"
   }
 }

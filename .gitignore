@@ -63,3 +63,5 @@ dist/
 
 # Claude Code
 .claude/
+# Generated slides PDF (published via GitHub release instead)
+modern-java-slides.pdf

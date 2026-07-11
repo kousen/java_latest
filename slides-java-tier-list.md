@@ -1,6 +1,6 @@
 ---
 theme: seriph
-background: https://source.unsplash.com/1920x1080/?java,programming
+background: https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1920&h=1080&fit=crop
 class: text-center
 highlighter: shiki
 lineNumbers: false
