@@ -47,7 +47,10 @@ public class Chat {
             var chatResponse = mapper.readValue(response.body(), ChatResponse.class);
             System.out.println(chatResponse);
             System.out.println(chatResponse.output().get(1).content().getFirst().text());
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }
