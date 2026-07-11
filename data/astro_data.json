@@ -1,0 +1,58 @@
+{
+  "message": "success",
+  "people": [
+    {
+      "name": "John Sheridan",
+      "craft": "Babylon 5"
+    },
+    {
+      "name": "Susan Ivanova",
+      "craft": "Babylon 5"
+    },
+    {
+      "name": "Lennier",
+      "craft": "Babylon 5"
+    },
+    {
+      "name": "James Holden",
+      "craft": "Rocinante"
+    },
+    {
+      "name": "Naomi Nagata",
+      "craft": "Rocinante"
+    },
+    {
+      "name": "Amos Burton",
+      "craft": "Rocinante"
+    },
+    {
+      "name": "Beckett Mariner",
+      "craft": "USS Cerritos"
+    },
+    {
+      "name": "Brad Boimler",
+      "craft": "USS Cerritos"
+    },
+    {
+      "name": "D'Vana Tendi",
+      "craft": "USS Cerritos"
+    },
+    {
+      "name": "Sam Rutherford",
+      "craft": "USS Cerritos"
+    },
+    {
+      "name": "Dave Bowman",
+      "craft": "Discovery One"
+    },
+    {
+      "name": "Frank Poole",
+      "craft": "Discovery One"
+    },
+    {
+      "name": "HAL 9000",
+      "craft": "Discovery One"
+    }
+  ],
+  "number": 13
+}
