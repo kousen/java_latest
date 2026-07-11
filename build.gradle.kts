@@ -42,10 +42,10 @@ dependencies {
     testImplementation(libs.assertj)
     testImplementation(libs.bundles.mockito)
     testImplementation(libs.wiremock.jetty12)
-    testImplementation("com.jayway.jsonpath:json-path:2.9.0")
+    testImplementation("com.jayway.jsonpath:json-path:3.0.0")
 
     // Make vulnerability issues go away
-    testImplementation("commons-io:commons-io:2.21.0")
+    testImplementation("commons-io:commons-io:2.22.0")
     // Jetty 12 is now included via wiremock-jetty12
 }
 
@@ -55,7 +55,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     finalizedBy(tasks.jacocoTestReport)
 }
 
@@ -70,6 +70,6 @@ tasks.jacocoTestReport {
 }
 
 tasks.withType<JavaExec>().configureEach {
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
+    jvmArgs("--enable-preview", "-XX:+EnableDynamicAgentLoading", "-Xshare:off")
 }
 

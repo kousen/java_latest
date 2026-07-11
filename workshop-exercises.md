@@ -5,10 +5,7 @@ This document contains hands-on lab exercises for the Modern Java workshop, cove
 ## Table of Contents
 
 - [Java 8: Functional Programming](#java-8-functional-programming)
-  - [Exercise 1: Lambda Expressions and Method References](#exercise-1-lambda-expressions-and-method-references)
-  - [Exercise 2: Stream API Basics](#exercise-2-stream-api-basics)
   - [Exercise 3: Advanced Collectors](#exercise-3-advanced-collectors)
-  - [Exercise 4: Optional Handling](#exercise-4-optional-handling)
   - [Exercise 5: CompletableFuture Basics](#exercise-5-completablefuture-basics)
 - [Java 9-11: Platform Improvements](#java-9-11-platform-improvements)
   - [Exercise 6: Collection Factory Methods](#exercise-6-collection-factory-methods)
@@ -25,149 +22,25 @@ This document contains hands-on lab exercises for the Modern Java workshop, cove
   - [Exercise 15: Pattern Matching in Switch](#exercise-15-pattern-matching-in-switch)
   - [Exercise 16: Virtual Threads](#exercise-16-virtual-threads)
   - [Exercise 17: Sequenced Collections](#exercise-17-sequenced-collections)
-- [Java 22+: Cutting Edge](#java-22-cutting-edge)
+- [Java 22+: Recent Features](#java-22-recent-features)
   - [Exercise 18: Unnamed Variables](#exercise-18-unnamed-variables)
   - [Exercise 19: Data-Oriented Programming](#exercise-19-data-oriented-programming)
+  - [Exercise 20: Stream Gatherers](#exercise-20-stream-gatherers)
 - [Capstone Project](#capstone-project)
+- [Appendix: Java 8 Refresher](#appendix-java-8-refresher)
+  - [Exercise 1: Lambda Expressions and Method References](#exercise-1-lambda-expressions-and-method-references)
+  - [Exercise 2: Stream API Basics](#exercise-2-stream-api-basics)
+  - [Exercise 4: Optional Handling](#exercise-4-optional-handling)
 - [Running the Exercises](#running-the-exercises)
 - [Tips and Best Practices](#tips-and-best-practices)
 
 ## Java 8: Functional Programming
 
-### Exercise 1: Lambda Expressions and Method References
-
-**Learning Objectives:** Master lambda syntax and method reference variations
-
-Create a new test file: `src/test/java/exercises/LambdaBasicsTest.java`
-
-```java
-package exercises;
-
-import org.junit.jupiter.api.Test;
-import java.util.*;
-import java.util.function.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class LambdaBasicsTest {
-    
-    @Test
-    public void sortWithLambda() {
-        List<String> words = Arrays.asList("lambda", "expression", "java", "functional");
-        
-        // TODO: Sort words by length using a lambda expression
-        // words.sort(...);
-        
-        assertEquals("java", words.get(0));
-        assertEquals("expression", words.get(3));
-    }
-    
-    @Test
-    public void sortWithMethodReference() {
-        List<String> words = Arrays.asList("lambda", "expression", "java", "functional");
-        
-        // TODO: Sort words by length using Comparator.comparingInt and method reference
-        // words.sort(...);
-        
-        assertEquals("java", words.getFirst());
-    }
-    
-    @Test
-    public void implementConsumer() {
-        List<String> result = new ArrayList<>();
-        
-        // TODO: Create a Consumer<String> that adds strings to result list
-        // Consumer<String> consumer = ...;
-        
-        // consumer.accept("Hello");
-        // consumer.accept("World");
-        
-        assertEquals(Arrays.asList("Hello", "World"), result);
-    }
-    
-    @Test
-    public void implementSupplier() {
-        // TODO: Create a Supplier<Double> using Math.random
-        // Supplier<Double> randomSupplier = ...;
-        
-        // double value = randomSupplier.get();
-        // assertTrue(value >= 0.0 && value < 1.0);
-    }
-    
-    @Test
-    public void implementPredicate() {
-        // TODO: Create a Predicate<String> that tests if length > 5
-        // Predicate<String> isLong = ...;
-        
-        // assertTrue(isLong.test("functional"));
-        // assertFalse(isLong.test("java"));
-    }
-}
-```
-
-[Back to Table of Contents](#table-of-contents)
-
-### Exercise 2: Stream API Basics
-
-**Learning Objectives:** Practice fundamental stream operations
-
-Create: `src/test/java/exercises/StreamBasicsTest.java`
-
-```java
-package exercises;
-
-import org.junit.jupiter.api.Test;
-import java.util.*;
-import java.util.stream.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class StreamBasicsTest {
-    
-    private final List<Integer> numbers = List.of(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5);
-    
-    @Test
-    public void filterAndCount() {
-        // TODO: Count how many numbers are greater than 4
-        // long count = numbers.stream()...
-        
-        // assertEquals(5, count);
-    }
-    
-    @Test
-    public void mapAndSum() {
-        // TODO: Square each number and sum the results
-        // int sum = numbers.stream()...
-        
-        // assertEquals(159, sum);
-    }
-    
-    @Test
-    public void findFirstEven() {
-        // TODO: Find the first even number
-        // Optional<Integer> firstEven = numbers.stream()...
-        
-        // assertTrue(firstEven.isPresent());
-        // assertEquals(4, firstEven.get());
-    }
-    
-    @Test
-    public void distinctAndSorted() {
-        // TODO: Get distinct numbers in sorted order
-        // List<Integer> result = numbers.stream()...
-        
-        // assertEquals(List.of(1, 2, 3, 4, 5, 6, 9), result);
-    }
-    
-    @Test
-    public void maxValue() {
-        // TODO: Find the maximum value
-        // Optional<Integer> max = numbers.stream()...
-        
-        // assertEquals(9, max.orElse(0));
-    }
-}
-```
-
-[Back to Table of Contents](#table-of-contents)
+> Already comfortable with lambdas, streams, and Optional? The warm-up exercises
+> (Lambdas, Stream Basics, Optional) have moved to the
+> [Java 8 Refresher appendix](#appendix-java-8-refresher). The two exercises here
+> set up later labs: Collectors leads into Stream Gatherers (Exercise 20), and
+> CompletableFuture into the HTTP Client (Exercise 8) and Virtual Threads (Exercise 16).
 
 ### Exercise 3: Advanced Collectors
 
@@ -240,90 +113,6 @@ public class CollectorsTest {
         // String names = people.stream()...
         
         // assertEquals("Alice, Bob, Charlie, David, Eve", names);
-    }
-}
-```
-
-[Back to Table of Contents](#table-of-contents)
-
-### Exercise 4: Optional Handling
-
-**Learning Objectives:** Practice safe null handling with Optional
-
-Create: `src/test/java/exercises/OptionalTest.java`
-
-```java
-package exercises;
-
-import org.junit.jupiter.api.Test;
-import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class OptionalTest {
-    
-    record Address(String street, String city, String zipCode) {}
-    record Person(String name, Optional<Address> address) {}
-    
-    @Test
-    public void createOptionals() {
-        // TODO: Create an Optional containing "Hello"
-        // Optional<String> hello = ...;
-        
-        // TODO: Create an empty Optional
-        // Optional<String> empty = ...;
-        
-        // TODO: Create an Optional from a nullable value
-        String nullable = Math.random() > 0.5 ? "value" : null;
-        // Optional<String> maybe = ...;
-        
-        // assertTrue(hello.isPresent());
-        // assertFalse(empty.isPresent());
-    }
-    
-    @Test
-    public void transformOptional() {
-        Optional<String> name = Optional.of("java");
-        
-        // TODO: Transform to uppercase
-        // Optional<String> upper = name...;
-        
-        // TODO: Get the length
-        // Optional<Integer> length = name...;
-        
-        // assertEquals("JAVA", upper.get());
-        // assertEquals(4, length.get());
-    }
-    
-    @Test
-    public void chainOptionals() {
-        Person person1 = new Person("Alice", 
-            Optional.of(new Address("123 Main", "NYC", "10001")));
-        Person person2 = new Person("Bob", Optional.empty());
-        
-        // TODO: Get zip code for person1 (should be present)
-        // Optional<String> zip1 = ...;
-        
-        // TODO: Get zip code for person2 (should be empty)  
-        // Optional<String> zip2 = ...;
-        
-        // assertEquals("10001", zip1.orElse("Unknown"));
-        // assertEquals("Unknown", zip2.orElse("Unknown"));
-    }
-    
-    @Test
-    public void optionalOrElse() {
-        Optional<String> empty = Optional.empty();
-        
-        // TODO: Provide default value
-        // String result1 = empty...;
-        
-        // TODO: Provide default from supplier
-        // String result2 = empty...;
-        
-        // TODO: Throw exception if empty
-        // assertThrows(NoSuchElementException.class, () -> {
-        //     empty...;
-        // });
     }
 }
 ```
@@ -1370,7 +1159,7 @@ public class SequencedCollectionsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-## Java 22+: Cutting Edge
+## Java 22+: Recent Features
 
 ### Exercise 18: Unnamed Variables
 
@@ -1465,7 +1254,7 @@ public class UnnamedVariablesTest {
 
 ### Exercise 19: Data-Oriented Programming
 
-**Learning Objectives:** Combine records, sealed classes, and pattern matching
+**Learning Objectives:** Apply the four DOP principles — model the data (records), keep it immutable, make illegal states unrepresentable (sealed types), and validate at the boundary (compact constructors)
 
 Create: `src/test/java/exercises/DataOrientedTest.java`
 
@@ -1549,6 +1338,125 @@ public class DataOrientedTest {
         //     ));
         
         // assertEquals(2L, counts.get(LoginEvent.class));
+    }
+    
+    @Test
+    public void validateAtTheBoundary() {
+        // TODO: Add a compact constructor to LoginEvent that rejects
+        //       a blank userId or ipAddress:
+        // record LoginEvent(String userId, LocalDateTime timestamp, String ipAddress)
+        //         implements Event {
+        //     LoginEvent {
+        //         if (userId == null || userId.isBlank())
+        //             throw new IllegalArgumentException("userId required");
+        //         if (ipAddress == null || ipAddress.isBlank())
+        //             throw new IllegalArgumentException("ipAddress required");
+        //     }
+        // }
+        
+        // TODO: Verify bad data can't get in:
+        // assertThrows(IllegalArgumentException.class,
+        //     () -> new LoginEvent("", LocalDateTime.now(), "192.168.1.1"));
+        
+        // Bonus: delete a case from the switch in processEvents and
+        // watch the compiler complain - that's "illegal states" at work
+    }
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+### Exercise 20: Stream Gatherers
+
+**Learning Objectives:** Use Stream Gatherers (Java 24) for windowing, stateful transformations, and custom intermediate operations — think "Collectors, but for the middle of the stream"
+
+Create: `src/test/java/exercises/StreamGatherersTest.java`
+
+```java
+package exercises;
+
+import org.junit.jupiter.api.Test;
+import java.util.*;
+import java.util.stream.Gatherer;
+import java.util.stream.Gatherers;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StreamGatherersTest {
+
+    @Test
+    public void movingAverage() {
+        List<Double> stockPrices = List.of(100.0, 102.0, 98.0, 105.0, 103.0, 107.0, 110.0);
+
+        // TODO: Calculate a 3-day moving average using Gatherers.windowSliding(3)
+        // List<Double> movingAverages = stockPrices.stream()
+        //         .gather(Gatherers.windowSliding(3))
+        //         .map(window -> window.stream()
+        //                 .mapToDouble(Double::doubleValue)
+        //                 .average()
+        //                 .orElse(0.0))
+        //         .toList();
+
+        // assertEquals(5, movingAverages.size());
+        // assertEquals(100.0, movingAverages.get(0), 0.01); // (100+102+98)/3
+    }
+
+    @Test
+    public void batchProcessing() {
+        List<String> logEntries = List.of(
+                "Login user1", "Access /home", "Access /profile",
+                "Login user2", "Access /dashboard", "Logout user2"
+        );
+
+        // TODO: Process the entries in non-overlapping batches of 3
+        //       using Gatherers.windowFixed(3)
+        // How many batches do you get?
+    }
+
+    @Test
+    public void runningStatistics() {
+        record Stats(int count, int sum, double average) {}
+
+        List<Integer> values = List.of(10, 20, 30, 40, 50);
+
+        // TODO: Emit running statistics after each element using Gatherers.scan:
+        // List<Stats> runningStats = values.stream()
+        //         .gather(Gatherers.scan(
+        //                 () -> new Stats(0, 0, 0.0),
+        //                 (stats, value) -> /* build the next Stats from the previous one */
+        //         ))
+        //         .toList();
+
+        // assertEquals(new Stats(1, 10, 10.0), runningStats.get(0));
+        // assertEquals(new Stats(5, 150, 30.0), runningStats.get(4));
+
+        // Note the contrast with Collectors: a collector could give you the
+        // FINAL stats, but only a gatherer can emit the intermediate ones
+        // as stream elements
+    }
+
+    @Test
+    public void customGatherer() {
+        record Transaction(String id, double amount, String category) {}
+
+        List<Transaction> transactions = List.of(
+                new Transaction("T1", 100.0, "Food"),
+                new Transaction("T2", 50.0, "Food"),
+                new Transaction("T3", 200.0, "Electronics"),
+                new Transaction("T4", 75.0, "Food"),
+                new Transaction("T5", 300.0, "Electronics")
+        );
+
+        // TODO (advanced): Write a custom gatherer with Gatherer.ofSequential
+        //       that groups CONSECUTIVE transactions of the same category
+        //       (unlike Collectors.groupingBy, which loses the ordering).
+        //       You need three pieces:
+        //       1. An initializer:   ArrayList::new
+        //       2. An integrator:    Gatherer.Integrator.ofGreedy((state, element, downstream) -> ...)
+        //          - same category as the current group? add to state
+        //          - different? push a copy of state downstream, start a new group
+        //       3. A finisher:       push whatever is left in state
+
+        // Expected: [T1, T2], [T3], [T4], [T5]  (4 groups)
     }
 }
 ```
@@ -1669,6 +1577,230 @@ public class MovieSystemTest {
         //     .sorted(...)
         //     .limit(10)
         //     .toList();
+    }
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+## Appendix: Java 8 Refresher
+
+Optional warm-up exercises for anyone who wants to brush up on the
+functional-programming foundations the rest of the workshop builds on.
+
+### Exercise 1: Lambda Expressions and Method References
+
+**Learning Objectives:** Master lambda syntax and method reference variations
+
+Create a new test file: `src/test/java/exercises/LambdaBasicsTest.java`
+
+```java
+package exercises;
+
+import org.junit.jupiter.api.Test;
+import java.util.*;
+import java.util.function.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LambdaBasicsTest {
+    
+    @Test
+    public void sortWithLambda() {
+        List<String> words = Arrays.asList("lambda", "expression", "java", "functional");
+        
+        // TODO: Sort words by length using a lambda expression
+        // words.sort(...);
+        
+        assertEquals("java", words.get(0));
+        assertEquals("expression", words.get(3));
+    }
+    
+    @Test
+    public void sortWithMethodReference() {
+        List<String> words = Arrays.asList("lambda", "expression", "java", "functional");
+        
+        // TODO: Sort words by length using Comparator.comparingInt and method reference
+        // words.sort(...);
+        
+        assertEquals("java", words.getFirst());
+    }
+    
+    @Test
+    public void implementConsumer() {
+        List<String> result = new ArrayList<>();
+        
+        // TODO: Create a Consumer<String> that adds strings to result list
+        // Consumer<String> consumer = ...;
+        
+        // consumer.accept("Hello");
+        // consumer.accept("World");
+        
+        assertEquals(Arrays.asList("Hello", "World"), result);
+    }
+    
+    @Test
+    public void implementSupplier() {
+        // TODO: Create a Supplier<Double> using Math.random
+        // Supplier<Double> randomSupplier = ...;
+        
+        // double value = randomSupplier.get();
+        // assertTrue(value >= 0.0 && value < 1.0);
+    }
+    
+    @Test
+    public void implementPredicate() {
+        // TODO: Create a Predicate<String> that tests if length > 5
+        // Predicate<String> isLong = ...;
+        
+        // assertTrue(isLong.test("functional"));
+        // assertFalse(isLong.test("java"));
+    }
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+### Exercise 2: Stream API Basics
+
+**Learning Objectives:** Practice fundamental stream operations
+
+Create: `src/test/java/exercises/StreamBasicsTest.java`
+
+```java
+package exercises;
+
+import org.junit.jupiter.api.Test;
+import java.util.*;
+import java.util.stream.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StreamBasicsTest {
+    
+    private final List<Integer> numbers = List.of(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5);
+    
+    @Test
+    public void filterAndCount() {
+        // TODO: Count how many numbers are greater than 4
+        // long count = numbers.stream()...
+        
+        // assertEquals(5, count);
+    }
+    
+    @Test
+    public void mapAndSum() {
+        // TODO: Square each number and sum the results
+        // int sum = numbers.stream()...
+        
+        // assertEquals(159, sum);
+    }
+    
+    @Test
+    public void findFirstEven() {
+        // TODO: Find the first even number
+        // Optional<Integer> firstEven = numbers.stream()...
+        
+        // assertTrue(firstEven.isPresent());
+        // assertEquals(4, firstEven.get());
+    }
+    
+    @Test
+    public void distinctAndSorted() {
+        // TODO: Get distinct numbers in sorted order
+        // List<Integer> result = numbers.stream()...
+        
+        // assertEquals(List.of(1, 2, 3, 4, 5, 6, 9), result);
+    }
+    
+    @Test
+    public void maxValue() {
+        // TODO: Find the maximum value
+        // Optional<Integer> max = numbers.stream()...
+        
+        // assertEquals(9, max.orElse(0));
+    }
+}
+```
+
+[Back to Table of Contents](#table-of-contents)
+
+### Exercise 4: Optional Handling
+
+**Learning Objectives:** Practice safe null handling with Optional
+
+Create: `src/test/java/exercises/OptionalTest.java`
+
+```java
+package exercises;
+
+import org.junit.jupiter.api.Test;
+import java.util.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OptionalTest {
+    
+    record Address(String street, String city, String zipCode) {}
+    record Person(String name, Optional<Address> address) {}
+    
+    @Test
+    public void createOptionals() {
+        // TODO: Create an Optional containing "Hello"
+        // Optional<String> hello = ...;
+        
+        // TODO: Create an empty Optional
+        // Optional<String> empty = ...;
+        
+        // TODO: Create an Optional from a nullable value
+        String nullable = Math.random() > 0.5 ? "value" : null;
+        // Optional<String> maybe = ...;
+        
+        // assertTrue(hello.isPresent());
+        // assertFalse(empty.isPresent());
+    }
+    
+    @Test
+    public void transformOptional() {
+        Optional<String> name = Optional.of("java");
+        
+        // TODO: Transform to uppercase
+        // Optional<String> upper = name...;
+        
+        // TODO: Get the length
+        // Optional<Integer> length = name...;
+        
+        // assertEquals("JAVA", upper.get());
+        // assertEquals(4, length.get());
+    }
+    
+    @Test
+    public void chainOptionals() {
+        Person person1 = new Person("Alice", 
+            Optional.of(new Address("123 Main", "NYC", "10001")));
+        Person person2 = new Person("Bob", Optional.empty());
+        
+        // TODO: Get zip code for person1 (should be present)
+        // Optional<String> zip1 = ...;
+        
+        // TODO: Get zip code for person2 (should be empty)  
+        // Optional<String> zip2 = ...;
+        
+        // assertEquals("10001", zip1.orElse("Unknown"));
+        // assertEquals("Unknown", zip2.orElse("Unknown"));
+    }
+    
+    @Test
+    public void optionalOrElse() {
+        Optional<String> empty = Optional.empty();
+        
+        // TODO: Provide default value
+        // String result1 = empty...;
+        
+        // TODO: Provide default from supplier
+        // String result2 = empty...;
+        
+        // TODO: Throw exception if empty
+        // assertThrows(NoSuchElementException.class, () -> {
+        //     empty...;
+        // });
     }
 }
 ```

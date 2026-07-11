@@ -12,8 +12,16 @@ public class DataOrientedTest {
     sealed interface Event permits 
         LoginEvent, LogoutEvent, ErrorEvent, DataEvent {}
     
-    record LoginEvent(String userId, LocalDateTime timestamp, String ipAddress) 
-        implements Event {}
+    record LoginEvent(String userId, LocalDateTime timestamp, String ipAddress)
+        implements Event {
+        // Validate at the boundary: bad data can't become a LoginEvent
+        LoginEvent {
+            if (userId == null || userId.isBlank())
+                throw new IllegalArgumentException("userId required");
+            if (ipAddress == null || ipAddress.isBlank())
+                throw new IllegalArgumentException("ipAddress required");
+        }
+    }
     record LogoutEvent(String userId, LocalDateTime timestamp) 
         implements Event {}
     record ErrorEvent(String message, LocalDateTime timestamp, String stackTrace) 
@@ -86,6 +94,14 @@ public class DataOrientedTest {
         assertFalse(counts.isEmpty());
     }
     
+    @Test
+    public void validateAtTheBoundary() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new LoginEvent("", LocalDateTime.now(), "192.168.1.1"));
+        assertThrows(IllegalArgumentException.class,
+            () -> new LoginEvent("user1", LocalDateTime.now(), null));
+    }
+
     private List<Event> createMixedEvents() {
         return List.of(
             new LoginEvent("user1", LocalDateTime.now(), "192.168.1.1"),

@@ -15,12 +15,12 @@ public class Chat {
 
     static void main() {
         String prompt = """
-                Accoring to Douglas Adams,
+                According to Douglas Adams,
                 What is the answer to the
                 Ultimate Question of Life,
                 the Universe, and Everything?
                 """;
-        String model = "gpt-5-nano";
+        String model = "gpt-5.6-luna";
 
         var mapper = new ObjectMapper();
         var inputJson = mapper.writeValueAsString(new ChatInput(model, prompt));

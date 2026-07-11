@@ -147,6 +147,8 @@ Originally created as separate project, went through major refactoring:
 - `streams/` - Stream API and gatherers with modern terminal operations
 - `textblocks/` - Text block examples  
 - `virtualthreads/` - Virtual thread demonstrations
+- `structuredconcurrency/` - Structured concurrency (preview) with the JEP 505/525 `open()` API
+- `openrouter/` - Records + HttpClient + virtual threads against OpenRouter's multi-model AI API (needs OPENROUTER_API_KEY)
 - `dataorientedprogramming/` - Records, sealed classes, and pattern matching integration
 - And many more feature-specific packages
 

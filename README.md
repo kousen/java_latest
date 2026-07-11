@@ -48,13 +48,13 @@ Comprehensive examples and demonstrations of Java features from Java 8 through J
 - Module Import Declarations (Java 25)
 - Flexible Constructor Bodies (Java 25)
 - Primitive types in patterns (3rd preview in Java 25)
-- Structured Concurrency (5th preview in Java 25)
+- Structured Concurrency (5th preview in Java 25; same API continues as the 6th preview in Java 26)
 
 ## 🛠️ Build Requirements
 
 - **Java 25 LTS** - Latest Long-Term Support release with preview features enabled
-- **Gradle 9.1.0+** - Modern build tooling with Java 25 support
-- **JUnit 5.13.3** - Modern testing framework
+- **Gradle 9.6+** - Modern build tooling with Java 25 support
+- **JUnit 6** - Modern testing framework
 - **SonarCloud** - Code quality analysis configured for educational code standards
 
 ## 🏃‍♂️ Quick Start

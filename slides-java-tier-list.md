@@ -36,7 +36,7 @@ Kousen IT, Inc.
 - http://www.kousenit.com
 - http://kousenit.org (blog)
 - Social Media:
-  - [@kenkousen](https://twitter.com/kenkousen) (Twitter)
+  - [@kenkousen](https://x.com/kenkousen) (X)
   - [@kousenit.com](https://bsky.app/profile/kousenit.com) (Bluesky)
   - [https://www.linkedin.com/in/kenkousen/](https://www.linkedin.com/in/kenkousen/) (LinkedIn)
 - *Tales from the jar side* (free newsletter)
@@ -999,16 +999,18 @@ long currentTime = (long) time.invoke(MemorySegment.NULL);
 
 ```java
 // Structured concurrency - threads as a unit
-try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
-    Future<String> user = scope.fork(() -> fetchUser());
-    Future<Integer> order = scope.fork(() -> fetchOrder());
-    
-    scope.join();           // Wait for all
-    scope.throwIfFailed();  // Propagate errors
-    
-    return new Response(user.resultNow(), order.resultNow());
+// (API redesigned in Java 25, JEP 505; unchanged in Java 26)
+try (var scope = StructuredTaskScope.open()) {
+    Subtask<String> user = scope.fork(() -> fetchUser());
+    Subtask<Integer> order = scope.fork(() -> fetchOrder());
+
+    scope.join();  // Wait for all, propagating exceptions
+
+    return new Response(user.get(), order.get());
 }  // Automatically cancels any running tasks
 ```
+
+**Full example:** `structuredconcurrency/StructuredConcurrencyDemo.java`
 
 ---
 
@@ -1166,7 +1168,7 @@ Gatherer<Event, ?, List<Event>> timeWindow(Duration window) {
 
 - Withdrawn for redesign
 - Shows Java's commitment to getting it right
-- May return in future (Java 26+?)
+- Did not return in Java 26; still awaiting a redesign
 
 </v-clicks>
 
@@ -1199,6 +1201,6 @@ PreparedStatement ps = SQL."SELECT * FROM users WHERE id = \{userId}";
 **Kenneth Kousen**  
 *Author, Speaker, Java & AI Expert*
 
-[kousenit.com](https://kousenit.com) | [@kenkousen](https://twitter.com/kenkousen)
+[kousenit.com](https://kousenit.com) | [@kenkousen](https://x.com/kenkousen)
 
 </div>

@@ -1,28 +1,31 @@
 package com.kousenit.http;
 
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class JokeResponseTest {
 
     @Test
-    void testJokeResponseGettersAndSetters() {
-        JokeResponse response = new JokeResponse();
-        response.setType("success");
+    void gsonMapsJsonToRecord() {
+        String json = """
+                {
+                    "categories": ["dev"],
+                    "id": "abc123",
+                    "value": "Chuck Norris writes code that optimizes itself."
+                }
+                """;
 
-        assertEquals("success", response.getType());
+        JokeResponse response = new Gson().fromJson(json, JokeResponse.class);
 
-        JokeResponse.Value value = response.new Value();
-        value.setId(123);
-        value.setJoke("Test joke");
-        value.setCategories(new String[]{"nerdy"});
-
-        response.setValue(value);
-
-        assertNotNull(response.getValue());
-        assertEquals(123, response.getValue().getId());
-        assertEquals("Test joke", response.getValue().getJoke());
-        assertArrayEquals(new String[]{"nerdy"}, response.getValue().getCategories());
+        assertAll(
+                () -> assertEquals("abc123", response.id()),
+                () -> assertEquals("Chuck Norris writes code that optimizes itself.",
+                        response.value()),
+                () -> assertEquals(List.of("dev"), response.categories())
+        );
     }
 }

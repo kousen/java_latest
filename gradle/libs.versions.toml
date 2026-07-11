@@ -1,9 +1,9 @@
 [versions]
 assertj = "3.27.6"
-gson = "2.13.2"
-jackson = "3.1.0"
-junit = "6.0.1"
-mockito = "5.22.0"
+gson = "2.14.0"
+jackson = "3.2.1"
+junit = "6.1.1"
+mockito = "5.23.0"
 slf4j = "2.0.17"
 wiremock = "3.13.2"
 wiremock-jetty12 = "3.13.2"
@@ -31,5 +31,5 @@ mockito = [
 ]
 
 [plugins]
-version-catalog-update = "nl.littlerobots.version-catalog-update:1.0.0"
-versions = "com.github.ben-manes.versions:0.52.0"
+version-catalog-update = "nl.littlerobots.version-catalog-update:1.1.0"
+versions = "com.github.ben-manes.versions:0.54.0"

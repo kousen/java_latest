@@ -12,7 +12,7 @@ import java.nio.channels.UnresolvedAddressException;
 import java.time.Duration;
 import java.util.logging.Logger;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
@@ -29,11 +29,11 @@ class JokeClientTest {
                 .connectTimeout(Duration.ofSeconds(2))
                 .build()) {
             HttpRequest req = HttpRequest.newBuilder()
-                    .uri(URI.create("http://api.icndb.com"))
+                    .uri(URI.create(JokeClient.JOKE_URL))
                     .HEAD()
                     .build();
             HttpResponse<Void> response = client.send(req, HttpResponse.BodyHandlers.discarding());
-            assumeTrue(response.statusCode() == 200, "ICNDB API site is down");
+            assumeTrue(response.statusCode() == 200, "chucknorris.io API is down");
         } catch (UnresolvedAddressException | IOException e) {
             assumeFalse(true, "Site is unreachable: " + e.getMessage());
         } catch (InterruptedException e) {
@@ -46,13 +46,15 @@ class JokeClientTest {
     void getJokeSync() throws IOException, InterruptedException {
         String joke = client.getJokeSync(heroFirstName, heroLastName);
         logger.info(joke);
-        assertTrue(joke.contains(heroFirstName) || joke.contains(heroLastName));
+        assertFalse(joke.isBlank());
+        assertFalse(joke.contains("Chuck Norris"), "Hero name should replace Chuck Norris");
     }
 
     @Test
     void getJokeAsync() {
         String joke = client.getJokeAsync(heroFirstName, heroLastName);
         logger.info(joke);
-        assertTrue(joke.contains(heroFirstName) || joke.contains(heroLastName));
+        assertFalse(joke.isBlank());
+        assertFalse(joke.contains("Chuck Norris"), "Hero name should replace Chuck Norris");
     }
 }

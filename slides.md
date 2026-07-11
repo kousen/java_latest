@@ -1,6 +1,6 @@
 ---
 theme: seriph
-background: https://source.unsplash.com/1920x1080/?java,code
+background: https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1920&h=1080&fit=crop
 class: text-center
 highlighter: shiki
 lineNumbers: false
@@ -36,7 +36,7 @@ Kousen IT, Inc.
 - http://www.kousenit.com
 - http://kousenit.org (blog)
 - Social Media:
-  - [@kenkousen](https://twitter.com/kenkousen) (Twitter)
+  - [@kenkousen](https://x.com/kenkousen) (X)
   - [@kousenit.com](https://bsky.app/profile/kousenit.com) (Bluesky)
   - [https://www.linkedin.com/in/kenkousen/](https://www.linkedin.com/in/kenkousen/) (LinkedIn)
 - *Tales from the jar side* (free newsletter)
@@ -1099,6 +1099,23 @@ Modern Java enables a new programming paradigm combining:
 
 ---
 
+# DOP: The Four Principles
+
+From Brian Goetz (2022), refined by Nicolai Parlog:
+
+1. **Model the data, the whole data, and nothing but the data**
+   - Records for each entity; no hidden state
+2. **Data is immutable**
+   - Records give you this by default
+3. **Make illegal states unrepresentable**
+   - Sealed hierarchies close the set of possibilities
+4. **Validate at the boundary**
+   - Compact constructors reject bad data on the way in (see `records/Product.java`)
+
+DOP *complements* OOP — it shines at data-centric boundaries (APIs, messages, results); behavior-rich abstractions still want objects
+
+---
+
 # DOP Example: User Hierarchy
 
 ```java
@@ -1200,6 +1217,18 @@ public static Map<String, List<String>> crewByAgency(List<Expedition> expedition
 - Better concurrent task management
 - Automatic cancellation
 - Simplifies error handling
+- API redesigned in Java 25 (JEP 505): `StructuredTaskScope.open()` replaces the old constructors
+
+```java
+try (var scope = StructuredTaskScope.open()) {
+    Subtask<String> user = scope.fork(() -> findUser());
+    Subtask<Integer> order = scope.fork(() -> fetchOrder());
+    scope.join();  // wait for both, propagating exceptions
+    return new Response(user.get(), order.get());
+}
+```
+
+**Full example:** `structuredconcurrency/StructuredConcurrencyDemo.java`
 
 ---
 
@@ -1245,6 +1274,23 @@ public static Map<String, List<String>> crewByAgency(List<Expedition> expedition
 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&brightness=1.2" alt="Future technology" class="rounded-lg opacity-50" />
 </div>
 </div>
+
+---
+
+# Beyond the LTS: Java 26 (Released March 2026)
+
+**Finalized:**
+- HTTP/3 support in the HttpClient API
+- Ahead-of-Time Object Caching
+- Removal of the Java Applet API
+
+**Previews Continue:**
+- Structured Concurrency (6th preview) - same API as Java 25
+- Lazy Constants (2nd preview) - renamed from Stable Values
+- Primitive Types in Patterns (4th preview)
+- PEM Encodings of Cryptographic Objects (2nd preview)
+
+**Key Point:** Java 25 remains the LTS target; Java 26 is a six-month feature release
 
 ---
 
@@ -1324,7 +1370,7 @@ public static Map<String, List<String>> crewByAgency(List<Expedition> expedition
 **Kenneth Kousen**  
 *Author, Speaker, Java Champion*
 
-[kousenit.com](https://kousenit.com) | [@kenkousen](https://twitter.com/kenkousen)
+[kousenit.com](https://kousenit.com) | [@kenkousen](https://x.com/kenkousen)
 
 <div class="mt-8">
 <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=200&fit=crop" alt="Thank you" class="rounded-lg mx-auto opacity-60" />
