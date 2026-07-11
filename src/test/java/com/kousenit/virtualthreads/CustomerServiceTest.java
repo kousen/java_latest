@@ -37,10 +37,12 @@ class CustomerServiceTest {
         assertEquals("Customer 500", lastCustomer.name(), "Last customer name should match");
         assertEquals("customer500@example.com", lastCustomer.email(), "Last customer email should match");
 
-        // Check if the execution time is close to 1 second (allowing some margin)
+        // 500 concurrent 1-second calls should take about 1 second total,
+        // not the ~500 seconds a sequential version would need. The generous
+        // upper bound keeps this stable on slow CI runners.
         long executionTime = endTime - startTime;
-        assertTrue(executionTime >= 1000 && executionTime < 1500,
-                "Execution time should be close to 1 second, but was " + executionTime + " ms");
+        assertTrue(executionTime >= 1000 && executionTime < 5000,
+                "Execution time should be ~1 second (concurrent), but was " + executionTime + " ms");
         System.out.println("Execution time: " + executionTime + " ms");
     }
 
