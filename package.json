@@ -7,6 +7,9 @@
     "dev": "slidev slides.md --open",
     "export": "slidev export slides.md --output modern-java-slides.pdf"
   },
+  "overrides": {
+    "dompurify": "^3.3.2"
+  },
   "devDependencies": {
     "@slidev/cli": "^52.17.0",
     "@slidev/theme-seriph": "^0.25.0",
