@@ -558,6 +558,10 @@ public class AstroClient {
 }
 ```
 
+---
+
+# HTTP Client: Why It Matters
+
 <v-clicks>
 
 - Modern API design
@@ -1260,13 +1264,6 @@ try (var scope = StructuredTaskScope.open()) {
 - Compact Source Files and Instance Main Methods - Simplified learning
 - Key Derivation Function API - Modern cryptography
 
-**Performance & JVM:**
-- Ahead-of-Time Class Loading & Linking (AOT)
-- Compact Object Headers - Reduced memory overhead
-- Generational Shenandoah - Improved garbage collection
-
-**Still Preview:** Primitive Types in Patterns (3rd), Structured Concurrency (5th), Stable Values
-
 **Key Point:** Long-Term Support release with 8+ years of support
 
 </div>
@@ -1274,6 +1271,17 @@ try (var scope = StructuredTaskScope.open()) {
 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&brightness=1.2" alt="Future technology" class="rounded-lg opacity-50" />
 </div>
 </div>
+
+---
+
+# Java 25 LTS: Performance & Previews
+
+**Performance & JVM:**
+- Ahead-of-Time Class Loading & Linking (AOT)
+- Compact Object Headers - Reduced memory overhead
+- Generational Shenandoah - Improved garbage collection
+
+**Still Preview:** Primitive Types in Patterns (3rd), Structured Concurrency (5th), Stable Values
 
 ---
 
