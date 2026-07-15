@@ -32,6 +32,7 @@ public class OpenRouterClient {
         var request = HttpRequest.newBuilder()
                 .uri(URI.create(CHAT_URL))
                 .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
                 .header("Authorization", "Bearer %s".formatted(key))
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                 .build();
@@ -79,8 +80,9 @@ public class OpenRouterClient {
     static void main() {
         var client = new OpenRouterClient();
         var models = List.of(
+                "tencent/hy3:free",
                 "google/gemini-3.5-flash",
-                "deepseek/deepseek-v4-pro",
+                "deepseek/deepseek-v4-flash",
                 "z-ai/glm-5.2");
         client.compareModels(models, "What is the capital of France? Answer in one sentence.")
                 .forEach(answer ->
