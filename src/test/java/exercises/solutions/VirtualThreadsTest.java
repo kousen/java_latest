@@ -39,7 +39,7 @@ public class VirtualThreadsTest {
     @Test
     public void massiveConcurrency() throws Exception {
         int taskCount = 10_000;
-        CountDownLatch latch = new CountDownLatch(taskCount);
+        var latch = new CountDownLatch(taskCount);
         
         // Create many virtual threads
         long start = System.currentTimeMillis();

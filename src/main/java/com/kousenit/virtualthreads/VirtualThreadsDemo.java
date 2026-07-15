@@ -9,7 +9,7 @@ public class VirtualThreadsDemo {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-            IntStream.range(0, 10_000)
+            IntStream.range(0, 10_000_000)
                     .forEach(i ->
                             executor.submit(() -> {
                                 Thread.sleep(Duration.ofSeconds(1));
