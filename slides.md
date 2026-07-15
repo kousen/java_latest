@@ -61,7 +61,7 @@ Kousen IT, Inc.
 
 </div>
 <div class="w-1/3">
-<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop&brightness=1.2" alt="Code transformation" class="rounded-lg opacity-50" />
+<img src="./images/code-transformation.jpg" alt="Code transformation" class="rounded-lg opacity-50" />
 </div>
 </div>
 
@@ -1097,7 +1097,7 @@ Modern Java enables a new programming paradigm combining:
 
 </div>
 <div class="w-1/3">
-<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop&brightness=1.2" alt="Data structures" class="rounded-lg opacity-50" />
+<img src="./images/data-structures.jpg" alt="Data structures" class="rounded-lg opacity-50" />
 </div>
 </div>
 
@@ -1268,7 +1268,7 @@ try (var scope = StructuredTaskScope.open()) {
 
 </div>
 <div class="w-1/3">
-<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&brightness=1.2" alt="Future technology" class="rounded-lg opacity-50" />
+<img src="./images/future-technology.jpg" alt="Future technology" class="rounded-lg opacity-50" />
 </div>
 </div>
 
@@ -1381,7 +1381,7 @@ try (var scope = StructuredTaskScope.open()) {
 [kousenit.com](https://kousenit.com) | [@kenkousen](https://x.com/kenkousen)
 
 <div class="mt-8">
-<img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=200&fit=crop" alt="Thank you" class="rounded-lg mx-auto opacity-60" />
+<img src="./images/thank-you-banner.jpg" alt="Thank you" class="rounded-lg mx-auto opacity-60" />
 </div>
 
 </div>
