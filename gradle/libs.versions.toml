@@ -1,23 +1,29 @@
 [versions]
 assertj = "3.27.7"
+commons-io = "2.22.0"
 gson = "2.14.0"
 jackson = "3.2.1"
+jackson2 = "2.22.1"
+jetty = "12.0.37"
+json-path = "3.0.0"
 junit = "6.1.1"
 mockito = "5.23.0"
 slf4j = "2.0.17"
-wiremock = "3.13.2"
 wiremock-jetty12 = "3.13.2"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 jackson-core = { module = "tools.jackson.core:jackson-core", version.ref = "jackson" }
 jackson-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson2-bom = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson2" }
+jetty-bom = { module = "org.eclipse.jetty:jetty-bom", version.ref = "jetty" }
+json-path = { module = "com.jayway.jsonpath:json-path", version.ref = "json-path" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
-wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
 wiremock-jetty12 = { module = "org.wiremock:wiremock-jetty12", version.ref = "wiremock-jetty12" }
 
 [bundles]
