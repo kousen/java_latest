@@ -100,9 +100,10 @@ npx slidev export slides.md --format pdf
 
 ### For Workshops
 1. **Review the slides** - `slides.md` provides comprehensive coverage
-2. **Work through exercises** - `workshop-exercises.md` contains hands-on labs
-3. **Check solutions** - Complete implementations in `exercises.solutions` package
-4. **Practice with examples** - Explore the main codebase for real-world patterns
+2. **Work through exercises** - `workshop-exercises.md` contains hands-on labs (Exercises 1-17, plus a Java 8 refresher as A1-A3 in the appendix)
+3. **Build your solutions** - Paste each exercise's scaffold into the `src/test/java/exercises` package (see the README there)
+4. **Check solutions** - Complete implementations in `exercises.solutions` package
+5. **Practice with examples** - Explore the main codebase for real-world patterns
 
 ## 📚 Key Examples
 
@@ -126,6 +127,8 @@ npx slidev export slides.md --format pdf
 # Run with coverage
 ./gradlew test jacocoTestReport
 ```
+
+Tests run in parallel via JUnit's configuration in `src/test/resources/junit-platform.properties`.
 
 ## 📈 Code Coverage
 

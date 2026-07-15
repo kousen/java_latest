@@ -29,6 +29,26 @@ The repository underwent comprehensive quality improvements to align with modern
    - Disabled inappropriate rules for demo/educational code (commented code, System.out.println, generic exceptions)
    - Maintained quality gates while preserving educational clarity
 
+## Recent Improvements (2026)
+
+1. **Dependency Security via BOM Constraints**
+   - Transitive CVEs (e.g., Jetty via wiremock-jetty12) are fixed with `testImplementation(platform(...))` BOM imports rather than direct dependency overrides
+   - All dependency coordinates, including the security BOM pins, live in `gradle/libs.versions.toml` so the versions plugin flags stale pins
+   - BOM constraints are sticky upward but become silent no-ops once transitives catch up — prune them when `dependencyUpdates` shows they're obsolete
+
+2. **JUnit Parallel Execution**
+   - Tests run in parallel, configured in `src/test/resources/junit-platform.properties`
+   - Opted into JUnit's new `WORKER_THREAD_POOL` executor (predictable thread counts vs. ForkJoinPool's elastic compensation)
+
+3. **Workshop Exercise Organization**
+   - Exercises numbered sequentially 1-17 in the main flow; Java 8 refresher exercises are A1-A3 in the appendix
+   - Students paste scaffolds from `workshop-exercises.md` into `src/test/java/exercises/` (see the README in that package); reference solutions live in `exercises/solutions/`
+   - The `exercises` package must always contain at least one tracked file, or IDEs can't display it as a paste target (git doesn't track empty directories)
+
+4. **Self-Contained Presentations**
+   - Slide content images are hosted in `images/` and referenced with relative paths — no live network needed to present or export PDFs
+   - Exception: the decorative `background:` URLs in both decks' Slidev frontmatter remain remote; a missing background degrades gracefully
+
 ## Key Architecture Decisions
 
 ### Dual Presentation Strategy
@@ -79,10 +99,11 @@ The repository supports **two distinct presentation formats**:
 - **GitHub Actions** CI/CD pipeline with quality gates
 
 ### Key Dependencies
-- JUnit 5 for testing
-- Jackson/Gson for JSON processing
+- JUnit 6 for testing (parallel execution enabled)
+- Jackson 3 (`tools.jackson`) and Gson for JSON processing
 - Mockito and WireMock for testing
 - AssertJ for fluent assertions
+- All versions managed in `gradle/libs.versions.toml` (single source of truth)
 
 ## HttpClient Implementation Pattern
 
@@ -154,6 +175,7 @@ Originally created as separate project, went through major refactoring:
 
 ### Test Structure (`src/test/java/`)
 - Mirrors main package structure
+- `exercises/` - Where students build workshop solutions (scaffolds pasted from `workshop-exercises.md`; see the package README)
 - `exercises/solutions/` - Workshop exercise solutions
 - Comprehensive test coverage for all features
 - Educational test patterns with minimal assertions for demo purposes
@@ -170,6 +192,11 @@ Originally created as separate project, went through major refactoring:
 - `.github/workflows/sonar.yml` - CI/CD pipeline for quality analysis
 
 ## Development Workflow
+
+### Branch Strategy
+- `main` is the single durable branch — all lasting changes land there
+- Dated class branches (e.g., `java_july2026`) are created for live workshops and abandoned afterward; they are **never merged back**
+- Anything done on a class branch that should persist must be applied to `main` separately
 
 ### Adding New Features
 1. Create package under `com.kousenit.{feature}`
