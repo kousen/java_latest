@@ -47,6 +47,10 @@ dependencies {
     // Make vulnerability issues go away
     testImplementation("commons-io:commons-io:2.22.0")
     // Jetty 12 is now included via wiremock-jetty12
+    // CVE-2026-1605 (GzipHandler): force Jetty past 12.0.31 on the 12.0.x line WireMock targets
+    testImplementation(platform("org.eclipse.jetty:jetty-bom:12.0.37"))
+    // Patched Jackson 2.x for WireMock's transitive use (main code uses tools.jackson 3.x)
+    testImplementation(platform("com.fasterxml.jackson:jackson-bom:2.22.1"))
 }
 
 tasks.withType<JavaCompile>().configureEach {
