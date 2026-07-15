@@ -5,32 +5,32 @@ This document contains hands-on lab exercises for the Modern Java workshop, cove
 ## Table of Contents
 
 - [Java 8: Functional Programming](#java-8-functional-programming)
-  - [Exercise 3: Advanced Collectors](#exercise-3-advanced-collectors)
-  - [Exercise 5: CompletableFuture Basics](#exercise-5-completablefuture-basics)
+  - [Exercise 1: Advanced Collectors](#exercise-1-advanced-collectors)
+  - [Exercise 2: CompletableFuture Basics](#exercise-2-completablefuture-basics)
 - [Java 9-11: Platform Improvements](#java-9-11-platform-improvements)
-  - [Exercise 6: Collection Factory Methods](#exercise-6-collection-factory-methods)
-  - [Exercise 7: Stream Enhancements](#exercise-7-stream-enhancements)
-  - [Exercise 8: HTTP Client](#exercise-8-http-client)
-  - [Exercise 9: String Methods](#exercise-9-string-methods)
+  - [Exercise 3: Collection Factory Methods](#exercise-3-collection-factory-methods)
+  - [Exercise 4: Stream Enhancements](#exercise-4-stream-enhancements)
+  - [Exercise 5: HTTP Client](#exercise-5-http-client)
+  - [Exercise 6: String Methods](#exercise-6-string-methods)
 - [Java 12-17: Language Evolution](#java-12-17-language-evolution)
-  - [Exercise 10: Text Blocks](#exercise-10-text-blocks)
-  - [Exercise 11: Records](#exercise-11-records)
-  - [Exercise 12: Pattern Matching instanceof](#exercise-12-pattern-matching-instanceof)
-  - [Exercise 13: Switch Expressions](#exercise-13-switch-expressions)
-  - [Exercise 14: Sealed Classes](#exercise-14-sealed-classes)
+  - [Exercise 7: Text Blocks](#exercise-7-text-blocks)
+  - [Exercise 8: Records](#exercise-8-records)
+  - [Exercise 9: Pattern Matching instanceof](#exercise-9-pattern-matching-instanceof)
+  - [Exercise 10: Switch Expressions](#exercise-10-switch-expressions)
+  - [Exercise 11: Sealed Classes](#exercise-11-sealed-classes)
 - [Java 18-21: Modern Features](#java-18-21-modern-features)
-  - [Exercise 15: Pattern Matching in Switch](#exercise-15-pattern-matching-in-switch)
-  - [Exercise 16: Virtual Threads](#exercise-16-virtual-threads)
-  - [Exercise 17: Sequenced Collections](#exercise-17-sequenced-collections)
+  - [Exercise 12: Pattern Matching in Switch](#exercise-12-pattern-matching-in-switch)
+  - [Exercise 13: Virtual Threads](#exercise-13-virtual-threads)
+  - [Exercise 14: Sequenced Collections](#exercise-14-sequenced-collections)
 - [Java 22+: Recent Features](#java-22-recent-features)
-  - [Exercise 18: Unnamed Variables](#exercise-18-unnamed-variables)
-  - [Exercise 19: Data-Oriented Programming](#exercise-19-data-oriented-programming)
-  - [Exercise 20: Stream Gatherers](#exercise-20-stream-gatherers)
+  - [Exercise 15: Unnamed Variables](#exercise-15-unnamed-variables)
+  - [Exercise 16: Data-Oriented Programming](#exercise-16-data-oriented-programming)
+  - [Exercise 17: Stream Gatherers](#exercise-17-stream-gatherers)
 - [Capstone Project](#capstone-project)
 - [Appendix: Java 8 Refresher](#appendix-java-8-refresher)
-  - [Exercise 1: Lambda Expressions and Method References](#exercise-1-lambda-expressions-and-method-references)
-  - [Exercise 2: Stream API Basics](#exercise-2-stream-api-basics)
-  - [Exercise 4: Optional Handling](#exercise-4-optional-handling)
+  - [Exercise A1: Lambda Expressions and Method References](#exercise-a1-lambda-expressions-and-method-references)
+  - [Exercise A2: Stream API Basics](#exercise-a2-stream-api-basics)
+  - [Exercise A3: Optional Handling](#exercise-a3-optional-handling)
 - [Running the Exercises](#running-the-exercises)
 - [Tips and Best Practices](#tips-and-best-practices)
 
@@ -39,10 +39,10 @@ This document contains hands-on lab exercises for the Modern Java workshop, cove
 > Already comfortable with lambdas, streams, and Optional? The warm-up exercises
 > (Lambdas, Stream Basics, Optional) have moved to the
 > [Java 8 Refresher appendix](#appendix-java-8-refresher). The two exercises here
-> set up later labs: Collectors leads into Stream Gatherers (Exercise 20), and
-> CompletableFuture into the HTTP Client (Exercise 8) and Virtual Threads (Exercise 16).
+> set up later labs: Collectors leads into Stream Gatherers (Exercise 17), and
+> CompletableFuture into the HTTP Client (Exercise 5) and Virtual Threads (Exercise 13).
 
-### Exercise 3: Advanced Collectors
+### Exercise 1: Advanced Collectors
 
 **Learning Objectives:** Master Collectors API including groupingBy and custom collectors
 
@@ -119,7 +119,7 @@ public class CollectorsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 5: CompletableFuture Basics
+### Exercise 2: CompletableFuture Basics
 
 **Learning Objectives:** Introduction to async programming with CompletableFuture
 
@@ -193,7 +193,7 @@ public class CompletableFutureTest {
 
 ## Java 9-11: Platform Improvements
 
-### Exercise 6: Collection Factory Methods
+### Exercise 3: Collection Factory Methods
 
 **Learning Objectives:** Use convenient collection creation methods
 
@@ -265,7 +265,7 @@ public class CollectionFactoryTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 7: Stream Enhancements
+### Exercise 4: Stream Enhancements
 
 **Learning Objectives:** Use Java 9+ stream methods
 
@@ -337,7 +337,7 @@ public class StreamEnhancementsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 8: HTTP Client
+### Exercise 5: HTTP Client
 
 **Learning Objectives:** Use modern HTTP Client API
 
@@ -432,7 +432,7 @@ public class HttpClientTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 9: String Methods
+### Exercise 6: String Methods
 
 **Learning Objectives:** Use Java 11 string enhancements
 
@@ -513,7 +513,7 @@ public class StringMethodsTest {
 
 ## Java 12-17: Language Evolution
 
-### Exercise 10: Text Blocks
+### Exercise 7: Text Blocks
 
 **Learning Objectives:** Master multi-line string literals
 
@@ -591,7 +591,7 @@ public class TextBlocksTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 11: Records
+### Exercise 8: Records
 
 **Learning Objectives:** Create and use record classes
 
@@ -665,7 +665,7 @@ public class RecordsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 12: Pattern Matching instanceof
+### Exercise 9: Pattern Matching instanceof
 
 **Learning Objectives:** Use pattern matching with instanceof
 
@@ -740,7 +740,7 @@ public class PatternMatchingTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 13: Switch Expressions
+### Exercise 10: Switch Expressions
 
 **Learning Objectives:** Master new switch expression syntax
 
@@ -819,7 +819,7 @@ public class SwitchExpressionsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 14: Sealed Classes
+### Exercise 11: Sealed Classes
 
 **Learning Objectives:** Design type hierarchies with sealed classes
 
@@ -905,7 +905,7 @@ public class SealedClassesTest {
 
 ## Java 18-21: Modern Features
 
-### Exercise 15: Pattern Matching in Switch
+### Exercise 12: Pattern Matching in Switch
 
 **Learning Objectives:** Advanced pattern matching with switch
 
@@ -990,7 +990,7 @@ public class PatternSwitchTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 16: Virtual Threads
+### Exercise 13: Virtual Threads
 
 **Learning Objectives:** Leverage lightweight threads for massive concurrency
 
@@ -1076,7 +1076,7 @@ public class VirtualThreadsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 17: Sequenced Collections
+### Exercise 14: Sequenced Collections
 
 **Learning Objectives:** Use new sequenced collection interfaces
 
@@ -1161,7 +1161,7 @@ public class SequencedCollectionsTest {
 
 ## Java 22+: Recent Features
 
-### Exercise 18: Unnamed Variables
+### Exercise 15: Unnamed Variables
 
 **Learning Objectives:** Use _ for unused variables
 
@@ -1252,7 +1252,7 @@ public class UnnamedVariablesTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 19: Data-Oriented Programming
+### Exercise 16: Data-Oriented Programming
 
 **Learning Objectives:** Apply the four DOP principles — model the data (records), keep it immutable, make illegal states unrepresentable (sealed types), and validate at the boundary (compact constructors)
 
@@ -1366,7 +1366,7 @@ public class DataOrientedTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 20: Stream Gatherers
+### Exercise 17: Stream Gatherers
 
 **Learning Objectives:** Use Stream Gatherers (Java 24) for windowing, stateful transformations, and custom intermediate operations — think "Collectors, but for the middle of the stream"
 
@@ -1588,7 +1588,7 @@ public class MovieSystemTest {
 Optional warm-up exercises for anyone who wants to brush up on the
 functional-programming foundations the rest of the workshop builds on.
 
-### Exercise 1: Lambda Expressions and Method References
+### Exercise A1: Lambda Expressions and Method References
 
 **Learning Objectives:** Master lambda syntax and method reference variations
 
@@ -1660,7 +1660,7 @@ public class LambdaBasicsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 2: Stream API Basics
+### Exercise A2: Stream API Basics
 
 **Learning Objectives:** Practice fundamental stream operations
 
@@ -1723,7 +1723,7 @@ public class StreamBasicsTest {
 
 [Back to Table of Contents](#table-of-contents)
 
-### Exercise 4: Optional Handling
+### Exercise A3: Optional Handling
 
 **Learning Objectives:** Practice safe null handling with Optional
 
