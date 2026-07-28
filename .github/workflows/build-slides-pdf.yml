@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'slides.md'
+      - 'images/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/build-slides-pdf.yml'
