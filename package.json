@@ -8,11 +8,11 @@
     "export": "slidev export slides.md --output modern-java-slides.pdf"
   },
   "overrides": {
-    "dompurify": "^3.3.2"
+    "dompurify": "^3.4.16"
   },
   "devDependencies": {
-    "@slidev/cli": "^52.17.0",
+    "@slidev/cli": "^52.20.1",
     "@slidev/theme-seriph": "^0.25.0",
-    "playwright-chromium": "^1.53.2"
+    "playwright-chromium": "^1.63.0"
   }
 }
