@@ -89,6 +89,11 @@ npx slidev slides.md
 npx slidev export slides.md --format pdf
 ```
 
+Both are also published automatically on every push to `main`:
+
+- **Web version** (GitHub Pages): **<https://kousen.github.io/java_latest/>** via [`deploy-slides-pages.yml`](.github/workflows/deploy-slides-pages.yml)
+- **PDF**: [`modern-java-slides.pdf`](https://github.com/kousen/java_latest/releases/latest/download/modern-java-slides.pdf) from the rolling `slides-latest` release
+
 ## 🎓 Learning Path
 
 ### For Self-Study

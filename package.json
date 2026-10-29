@@ -5,7 +5,8 @@
   "author": "Kenneth Kousen <ken.kousen@kousenit.com>",
   "scripts": {
     "dev": "slidev slides.md --open",
-    "export": "slidev export slides.md --output modern-java-slides.pdf"
+    "export": "slidev export slides.md --output modern-java-slides.pdf",
+    "build": "slidev build slides.md"
   },
   "overrides": {
     "dompurify": "^3.4.16"
